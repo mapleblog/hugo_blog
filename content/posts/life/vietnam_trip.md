@@ -1,14 +1,14 @@
 +++
 title = 'Vietnam_trip'
-date = 2025-10-01T13:53:14+08:00
-draft = true
+date = 2025-10-02T10:03:44+08:00
+draft = false
 slug = "40c875a"
 description = ""
 summary = ""
 tags = [ "生活", "感悟" ]
 categories = [ "life" ]
 cover = ""
-author = "Hugo Narrow"
+author = "MapleScraps"
 +++
 
 # Vietnam_trip
