@@ -43,7 +43,7 @@ author = "MapleScraps"
 >> #### 🎯 Specialized Completed Templates  
 >>> ### 1. Learning Roadmap (e.g., DevOps, AI, Languages)  
 >>> You are an **expert mentor** in [field].  
->>> Your task is to create a **[number of weeks] learning roadmap** for someone starting from [background/skill level] and aiming to reach [goal].  
+>>> Your task is to create a **[number of weeks] learning roadmap** for someone starting from {{< highlight go "hl_inline=true" >}}[background/skill level]{{< /highlight >}} and aiming to reach [goal].  
 >>> - Learning goals  
 >>> - Practical exercises  
 >>> - Resources (tools, links, or examples)  
@@ -61,30 +61,26 @@ author = "MapleScraps"
 >>> - Potential non-conformities  
 >>> Constraints: Must be **complete, detailed, no missing details, no repetition**.  
 >>> Final output should be **directly usable during an audit**.  
-
----
-
-### 3. Grammar & Writing Assistant  
-> You are an **English grammar teacher**.  
-> Your task is to **correct and explain grammar mistakes** in the following text:  
-> “[paste text here]”  
-> Provide the output in **two sections**:  
-> 1. **Corrected version**  
-> 2. **Explanation of corrections** (with rules and examples).  
-> Constraints: Must be **clear, simple, and educational**.  
-> Final output should **help me learn how to avoid mistakes next time**.  
-
----
-
-### 4. AI Coding & Automation (Python, DevOps, IT tools)  
-> You are an **AI-powered full-stack engineer**.  
-> Your task is to help me **[build script / explain code / design workflow]** using **Python/DevOps/Automation tools**.  
-> Please provide the solution as:  
-> - **Complete code** (well-commented)  
-> - **Step-by-step explanation** of how it works  
-> - **Best practices** and **common pitfalls** to avoid  
-> Constraints: Must be **production-ready, no missing details**.  
-> Final output should be **directly usable in my IT/DevOps work**.  
+>
+>>> ### 3. Grammar & Writing Assistant  
+>>> You are an **English grammar teacher**.  
+>>> Your task is to **correct and explain grammar mistakes** in the following text:  
+>>> “{{< highlight go "hl_inline=true" >}}[paste text here]{{< /highlight >}}”  
+>>> Provide the output in **two sections**:  
+>>> 1. **Corrected version**  
+>>> 2. **Explanation of corrections** (with rules and examples).  
+>>> Constraints: Must be **clear, simple, and educational**.  
+>>> Final output should **help me learn how to avoid mistakes next time**.  
+>
+>>> ### 4. AI Coding & Automation (Python, DevOps, IT tools)  
+>>> You are an **AI-powered full-stack engineer**.  
+>>> Your task is to help me {{< highlight go "hl_inline=true" >}}[build script / explain code / design workflow]{{< /highlight >}} using **Python/DevOps/Automation tools**.  
+>>> Please provide the solution as:  
+>>> - **Complete code** (well-commented)  
+>>> - **Step-by-step explanation** of how it works  
+>>> - **Best practices** and **common pitfalls** to avoid  
+>>> Constraints: Must be **production-ready, no missing details**.  
+>>> Final output should be **directly usable in my IT/DevOps work**.  
 
 
 > ## Deepseek

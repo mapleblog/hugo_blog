@@ -1421,7 +1421,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="prose prose-sm max-w-none">
       <h3 id="1-learning-roadmap-eg-devops-ai-languages">1. Learning Roadmap (e.g., DevOps, AI, Languages)</h3>
 <p>You are an <strong>expert mentor</strong> in [field].<br>
-Your task is to create a <strong>[number of weeks] learning roadmap</strong> for someone starting from [background/skill level] and aiming to reach [goal].</p>
+Your task is to create a <strong>[number of weeks] learning roadmap</strong> for someone starting from <code class="code-inline language-go"><span class="p">[</span><span class="nx">background</span><span class="o">/</span><span class="nx">skill</span><span class="w"> </span><span class="nx">level</span><span class="p">]</span></code> and aiming to reach [goal].</p>
 <ul>
 <li>Learning goals</li>
 <li>Practical exercises</li>
@@ -1570,46 +1570,18 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-    </div>
-  </blockquote><script>
-function toggleAlert(alertId) {
-  const content = document.getElementById(alertId + '-content');
-  const chevron = document.getElementById(alertId + '-chevron');
-  const header = content.previousElementSibling;
-  
-  if (content.classList.contains('hidden')) {
-    content.classList.remove('hidden');
-    chevron.style.transform = 'rotate(0deg)';
-    header.setAttribute('aria-expanded', 'true');
-  } else {
-    content.classList.add('hidden');
-    chevron.style.transform = 'rotate(-90deg)';
-    header.setAttribute('aria-expanded', 'false');
-  }
-}
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  const collapsedAlerts = document.querySelectorAll('.alert-content.hidden');
-  collapsedAlerts.forEach(function(content) {
-    const alertId = content.id.replace('-content', '');
-    const chevron = document.getElementById(alertId + '-chevron');
-    if (chevron) {
-      chevron.style.transform = 'rotate(-90deg)';
-    }
-  });
-});
-</script>
-
-<hr>
-<h3 id="3-grammar--writing-assistant">3. Grammar &amp; Writing Assistant</h3>
 
   <blockquote
     class="border-primary bg-muted/30 hover:bg-muted/40 my-6 rounded-r-lg border-l-4 py-4 pr-4 pl-6 italic transition-all duration-200 ease-out hover:translate-x-1">
     <div class="prose prose-sm max-w-none">
-      <p>You are an <strong>English grammar teacher</strong>.<br>
+      <blockquote
+    class="border-primary bg-muted/30 hover:bg-muted/40 my-6 rounded-r-lg border-l-4 py-4 pr-4 pl-6 italic transition-all duration-200 ease-out hover:translate-x-1">
+    <div class="prose prose-sm max-w-none">
+      <h3 id="3-grammar--writing-assistant">3. Grammar &amp; Writing Assistant</h3>
+<p>You are an <strong>English grammar teacher</strong>.<br>
 Your task is to <strong>correct and explain grammar mistakes</strong> in the following text:<br>
-“[paste text here]”<br>
+“<code class="code-inline language-go"><span class="p">[</span><span class="nx">paste</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="nx">here</span><span class="p">]</span></code>”<br>
 Provide the output in <strong>two sections</strong>:</p>
 <ol>
 <li><strong>Corrected version</strong></li>
@@ -1647,15 +1619,47 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+    </div>
+  </blockquote><script>
+function toggleAlert(alertId) {
+  const content = document.getElementById(alertId + '-content');
+  const chevron = document.getElementById(alertId + '-chevron');
+  const header = content.previousElementSibling;
+  
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    chevron.style.transform = 'rotate(0deg)';
+    header.setAttribute('aria-expanded', 'true');
+  } else {
+    content.classList.add('hidden');
+    chevron.style.transform = 'rotate(-90deg)';
+    header.setAttribute('aria-expanded', 'false');
+  }
+}
 
-<hr>
-<h3 id="4-ai-coding--automation-python-devops-it-tools">4. AI Coding &amp; Automation (Python, DevOps, IT tools)</h3>
+
+document.addEventListener('DOMContentLoaded', function() {
+  const collapsedAlerts = document.querySelectorAll('.alert-content.hidden');
+  collapsedAlerts.forEach(function(content) {
+    const alertId = content.id.replace('-content', '');
+    const chevron = document.getElementById(alertId + '-chevron');
+    if (chevron) {
+      chevron.style.transform = 'rotate(-90deg)';
+    }
+  });
+});
+</script>
+
 
   <blockquote
     class="border-primary bg-muted/30 hover:bg-muted/40 my-6 rounded-r-lg border-l-4 py-4 pr-4 pl-6 italic transition-all duration-200 ease-out hover:translate-x-1">
     <div class="prose prose-sm max-w-none">
-      <p>You are an <strong>AI-powered full-stack engineer</strong>.<br>
-Your task is to help me <strong>[build script / explain code / design workflow]</strong> using <strong>Python/DevOps/Automation tools</strong>.<br>
+      <blockquote
+    class="border-primary bg-muted/30 hover:bg-muted/40 my-6 rounded-r-lg border-l-4 py-4 pr-4 pl-6 italic transition-all duration-200 ease-out hover:translate-x-1">
+    <div class="prose prose-sm max-w-none">
+      <h3 id="4-ai-coding--automation-python-devops-it-tools">4. AI Coding &amp; Automation (Python, DevOps, IT tools)</h3>
+<p>You are an <strong>AI-powered full-stack engineer</strong>.<br>
+Your task is to help me <code class="code-inline language-go"><span class="p">[</span><span class="nx">build</span><span class="w"> </span><span class="nx">script</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">explain</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">design</span><span class="w"> </span><span class="nx">workflow</span><span class="p">]</span></code> using <strong>Python/DevOps/Automation tools</strong>.<br>
 Please provide the solution as:</p>
 <ul>
 <li><strong>Complete code</strong> (well-commented)</li>
@@ -1664,6 +1668,66 @@ Please provide the solution as:</p>
 Constraints: Must be <strong>production-ready, no missing details</strong>.<br>
 Final output should be <strong>directly usable in my IT/DevOps work</strong>.</li>
 </ul>
+    </div>
+  </blockquote><script>
+function toggleAlert(alertId) {
+  const content = document.getElementById(alertId + '-content');
+  const chevron = document.getElementById(alertId + '-chevron');
+  const header = content.previousElementSibling;
+  
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    chevron.style.transform = 'rotate(0deg)';
+    header.setAttribute('aria-expanded', 'true');
+  } else {
+    content.classList.add('hidden');
+    chevron.style.transform = 'rotate(-90deg)';
+    header.setAttribute('aria-expanded', 'false');
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const collapsedAlerts = document.querySelectorAll('.alert-content.hidden');
+  collapsedAlerts.forEach(function(content) {
+    const alertId = content.id.replace('-content', '');
+    const chevron = document.getElementById(alertId + '-chevron');
+    if (chevron) {
+      chevron.style.transform = 'rotate(-90deg)';
+    }
+  });
+});
+</script>
+    </div>
+  </blockquote><script>
+function toggleAlert(alertId) {
+  const content = document.getElementById(alertId + '-content');
+  const chevron = document.getElementById(alertId + '-chevron');
+  const header = content.previousElementSibling;
+  
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    chevron.style.transform = 'rotate(0deg)';
+    header.setAttribute('aria-expanded', 'true');
+  } else {
+    content.classList.add('hidden');
+    chevron.style.transform = 'rotate(-90deg)';
+    header.setAttribute('aria-expanded', 'false');
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const collapsedAlerts = document.querySelectorAll('.alert-content.hidden');
+  collapsedAlerts.forEach(function(content) {
+    const alertId = content.id.replace('-content', '');
+    const chevron = document.getElementById(alertId + '-chevron');
+    if (chevron) {
+      chevron.style.transform = 'rotate(-90deg)';
+    }
+  });
+});
+</script>
     </div>
   </blockquote><script>
 function toggleAlert(alertId) {
