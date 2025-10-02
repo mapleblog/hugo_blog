@@ -3176,21 +3176,21 @@ document.addEventListener('DOMContentLoaded', function() {
     onmouseover="this.style.backgroundColor = this.style.getPropertyValue('--hover-bg')"
     onmouseout="this.style.backgroundColor = 'color-mix(in srgb, var(--color-note) 10%, transparent)'"
     role="alert"
-    aria-labelledby="alert-22-title">
+    aria-labelledby="alert-21-title">
     
     <div
       class="
         cursor-pointer
        flex items-center justify-between px-6 py-6"
       
-        onclick="toggleAlert('alert-22')" role="button" tabindex="0"
-        aria-expanded="true" aria-controls="alert-22-content"
-        onkeydown="if(event.key==='Enter'||event.key===' '){toggleAlert('alert-22');event.preventDefault();}"
+        onclick="toggleAlert('alert-21')" role="button" tabindex="0"
+        aria-expanded="true" aria-controls="alert-21-content"
+        onkeydown="if(event.key==='Enter'||event.key===' '){toggleAlert('alert-21');event.preventDefault();}"
       >
       <div class="flex items-center gap-3">
         
         <h4
-          id="alert-22-title"
+          id="alert-21-title"
           class="m-0 font-semibold text-foreground/90">
           配置流程
         </h4>
@@ -3200,7 +3200,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
         <div
           class="flex-shrink-0 transition-transform duration-200"
-          id="alert-22-chevron">
+          id="alert-21-chevron">
           
   <svg class="h-4 w-4"
     fill="none"
@@ -3213,7 +3213,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     <div
-      id="alert-22-content"
+      id="alert-21-content"
       class="alert-content  px-6 pb-6">
       <div class="prose prose-sm text-foreground/90 max-w-none">
         
@@ -4492,42 +4492,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 })();
 </script>
-    </div>
-  </blockquote><script>
-function toggleAlert(alertId) {
-  const content = document.getElementById(alertId + '-content');
-  const chevron = document.getElementById(alertId + '-chevron');
-  const header = content.previousElementSibling;
-  
-  if (content.classList.contains('hidden')) {
-    content.classList.remove('hidden');
-    chevron.style.transform = 'rotate(0deg)';
-    header.setAttribute('aria-expanded', 'true');
-  } else {
-    content.classList.add('hidden');
-    chevron.style.transform = 'rotate(-90deg)';
-    header.setAttribute('aria-expanded', 'false');
-  }
-}
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  const collapsedAlerts = document.querySelectorAll('.alert-content.hidden');
-  collapsedAlerts.forEach(function(content) {
-    const alertId = content.id.replace('-content', '');
-    const chevron = document.getElementById(alertId + '-chevron');
-    if (chevron) {
-      chevron.style.transform = 'rotate(-90deg)';
-    }
-  });
-});
-</script>
-
-
-  <blockquote
-    class="border-primary bg-muted/30 hover:bg-muted/40 my-6 rounded-r-lg border-l-4 py-4 pr-4 pl-6 italic transition-all duration-200 ease-out hover:translate-x-1">
-    <div class="prose prose-sm max-w-none">
-      
     </div>
   </blockquote><script>
 function toggleAlert(alertId) {

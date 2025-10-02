@@ -249,8 +249,3 @@ author = "MapleScraps"
 >> {{- .Scratch.Delete "categories" -}}
 >> {{- .Scratch.Delete "index" -}}
 >> ```
->
->>
-
-
-
