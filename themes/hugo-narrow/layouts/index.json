@@ -1,8 +1,15 @@
 {{- .Scratch.Add "pages" slice -}}
 
 {{- .Scratch.Add "posts" slice -}}
-{{- range $index, $value := (where .Site.RegularPages "Section" "==" "posts") -}}
-{{- $.Scratch.Add "posts" (dict "title" $value.Title "text" $value.Plain "link" $value.RelPermalink) -}}
+{{- range $index, $value := .Site.RegularPages -}}
+{{- if eq $value.Section "posts" -}}
+{{- $searchText := $value.Plain -}}
+{{- if $value.Params.searchKeywords -}}
+{{- $searchText = printf "%s %s" $value.Plain (delimit $value.Params.searchKeywords " ") -}}
+{{- end -}}
+
+{{- $.Scratch.Add "posts" (dict "title" $value.Title "text" $searchText "link" $value.RelPermalink "hidden" ($value.Params.hidden | default false)) -}}
+{{- end -}}
 {{- end -}}
 
 {{- .Scratch.Add "tags" slice -}}

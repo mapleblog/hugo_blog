@@ -9,6 +9,9 @@ tags = [ "技术", "开发" ]
 categories = [ "tech" ]
 cover = ""
 author = "{{ .Site.Params.defaultAuthor | default "MapleScraps" }}"
+# hidden = true
+# searchable = true
+# searchKeywords = [""]
 +++
 
 # {{ replace .File.ContentBaseName "-" " " | title }}

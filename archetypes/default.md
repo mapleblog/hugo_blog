@@ -8,4 +8,7 @@ summary = ""
 tags = [ "draft" ]
 categories = [ "draft" ]
 cover = ""
+# hidden = true
+# searchable = true
+# searchKeywords = [""]
 +++

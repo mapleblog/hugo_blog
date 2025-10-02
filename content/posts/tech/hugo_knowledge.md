@@ -13,45 +13,34 @@ author = "MapleScraps"
 
 # GitHub 风格提示框
 
-### 注意提示框
-
+## 注意提示框
 > [!NOTE]
 > 这是一个注意提示框。用于显示用户应该注意的有用信息，即使在快速浏览内容时也应该注意。
 
-### 提示提示框
-
+## 提示提示框
 > [!TIP]
 > 这是一个提示提示框。提供有助于更好或更轻松地完成任务的建议。
 
-### 重要提示框
-
+## 重要提示框
 > [!IMPORTANT]
 > 这是一个重要提示框。显示用户成功完成任务所需的关键信息。
 
-### 警告提示框
-
+## 警告提示框
 > [!WARNING]
 > 这是一个警告提示框。由于潜在风险，需要用户立即注意的关键内容。
 
-### 注意提示框
-
+## 注意提示框
 > [!CAUTION]
 > 这是一个注意提示框。建议采取行动以避免负面后果。
 
 ## 折叠功能
-
-### 可折叠的注意提示框
-
 > [!NOTE]+ 可折叠的注意事项
 > 这是一个可折叠的注意提示框。点击标题可以展开或折叠内容。
-> 
 > 这里可以包含更多详细信息，当用户需要时可以展开查看。
 
-### 可折叠的提示提示框
-
+### 提示提示框
 > [!TIP]+ 高级使用技巧
 > 这个折叠的提示框包含高级使用技巧：
-> 
 > 1. 首先做这个
 > 2. 然后做那个
 > 3. 最后完成这个步骤
@@ -62,7 +51,6 @@ author = "MapleScraps"
 
 > [!IMPORTANT]+ 重要配置信息
 > 这些配置设置对系统正常运行至关重要：
-> 
 > ```yaml
 > server:
 >   port: 8080
@@ -171,6 +159,98 @@ author = "MapleScraps"
 > 此操作将永久删除所有数据，且无法恢复。请确保已备份重要数据。
 
 这些提示框可以帮助用户更好地理解内容的重要性和上下文，提升文档的可读性和用户体验。
+
+### 文章隐藏, 索引搜索
+> [!NOTE]+ 配置流程
+>> #### 配置文章隐藏
+>> - 在 markdown content/posts/xxx.md 文章添加以下参数, 即可隐藏文章, 且不会被索引搜索到
+>> ```markdown
+>> hidden = true
+>> searchable = true
+>> searchKeywords = [""]
+>> ```
+>>
+>> #### 配置索引搜索
+>> - 修改文章列表模板 `themes\hugo-narrow\layouts\_partials\content\post-list.html`
+>> ```html
+>> {{/* 过滤掉隐藏的文章 */}}
+>> {{ $filteredPosts := slice }}
+>> {{ range $posts }}
+>>   {{ if not .Params.hidden }}
+>>     {{ $filteredPosts = $filteredPosts | append . }}
+>>   {{ end }}
+>> {{ end }}
+>> 
+>> {{ if $filteredPosts }}
+>>   <!-- 显示过滤后的文章列表 -->
+>>   <div class="space-y-4">
+>>     {{ range $filteredPosts }}
+>>       {{ partial "content/card-base.html" (dict "page" .) }}
+>>     {{ end }}
+>>   </div>
+>> {{ end }}
+>> ```
+>>
+>> - 修改归档页面模板 `themes\hugo-narrow\layouts\archives.html`
+>> ```html
+>> {{/* 过滤掉隐藏的文章 */}}
+>> {{ $posts := where .Site.RegularPages "Section" "posts" }}
+>> {{ $filteredPosts := slice }}
+>> {{ range $posts }}
+>>   {{ if not .Params.hidden }}
+>>     {{ $filteredPosts = $filteredPosts | append . }}
+>>   {{ end }}
+>> {{ end }}
+>>
+>> {{ if $filteredPosts }}   # 在这个函数块内添加
+>>   <!-- 显示过滤后的文章列表 -->
+>>   <div class="space-y-4">
+>>     {{ range $filteredPosts }}
+>>       {{ partial "content/card-base.html" (dict "page" .) }}
+>>     {{ end }}
+>>   </div>
+>> ```
+>>
+>> - 修改搜索索引生成逻辑 `themes\hugo-narrow\layouts\index.json` ，让隐藏文章仍然包含在搜索中：
+>> ```html
+>> {{- .Scratch.Add "pages" slice -}}
+>> 
+>> {{- .Scratch.Add "posts" slice -}}
+>> {{- range $index, $value := .Site.RegularPages -}}
+>> {{- if eq $value.Section "posts" -}}
+>> {{- $searchText := $value.Plain -}}
+>> {{- if $value.Params.searchKeywords -}}
+>> {{- $searchText = printf "%s %s" $value.Plain (delimit $value.Params.searchKeywords " ") -}}
+>> {{- end -}}
+>>
+>> {{- $.Scratch.Add "posts" (dict "title" $value.Title "text" $searchText "link" $value.RelPermalink "hidden" ($value.Params.hidden | default false)) -}}
+>> {{- end -}}
+>> {{- end -}}
+>> 
+>> {{- .Scratch.Add "tags" slice -}}
+>> {{- range .Site.Taxonomies.tags -}}
+>> {{- $.Scratch.Add "tags" (dict "name" .Page.Title "slug" .Page.Title "link" .Page.RelPermalink) -}}
+>> {{- end -}}
+>> 
+>> {{- .Scratch.Add "categories" slice -}}
+>> {{- range .Site.Taxonomies.categories -}}
+>> {{- $.Scratch.Add "categories" (dict "name" .Page.Title "slug" .Page.Title "link" .Page.RelPermalink ) -}}
+>> {{- end -}}
+>> 
+>> {{- .Scratch.SetInMap "index" "pages" (.Scratch.Get "pages") }}
+>> {{- .Scratch.SetInMap "index" "posts" (.Scratch.Get "posts") }}
+>> {{- .Scratch.SetInMap "index" "tags" (.Scratch.Get "tags") }}
+>> {{- .Scratch.SetInMap "index" "categories" (.Scratch.Get "categories") }}
+>> {{- .Scratch.Get "index" | jsonify -}}
+>> 
+>> {{- .Scratch.Delete "pages" -}}
+>> {{- .Scratch.Delete "posts" -}}
+>> {{- .Scratch.Delete "tags" -}}
+>> {{- .Scratch.Delete "categories" -}}
+>> {{- .Scratch.Delete "index" -}}
+>> ```
+>
+>>
 
 
 

@@ -9,6 +9,9 @@ tags = [ "生活", "感悟" ]
 categories = [ "life" ]
 cover = ""
 author = "{{ .Site.Params.defaultAuthor | default "MapleScraps" }}"
+# hidden = true
+# searchable = true
+# searchKeywords = [""]
 +++
 
 # {{ replace .File.ContentBaseName "-" " " | title }}

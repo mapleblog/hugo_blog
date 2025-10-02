@@ -15,7 +15,15 @@
 {{ $showViewAll := .showViewAll | default false }}
 {{ $viewAllUrl := .viewAllUrl | default ("/posts/" | relLangURL) }}
 
-{{ if $posts }}
+{{/* 过滤掉隐藏的文章 */}}
+{{ $filteredPosts := slice }}
+{{ range $posts }}
+  {{ if not .Params.hidden }}
+    {{ $filteredPosts = $filteredPosts | append . }}
+  {{ end }}
+{{ end }}
+
+{{ if $filteredPosts }}
   <section class="post-list">
     <!-- 列表标题 -->
     {{ if and $showTitle $title }}
@@ -27,7 +35,7 @@
 
     <!-- 文章卡片列表 -->
     <div class="space-y-4">
-      {{ range $posts }}
+      {{ range $filteredPosts }}
         {{ partial "content/card-base.html" (dict "page" .) }}
       {{ end }}
     </div>
