@@ -39,32 +39,28 @@ author = "MapleScraps"
 >>
 >>> ##### Output Expectation
 >>> The final output should {{< highlight go "hl_inline=true" >}}[what you expect, e.g., “be directly usable in an audit,” “help me practice Vietnamese sentences,” “be a 4-week roadmap”]{{< /highlight >}}.
-
->> ## 🎯 Specialized Completed Templates  
-
->> ### 1. Learning Roadmap (e.g., DevOps, AI, Languages)  
-> You are an **expert mentor** in [field].  
-> Your task is to create a **[number of weeks] learning roadmap** for someone starting from [background/skill level] and aiming to reach [goal].  
-> Provide the output as a **Markdown table** with each week showing:  
-> - Learning goals  
-> - Practical exercises  
-> - Resources (tools, links, or examples)  
-> - Hidden pitfalls to avoid  
-> Constraints: Must be **step-by-step, detailed, and with no missing parts**.  
-> Final output should be **ready to follow as a structured plan**.  
-
----
-
->> ### 2. Internal Audit Checklist (Food Safety / Quality)  
->> You are an **ISO/Food Safety Quality Auditor**.  
->> Your task is to generate a **comprehensive internal audit checklist** for the **Food Safety & Quality Department**, covering **[specific clauses/areas, e.g., Food Safety Culture, Hazard Control, Allergen Management]**.  
->> Provide the checklist in **Markdown table format** with:  
->> - Clause  
->> - Minimum 10 questions per clause  
->> - Evidence to look for  
->> - Potential non-conformities  
->> Constraints: Must be **complete, detailed, no missing details, no repetition**.  
->> Final output should be **directly usable during an audit**.  
+>
+>> #### 🎯 Specialized Completed Templates  
+>>> ### 1. Learning Roadmap (e.g., DevOps, AI, Languages)  
+>>> You are an **expert mentor** in [field].  
+>>> Your task is to create a **[number of weeks] learning roadmap** for someone starting from [background/skill level] and aiming to reach [goal].  
+>>> - Learning goals  
+>>> - Practical exercises  
+>>> - Resources (tools, links, or examples)  
+>>> - Hidden pitfalls to avoid  
+>>> Constraints: Must be **step-by-step, detailed, and with no missing parts**.  
+>>> Final output should be **ready to follow as a structured plan**.  
+>
+>>> ### 2. Internal Audit Checklist (Food Safety / Quality)  
+>>> You are an **ISO/Food Safety Quality Auditor**.  
+>>> Your task is to generate a **comprehensive internal audit checklist** for the **Food Safety & Quality Department**, covering **[specific clauses/areas, e.g., Food Safety Culture, Hazard Control, Allergen Management]**.  
+>>> Provide the checklist in **Markdown table format** with:  
+>>> - Clause  
+>>> - Minimum 10 questions per clause  
+>>> - Evidence to look for  
+>>> - Potential non-conformities  
+>>> Constraints: Must be **complete, detailed, no missing details, no repetition**.  
+>>> Final output should be **directly usable during an audit**.  
 
 ---
 
