@@ -77,3 +77,8 @@ cp C:\hugo\hugo_blog\themes\hugo-narrow\exampleSite\hugo.yaml .\hugo.yaml
 > - 例如: `hugo server -p 8080`
 > - 然后在浏览器中访问 `http://localhost:8080/`
 
+## 常用命令
+> 1. hugo new content `posts/xxxx.md` ( 创建新文章 )
+> 2. hugo new site `<site_name>` ( 创建新博客 )
+> 3. hugo server -p <port> -D ( 启动 hugo 服务, 包含草稿文章 )
+> 4. hugo build ( 生成静态文件 )

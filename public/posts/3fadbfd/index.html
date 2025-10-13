@@ -53,7 +53,7 @@
 知识点:博客根目录 指的是在博客文件夹内, 包含所有博客文章、配置文件、主题文件等 .yaml 和 .toml 都是配置文件格式, 用于配置博客的参数和外观, 推荐使用 .toml 格式, 因为它更简洁和易读 第一步 前提条件在还没开始配置Hugo之前，确保已经安装以下的软件:">
   <meta itemprop="datePublished" content="2025-10-01T14:24:33+08:00">
   <meta itemprop="dateModified" content="2025-10-01T14:24:33+08:00">
-  <meta itemprop="wordCount" content="570">
+  <meta itemprop="wordCount" content="624">
   <meta itemprop="image" content="http://localhost:1313/images/og-default.avif">
   <meta itemprop="keywords" content="博客">
 
@@ -1044,7 +1044,7 @@
     stroke="currentColor"
     viewBox="0 0 24 24" aria-label="Word count"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
 </svg>
-          <span>570 words</span>
+          <span>624 words</span>
         </div>
       
 
@@ -3190,6 +3190,48 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<h2 id="常用命令">常用命令</h2>
+
+  <blockquote
+    class="border-primary bg-muted/30 hover:bg-muted/40 my-6 rounded-r-lg border-l-4 py-4 pr-4 pl-6 italic transition-all duration-200 ease-out hover:translate-x-1">
+    <div class="prose prose-sm max-w-none">
+      <ol>
+<li>hugo new content <code>posts/xxxx.md</code> ( 创建新文章 )</li>
+<li>hugo new site <code>&lt;site_name&gt;</code> ( 创建新博客 )</li>
+<li>hugo server -p <port> -D ( 启动 hugo 服务, 包含草稿文章 )</li>
+<li>hugo build ( 生成静态文件 )</li>
+</ol>
+    </div>
+  </blockquote><script>
+function toggleAlert(alertId) {
+  const content = document.getElementById(alertId + '-content');
+  const chevron = document.getElementById(alertId + '-chevron');
+  const header = content.previousElementSibling;
+  
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    chevron.style.transform = 'rotate(0deg)';
+    header.setAttribute('aria-expanded', 'true');
+  } else {
+    content.classList.add('hidden');
+    chevron.style.transform = 'rotate(-90deg)';
+    header.setAttribute('aria-expanded', 'false');
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const collapsedAlerts = document.querySelectorAll('.alert-content.hidden');
+  collapsedAlerts.forEach(function(content) {
+    const alertId = content.id.replace('-content', '');
+    const chevron = document.getElementById(alertId + '-chevron');
+    if (chevron) {
+      chevron.style.transform = 'rotate(-90deg)';
+    }
+  });
+});
+</script>
+
 
   </article>
 
@@ -3752,6 +3794,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <li><a href="#第七步">第七步</a></li>
     <li><a href="#第八步">第八步</a></li>
     <li><a href="#第九步">第九步</a></li>
+    <li><a href="#常用命令">常用命令</a></li>
   </ul>
 </nav>
           </div>
