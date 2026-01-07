@@ -15,19 +15,19 @@ author = "MapleScraps"
 
 ## AWS account
 > :one: 创建 aws root 账号，用于创建 IAM 账号
-> {{< figure src="images/create_root_account.png"  class="w-75 ma0" >}}
+> {{< figure src="create_root_account.png"  class="w-75 ma0" >}}
 > :two: 选择 Sign in using root user email
-> {{< figure src="images/IAM login.png"  class="w-75 ma0" >}}
+> {{< figure src="IAM login.png"  class="w-75 ma0" >}}
 > :three: 输入 root 账号邮箱登录
-> {{< figure src="images/root_login.png"  class="w-75 ma0" >}}
+> {{< figure src="root_login.png"  class="w-75 ma0" >}}
 > :four: 点击左上角菜单栏  >  Security, Identity & Compliance > IAM 创建别名
-> {{< figure src="images/create_alias.png"  class="w-75 ma0" >}}
+> {{< figure src="create_alias.png"  class="w-75 ma0" >}}
 > :five: 开通编程和控制台权限, 登录 root 用户 > Users > username_name > Security Credential > Access key > select other
-> {{< figure src="images/open_permission_1.png"  class="w-75 ma0" >}}
-> {{< figure src="images/open_permission_2.png"  class="w-75 ma0" >}}
-> {{< figure src="images/open_permission_3.png"  class="w-75 ma0" >}}
-> {{< figure src="images/open_permission_4.png"  class="w-75 ma0" >}}
-> {{< figure src="images/open_permission_5.png"  class="w-75 ma0" >}}
+> {{< figure src="open_permission_1.png"  class="w-75 ma0" >}}
+> {{< figure src="open_permission_2.png"  class="w-75 ma0" >}}
+> {{< figure src="open_permission_3.png"  class="w-75 ma0" >}}
+> {{< figure src="open_permission_4.png"  class="w-75 ma0" >}}
+> {{< figure src="open_permission_5.png"  class="w-75 ma0" >}}
 
 ## Create EC2 Instance
 > **第一步：进入启动向导**  
