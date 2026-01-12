@@ -145,3 +145,18 @@ author = "MapleScraps"
 > :five: 点击 创建密钥对
 > :six: **关键动作：**浏览器会自动下载一个文件。请立即将其保存到安全的地方！
 > - **注意：** AWS 不会保存这个私钥文件。如果你现在不下载或弄丢了，以后无法重新下载，只能重新创建。
+> 
+> **在本地电脑访问aws**
+> :one: 将aws.pem ssh 文件拷贝到 `cd $env:USERPROFILE\.ssh`
+> :two: 执行 `ssh -i .\<自己的aws_ssh文件名>.pem <aws_username>@<aws_public_IP>`
+> > [!NOTE]
+> > 很多 AWS 镜像默认用户是：
+> > - Ubuntu： ubuntu
+> > - Amazon Linux： ec2-user
+> > - Debian： admin 或 debian
+> > - CentOS： centos
+> 
+> :three: 创建ssh-keygen ：
+> - `ssh-keygen -t ed25519 -C "your_email@example.com"`
+> - `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
+> 
