@@ -147,21 +147,28 @@ author = "MapleScraps"
 > - **注意：** AWS 不会保存这个私钥文件。如果你现在不下载或弄丢了，以后无法重新下载，只能重新创建。
 > 
 
-## 在本地电脑访问aws**
+## 在本地电脑访问aws
 > **方法 一**  
 > :one: 将 `ssh aws.pem` 文件拷贝到 `cd $env:USERPROFILE\.ssh`  
 > :two: 执行 `ssh -i "C:\users\windows\.ssh\ed25519" ubuntu@13.456.789.10`  
-> 
+>
 > **方法 二**  
 > :one: 在本地电脑创建 ssh keygen   
+>
 > - ssh-keygen -t ed25519 -C "email@example.com"  
 > - ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  
-> 
+
+> > [!IMPORTANT]
+> > 在**本地电脑**创建 **ssh-keygen** 的**类型**，**必须和 aws ssh-keygen 类型一致**。
+> > 假设：
+> > 如果 **aws** 使用的 **ssh-keygen 是 ed25519 类型**，**本地**创建 **ssh-keygen 也必须是 ed25519 类型**
+
+>
 > :two: 将本地电脑公钥 .pub 添加到 aws ubuntu 的 `~/.ssh/authorized_keys`  
 > :three: 验证链接 `ssh -T ubuntu@12.345.678.90`  
 > :four: 开始访问 `ssh -i "~\.ssh\密钥文件" ubuntu@12.345.678.90`  
-> 
+>
 > **安全组配置** 
 > - 将对方的 **Public_IP** 添加到 **ssh 安全组** 来限制指定的网络可以访问 aws
-> 
+>
 
