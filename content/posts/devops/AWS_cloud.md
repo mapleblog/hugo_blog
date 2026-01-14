@@ -172,3 +172,25 @@ author = "MapleScraps"
 > - 将对方的 **Public_IP** 添加到 **ssh 安全组** 来限制指定的网络可以访问 aws
 >
 
+## AWS CLI 常用命令
+##### 基础配置与身份管理
+> 在开始之前，你首先需要配置访问凭证。
+> **aws configure**: 交互式配置 Access Key、Secret Key、默认区域 (Region) 和输出格式。
+> **aws sts get-caller-identity**: 验证当前使用的 IAM 角色或用户身份。
+> **aws configure list**: 查看当前生效的配置详情。
+> 
+
+##### Amazon EC2 实例管理
+> **列出实例**: aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,State.Name,PublicIpAddress]' --output table
+> **启动实例**: aws ec2 start-instances --instance-ids i-1234567890abcdef0
+> **停止实例**: aws ec2 stop-instances --instance-ids i-1234567890abcdef0
+> **查看安全组**: aws ec2 describe-security-groups
+> 
+
+##### IAM (身份与访问管理)
+> **列出用户**: aws iam list-users
+> **查看用户的策略**: aws iam list-attached-user-policies --user-name my-user
+> 
+
+## Terraform 自动化创建实力
+> 
