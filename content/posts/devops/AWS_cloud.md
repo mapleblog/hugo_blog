@@ -145,3 +145,52 @@ author = "MapleScraps"
 > :five: 点击 创建密钥对
 > :six: **关键动作：**浏览器会自动下载一个文件。请立即将其保存到安全的地方！
 > - **注意：** AWS 不会保存这个私钥文件。如果你现在不下载或弄丢了，以后无法重新下载，只能重新创建。
+> 
+
+## 在本地电脑访问aws
+> **方法 一**  
+> :one: 将 `ssh aws.pem` 文件拷贝到 `cd $env:USERPROFILE\.ssh`  
+> :two: 执行 `ssh -i "C:\users\windows\.ssh\ed25519" ubuntu@13.456.789.10`  
+>
+> **方法 二**  
+> :one: 在本地电脑创建 ssh keygen   
+>
+> - ssh-keygen -t ed25519 -C "email@example.com"  
+> - ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  
+
+> > [!IMPORTANT]
+> > 在**本地电脑**创建 **ssh-keygen** 的**类型**，**必须和 aws ssh-keygen 类型一致**。
+> > 假设：
+> > 如果 **aws** 使用的 **ssh-keygen 是 ed25519 类型**，**本地**创建 **ssh-keygen 也必须是 ed25519 类型**
+
+>
+> :two: 将本地电脑公钥 .pub 添加到 aws ubuntu 的 `~/.ssh/authorized_keys`  
+> :three: 验证链接 `ssh -T ubuntu@12.345.678.90`  
+> :four: 开始访问 `ssh -i "~\.ssh\密钥文件" ubuntu@12.345.678.90`  
+>
+> **安全组配置** 
+> - 将对方的 **Public_IP** 添加到 **ssh 安全组** 来限制指定的网络可以访问 aws
+>
+
+## AWS CLI 常用命令
+##### 基础配置与身份管理
+> 在开始之前，你首先需要配置访问凭证。
+> **aws configure**: 交互式配置 Access Key、Secret Key、默认区域 (Region) 和输出格式。
+> **aws sts get-caller-identity**: 验证当前使用的 IAM 角色或用户身份。
+> **aws configure list**: 查看当前生效的配置详情。
+> 
+
+##### Amazon EC2 实例管理
+> **列出实例**: aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,State.Name,PublicIpAddress]' --output table
+> **启动实例**: aws ec2 start-instances --instance-ids i-1234567890abcdef0
+> **停止实例**: aws ec2 stop-instances --instance-ids i-1234567890abcdef0
+> **查看安全组**: aws ec2 describe-security-groups
+> 
+
+##### IAM (身份与访问管理)
+> **列出用户**: aws iam list-users
+> **查看用户的策略**: aws iam list-attached-user-policies --user-name my-user
+> 
+
+## Terraform 自动化创建实力
+> 
