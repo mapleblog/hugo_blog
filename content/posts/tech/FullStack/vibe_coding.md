@@ -64,37 +64,110 @@ author = "MapleScraps"
 >
 > - **项目需求描述**
 >
-> ```markdown
-> # Role: Senior Database Architect & Full-stack Engineer
-> # Context: 
-> I am building a "Personal Collection Gallery" using Next.js, Supabase (PostgreSQL), and Prisma ORM. 
-> The app allows users to register, log in, and manage their physical or digital collectibles (e.g., watches, trading cards, sneakers, or digital art).
+> ````markdown
+> # Role: Senior Full-stack Architect & Vibe Coding Specialist
 > 
-> # Task:
-> Design a robust, scalable database schema and implement the connection logic.
+> # Task: Initialize "My Treasure Box" - A Personal Collection Web App
 > 
-> # Requirements:
-> 1. **User Entity**: Handle authentication (mapped to Supabase Auth). Include `email`, `display_name`, `avatar_url`, and `bio`.
-> 2. **CollectionItem Entity**: 
->    - Each item must belong to a `User`.
->    - Fields: `id`, `title`, `description` (markdown supported), `acquisition_date`, `valuation` (optional), `is_public` (boolean).
->    - Media: Support multiple image URLs in an array or a related table.
-> 3. **Categorization**: 
->    - A `Category` table (e.g., "Vintage", "Limited Edition").
->    - A many-to-many relationship for `Tags`.
-> 4. **Audit Fields**: Every table must have `created_at` and `updated_at` timestamps.
-> 5. **Type Safety**: Generate TypeScript types based on the schema.
+> We are starting a new project called "My Treasure Box" (个人收集品网页). This is a modern, high-end gallery-style application for showcasing personal collectibles.
 > 
-> # Deliverables:
-> 1. A complete `schema.prisma` file (or SQL migration script for Supabase).
-> 2. A database client utility file (e.g., `lib/prisma.ts` or `lib/supabase.ts`) that ensures a singleton connection instance.
-> 3. A brief explanation of the relationships (One-to-Many, Many-to-Many) used.
+> ## 1. Core Tech Stack (The Vibe Stack)
+> Please initialize the project using the following technologies:
+> - Framework: Next.js (App Router, TypeScript)
+> - Styling: Tailwind CSS
+> - UI Components: Shadcn/UI (Modern, minimalist aesthetic)
+> - Icons: Lucide React
+> - Database & Auth: Supabase (PostgreSQL + Auth)
+> - ORM: Prisma
+> - State Management: React Server Components + Server Actions
 > 
-> # Vibe/Style:
-> - Use camelCase for Prisma fields and snake_case for PostgreSQL underlying columns if necessary.
-> - Ensure referential integrity (e.g., ON DELETE CASCADE for items when a user is deleted).
+> ## 2. Project Structure & Organization
+> Please set up a clean, modular directory structure:
+> - `/app`: App router (pages, layouts)
+> - `/components`: (UI, business-specific, and shared components)
+> - `/lib`: (Prisma client, Supabase config, utility functions)
+> - `/actions`: (Server Actions for backend logic/APIs)
+> - `/types`: (TypeScript interfaces/definitions)
+> - `/hooks`: (Custom React hooks)
 > 
+> ## 3. Immediate Initialization Tasks
+> 1. Setup a basic Next.js project with Tailwind and TypeScript.
+> 2. Install and initialize Shadcn/UI with a "Zinc" or "Slate" theme.
+> 3. Configure the `layout.tsx` with a responsive <Navbar /> (including Login/Register buttons and a Logo placeholder).
+> 4. Set up the Prisma schema file with a `User` model and a `CollectionItem` model (including: title, description, imageUrl, category, createdAt).
+> 5. Create a `.env.example` file including placeholders for SUPABASE_URL, SUPABASE_ANON_KEY, and DATABASE_URL.
+> 6. Design a professional, dark-mode-first Landing Page hero section to set the "Vibe".
+> 7. Run ```npm install -D prettier prettier-plugin-tailwindcss eslint-plugin-simple-import-sort eslint-config-prettier``` to install development dependencies.
+> 8. Create a `.prettierrc` file with the following content:
+> ```json
+> {
+>   "semi": false,
+>   "singleQuote": true,
+>   "trailingComma": "all",
+>   "printWidth": 100,
+>   "tabWidth": 2,
+>   "plugins": ["prettier-plugin-tailwindcss"],
+>   "tailwindConfig": "./tailwind.config.ts"
+> }
 > ```
+> 
+> 9. Create a `.eslintrc.json` file with the following content:
+> ```json
+> {
+>   "extends": [
+>     "next/core-web-vitals",
+>     "eslint:recommended",
+>     "plugin:@typescript-eslint/recommended",
+>     "prettier"
+>   ],
+>   "plugins": ["simple-import-sort"],
+>   "rules": {
+>     "simple-import-sort/imports": "error",
+>     "simple-import-sort/exports": "error",
+>     "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+>     "no-console": ["warn", { "allow": ["warn", "error"] }]
+>   },
+>   "overrides": [
+>     {
+>       "files": ["*.ts", "*.tsx", "*.js"],
+>       "rules": {
+>         "simple-import-sort/imports": [
+>           "error",
+>           {
+>             "groups": [
+>               ["^react", "^next", "^@", "^[a-z]"], // 外部库和内置库
+>               ["^@/components", "^@/lib", "^@/hooks"], // 内部别名路径
+>               ["^\\.\\.(?!/?$)", "^\\.\\./?$", "^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"], // 相对路径
+>               ["^.+\\.s?css$"] // 样式文件
+>             ]
+>           }
+>         ]
+>       }
+>     }
+>   ]
+> }
+> ```
+> 
+> 10. Adding code to `tsconfig.json` absolute imports:
+> ```json
+> {
+>   "compilerOptions": {
+>     "baseUrl": ".",
+>     "paths": {
+>       "@/*": ["./*"]
+>     }
+>   }
+> }
+> ```
+> 
+> ## 4. UI/UX Vibe Requirements
+> - Theme: Minimalist, "Apple-esque" gallery style.
+> - Use subtle animations (Framer Motion if available, or Tailwind transitions).
+> - Typography: Use Inter or a clean Sans-serif font.
+> - Grid: A clean, responsive masonry or card grid for future items.
+> 
+> Please proceed with the file generation and project scaffolding. Let's make it look premium from the first commit!
+> ````
 
 > [!TIP]
 >
@@ -194,8 +267,8 @@ author = "MapleScraps"
 > - **前端网页设计**
 >
 > ```mark
-> ### Role: Senior Creative Developer & UI/UX Specialist
-> ### Context: 
+> # Role: Senior Creative Developer & UI/UX Specialist
+> ## Context: 
 > We have the functional core of my Personal Collection Web App. Now, I want to inject a "High-End Gallery Vibe" into the interface. The goal is a "Premium Minimalist" aesthetic that makes my collectibles feel like curated museum pieces.
 > 
 > ### 1. Visual Identity & Design System
