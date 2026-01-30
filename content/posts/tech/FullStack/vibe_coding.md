@@ -167,6 +167,7 @@ author = "MapleScraps"
 > - Grid: A clean, responsive masonry or card grid for future items.
 > 
 > Please proceed with the file generation and project scaffolding. Let's make it look premium from the first commit!
+> 
 > ````
 
 > [!TIP]
@@ -256,6 +257,7 @@ author = "MapleScraps"
 > 5. Ensure all code follows clean architecture principles and is fully TypeScript typed.
 > 
 > "Let's build a robust, scalable backend 'brain' that is easy to maintain."
+> 
 > ```
 
 
@@ -306,6 +308,7 @@ author = "MapleScraps"
 > 4. Refactor existing components to use these styles without breaking the current database logic.
 > 
 > "Let’s make this look like a premium digital vault. Please start by updating the Global CSS and the Main Layout first."
+> 
 > ```
 >
 > 
