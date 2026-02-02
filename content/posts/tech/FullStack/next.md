@@ -40,15 +40,37 @@ author = "MapleScraps"
 #### Supabase 配置操作：
 
 > [!IMPORTANT]
-> 
-> **DATABASE_URL** =
-> **DIRECT_URL** =
-> **NEXT_PUBLIC_SUPABASE_URL** =
-> **NEXT_PUBLIC_SUPABASE_ANON_KEY** =
-> **SUPABASE_SERVICE_ROLE_KEY** =
-> **NEXT_PUBLIC_APP_URL** =
-> **NODE_ENV** =
-> 
+>
+> 在左侧侧边栏点击 **Project Settings**，选择 **Database**：
+>
+> - **DATABASE_URL** = 如果你使用 Prisma 或类似工具，通常建议使用 **Transaction** 模式（端口 6543）。如果你使用了 Supabase 的内置连接池（Connection Pooling），请在这里复制对应的 URI
+>
+> - **DIRECT_URL** = 在 **Connection string** 部分，选择 **Session** 或 **Direct** 模式。这通常用于执行数据库迁移（Migration）。格式通常为： `postgresql://postgres:[YOUR-PASSWORD]@db.[REF].supabase.co:5432/postgres`
+> ---
+>
+> 在左侧侧边栏中点击 **Project Settings**（齿轮图标），然后选择 **API**：
+>
+> - **NEXT_PUBLIC_SUPABASE_URL** = 在 **Project URL** 部分可以找到。
+>
+> - **NEXT_PUBLIC_SUPABASE_ANON_KEY** = 在 **Project API keys** 下找到名为 `anon` `public` 的值。这是客户端公开使用的 Key。
+>
+> - **SUPABASE_SERVICE_ROLE_KEY** = 在同一页面找到名为 `service_role` `secret` 的值。
+>   **注意：** 该 Key 具有绕过安全策略（RLS）的最高权限，千万不要泄露到客户端，仅用于服务器端（如 API Routes 或 Webhooks）。
+> ---
+>
+> 这些值取决于你如何运行和部署应用。
+> **NEXT_PUBLIC_APP_URL** =  
+>
+> - **本地开发**：通常是 `http://localhost:3000`。
+>
+> - **生产环境**：你部署后的实际域名，如 `https://your-app.vercel.app`。
+>
+> **NODE_ENV** = 
+>
+> - 通常不需要手动在 `.env` 中写死，框架会根据环境自动设置。
+>
+> - 开发模式为 `development`，打包后为 `production`。
+> ---
 > 
 
 :notebook: 请按照以下步骤验证并修复您的数据库连接信息：
@@ -88,7 +110,7 @@ author = "MapleScraps"
 
 2. 密码输入错误（或忘记密码）
 
-   P1000 最直观的原因就是密码确实不对。注意：**数据库密码**是你创建项目时手动设置的那个，**不是**你的 Supabase 登录密码。
+   **P1000 最直观的原因就是密码确实不对**。注意：**数据库密码**是你创建项目时手动设置的那个，**不是**你的 Supabase 登录密码。
 
    - 解决方法: 如果你不确定密码，去 Supabase 后台重置
      1. 进入 **Project Settings**  -->  **Database**
@@ -105,3 +127,40 @@ author = "MapleScraps"
      - 用户名是否为 `postgres`（通常是固定的）
      - 项目 ID（postgres.**[这里]**) 是否正确
      - 是否遗漏了端口号（`6543` 或 `5432`）
+
+---
+
+> [!TIP]
+>
+> ##### React Compiler - 解决“性能优化太麻烦”而推出的自动化工具
+>
+> ```markdown
+> 核心用处：告别手动优化
+> 1. **自动记忆化 (Automatic Memoization)**：它会自动识别并缓存组件渲染结果、函数定义和复杂计算。你不再需要手动编写 useMemo、useCallback 或React.memo。
+> 
+> 2. **极致的渲染性能**： 编译器能够实现比人手写更细粒度的优化，确保只有真正发生变化的 UI 部分才会重新渲染，从而减少不必要的 CPU 消耗。
+> 
+> 3. **代码整洁度提升**： 开发者可以回归到编写纯粹的 JavaScript/React 逻辑，代码库不再充斥着为了性能而存在的样板代码，可读性显著增强。
+> ```
+>
+> 
+>
+> ##### 💡 在你的 Next.js 项目中如何配置？
+>
+> 由于你使用的是 Next.js，开启它非常简单。
+>
+> 1. **安装配置检查工具：** 运行 `npx react-compiler-healthcheck`。它会扫描你的代码，告诉你目前有多少组件符合自动优化的标准。
+> 2. **在 `next.config.js` 中开启（假设你已升级到支持的版本）：**
+>
+> ```javascript
+> /** @type {import('next').NextConfig} */
+> const nextConfig = {
+>   experimental: {
+>     reactCompiler: true,
+>   },
+> };
+> 
+> module.exports = nextConfig;
+> ```
+>
+> 
