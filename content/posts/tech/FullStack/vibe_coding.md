@@ -44,21 +44,40 @@ author = "MapleScraps"
   
   =====
   让AI提供PRD具体的详细信息：
-  我需要准备一份PRD的vibe code提示词模板，作为一个不懂技术细节的创始人，请基于简单又安全的"线上个人ToDoList网页"这一目标，以多年开发这个项目的资深工程师 + vibe code专家，使用:
-  - **结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)**框架
-  - Next.js, Prisma, Tailwind 组合
-  为我生成**英文版本**完整和详细第一步vibe code核心内容。
+  我需要准备一份PRD的vibe code提示词模板，我是一个不懂技术细节的创始人，目标是建立一个简单、安全、响应极快的‘线上个人 ToDoList 网页’。
+  
+  请你扮演多年经验的资深全栈工程师 + Vibe Coding 专家，使用 RCC + SCF 组合框架。 
+  - 技术栈： Next.js (App Router), Prisma, Tailwind CSS, [新增：Auth.js 用于安全登录]。
+  
+  为了让你更好的写出vibe coding提示词，你可以向我提问挖掘你所有需要的:
+  1. **项目细节**
+  2. **项目核心需求**
+  3. **画出/列出数据结构**
+  4. **定义视觉风格**
+  
+  同时也需要麻烦你考量这个项目是否需要：
   - 需要判断受否需要后期扩展声明，方便后期新功能开发
   - 需要声明代码规范性规则，确保代码结构一致性
   - 采用适合对项目的安全保护机制
   
-  直接生成markdown文件在当前路径
+  当我回答完问题后。请在当前路径以**英文**生成完整详细的Phase_1_PRD.md。
+  
+  =====
+  
+  ~~我需要准备一份PRD的vibe code提示词模板，作为一个不懂技术细节的创始人，请基于简单又安全的"线上个人ToDoList网页"这一目标，以多年开发这个项目的资深工程师 + vibe code专家，使用:
+  ~~- **结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)**框架
+  ~~- Next.js, Prisma, Tailwind。为了让你更好的写出vibe coding提示词，你可以向我提问挖掘你所有需要的**项目细节**，**项目核心需求**，**画出/列出数据结构**和**定义视觉风格**，同时也需要麻烦你考量这个项目是否需要：
+  ~~- 需要判断受否需要后期扩展声明，方便后期新功能开发
+  ~~- 需要声明代码规范性规则，确保代码结构一致性
+  ~~- 采用适合对项目的安全保护机制
+  ~~直到你认为可以开始写提示词为止。然后在当前路径以**英文版本**生成完整详细的第一步Phase_1_PRD.md核心内容。
   
   =====
   
   -----
+  根据刚才你提供的PRD文档,麻烦你进行第二步"项目基础架构配置安装与部署", 同样使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写生成**英文**完整和详细的提示词，谢谢你！✅
   
-  基于刚才你提供的PRD文档,我需要进行第二步"项目基础架构配置安装与部署", 同样使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
+  基于刚才你提供的PRD文档,我需要进行第二步"项目基础架构配置安装与部署", 同样使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。❌
   
   -----
   
