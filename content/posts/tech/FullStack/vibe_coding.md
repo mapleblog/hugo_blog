@@ -13,6 +13,133 @@ author = "MapleScraps"
 +++
 
 # Vibe Coding
+#### 全局规则（web开发）
+
+- 可以用于web开发项目规则（不是全局规则）
+
+```markdown
+# 🚀 Universal Architecture Standards (Always On)
+
+- **Metadata Resilience**: Every data model MUST include an optional `metadata: Record<string, any>` field for future expansion.
+- **Hook-Based Logic**: UI components should be "dumb". Move all business logic, data filtering, and formatting into custom hooks.
+- **API Encapsulation**: Never fetch directly. Wrap all network calls in a service layer at `@/services` or `@/api`.
+- **Thematic Consistency**: No hardcoded hex colors or pixel values. Use design tokens/CSS variables (e.g., var(--primary-color)).
+- **Safe State Transitions**: Every async action must handle 'loading', 'success', and 'error' states explicitly.
+- **Type Centricity**: Define shared types in `@/types` instead of inline to ensure consistency.
+```
+
+
+
+
+
+#### 编写提示词的快速方法
+
+1. 逆向提问（Reverse Prompting）
+- 直接让 AI 问你
+- 你可以给 AI 发这样一句话：
+
+  ```markdown
+  
+  ~~"我想制作简单又安全的"线上个人密码管理网页"允许手机端在外也可以访问,**第一步我需要PRD文档**。[]。为了让你能最大化**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，你可以向我提问挖掘你所有需要的**项目细节**和**项目需求**，直到你认为可以开始写[代码/提示词]为止。~"🆗
+  
+  =====
+  让AI提供PRD具体的详细信息：
+  我需要准备一份PRD的vibe code提示词模板，作为一个不懂技术细节的创始人，请基于简单又安全的"线上个人ToDoList网页"这一目标，以多年开发这个项目的资深工程师 + vibe code专家，使用:
+  - **结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)**框架
+  - Next.js, Prisma, Tailwind 组合
+  为我生成**英文版本**完整和详细第一步vibe code核心内容。
+  - 需要判断受否需要后期扩展声明，方便后期新功能开发
+  - 需要声明代码规范性规则，确保代码结构一致性
+  - 采用适合对项目的安全保护机制
+  
+  直接生成markdown文件在当前路径
+  
+  =====
+  
+  -----
+  
+  基于刚才你提供的PRD文档,我需要进行第二步"项目基础架构配置安装与部署", 同样使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
+  
+  -----
+  
+  第三步我需要为项目数据库架构配置安装与部署。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
+  
+  -----
+  
+  第四步我需要为项目搭建后端基础架构配置安装与部署。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
+  
+  -----
+  
+  第五步我需要为项目 开发 API 端点 (CRUD)。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
+  
+  -----
+  
+  第六步我需要为项目设计安全性 Token 验证 & 注册登录。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
+  
+  -----
+  
+  第七步我需要为项目UI/UX 前端页面开发。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
+  
+  -----
+  
+  第八步我需要为项目部署项目到线上。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
+  
+  -----
+  
+  第九步我需要为项目后期扩展与迭代。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
+  
+  
+  ```
+  
+  
+  
+  为了 **保证项目从第一步到第九步拥有极高的** 逻辑一致性：
+  
+  ```text
+  基于刚才我们达成的 PRD 文档共识，请为我生成第二步‘基础架构配置’的提示词。请在 [ ] 部分填充最符合本项目业务需求和技术路线的技术细节。请保持资深专家角色 + vibe code专家和规范，直接给出完整markdown提示词。
+  ```
+  
+  
+  
+  反问技巧：
+  
+  ```text
+  AI 会提供系统化的问题要求用户回答，接下来再将AI系统化问题要求 claude / gemini 以 [资深前端工程师 / vide code 专家] 提供详细答案。
+  最后将回答给回提问的AI 
+  ```
+  
+  
+
+
+2. 使用“提示词生成器”框架：
+
+   - 目前市面上有非常成熟的提示词框架（如 **CO-STAR** 或 **BRTR**），你可以直接套用：
+     | 模块           | 用大白话描述项目需求              |
+     | -------------- | --------------------------------- |
+     | Role (角色)    | 帮我写代码的专家                  |
+     | Task (任务)    | Windows Server 备份，两个 IP 轮换 |
+     | Context (背景) | 我要在凌晨执行，怕网络断开        |
+     | Style (风格)   | 代码要稳，要有报错提示            |
+     | Format (格式)  | 一个 `.py` 文件，加上简单的注释   |
+
+     **操作方式**： 把上面这个表格的内容丢给 AI，说：“按这个要求给我写个详细的 Prompt”。
+     
+     
+
+3. Vibe Coding 的精髓：迭代而非一次性完成
+
+   - 小白最常见的误区是觉得提示词必须“一步到位”。实际上，Vibe Coding 的流程更像是**“聊天”**：
+   - **第一轮（粗糙意图）：** “给我写个 Python 备份脚本，检查 IP。”（AI 生成了一个简单的代码）
+   - **第二轮（纠偏）：** “不行，你没考虑 Windows Server 2022，而且我要用 robocopy。”（AI 改进了代码）
+   - **第三轮（细化）：** “加上哈希校验，如果失败了发个通知。”（AI 最终完善）
+
+   
+   
+   **这种通过“对话 -> 纠偏 -> 增加细节”的过程，其实就是在变相地编写一个长篇提示词，只不过它是碎片化的、符合人类直觉的。**
+
+
+
+---
 
 |建议次序|步骤名称|理由|
 |---|---|---|
@@ -22,7 +149,24 @@ author = "MapleScraps"
 |第四步|	模块功能全速开发|	这时候 AI 已经知道数据库长啥样、谁有权限看，它写出的代码准确率会提高 80%。|
 |第五步|	部署上线|	最后的冲刺。|
 
+
+
+| 阶段               | 步骤名称                            | 说明                                                         |
+| ------------------ | ----------------------------------- | ------------------------------------------------------------ |
+| **第一阶段：地基** | **1. 拟定项目需求 (PRD)**           | 明确“我们要造什么”，给 AI 提供清晰的上下文。                 |
+|                    | **2. 项目基础配置安装与部署**       | 初始化仓库、选择框架（Next.js/Python等）、配置环境变量。     |
+| **第二阶段：骨架** | **3. 数据库建模 (DB Schema)**       | **核心步骤**。先让 AI 确定数据长什么样，后续的 API 和 UI 才不会乱。 |
+|                    | **4. 搭建后端基础架构**             | 确定目录结构、连接数据库、配置基础中间件。                   |
+| **第三阶段：逻辑** | **5. 开发 API 端点 (CRUD)**         | 编写核心业务逻辑接口。                                       |
+|                    | **6. 安全性 Token 验证 & 注册登录** | 将身份验证集成到 API 层，确保数据安全。                      |
+| **第四阶段：皮囊** | **7. UI/UX 前端页面开发**           | 基于已有的 API 渲染数据，利用 AI 快速生成组件。              |
+| **第五阶段：发布** | **8. 部署项目到线上**               | 尽早部署（CI/CD），在真实环境下测试性能和 Bug。              |
+| **第六阶段：进化** | **9. 后期扩展与迭代**               | 根据反馈增加新模块或优化体验。                               |
+
+
+
 ---
+
 
 如果你想让下一个项目顺利落地，请尝试这个顺序：
 
