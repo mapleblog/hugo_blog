@@ -29,98 +29,627 @@ author = "MapleScraps"
 ```
 
 
-
-
-
 #### 编写提示词的快速方法
 
 1. 逆向提问（Reverse Prompting）
 - 直接让 AI 问你
 - 你可以给 AI 发这样一句话：
 
-  ```markdown
+```markdown
+
+我想制作一个[项目名]，需要准备一份PRD的vibe code提示词模板，我是一个不懂技术细节的创始人，目标是建立[简单的项目需求描述]’。请你扮演多年经验的资深全栈工程师 + Vibe Coding 专家，使用 RCC + SCF 组合框架。 
+
+技术栈： Next.js (App Router), Prisma, Tailwind CSS
   
-  ~~"我想制作简单又安全的"线上个人密码管理网页"允许手机端在外也可以访问,**第一步我需要PRD文档**。[]。为了让你能最大化**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，你可以向我提问挖掘你所有需要的**项目细节**和**项目需求**，直到你认为可以开始写[代码/提示词]为止。~~"🆗
+为了让你更好的写出vibe coding提示词，你可以向我提问挖掘你所有需要的:
+1. **项目细节**
+2. **项目核心需求**
+3. **画出/列出数据结构**
+4. **定义视觉风格**
+5. **技术栈约束**
+6. **设计模式**
+7. **规范要求**
   
-  =====
-  让AI提供PRD具体的详细信息：
-  我需要准备一份PRD的vibe code提示词模板，作为一个不懂技术细节的创始人，请基于简单又安全的"线上个人ToDoList网页"这一目标，以多年开发这个项目的资深工程师 + vibe code专家，使用:
-  - **结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)**框架
-  - Next.js, Prisma, Tailwind 组合
-  为我生成**英文版本**完整和详细第一步vibe code核心内容。
-  我需要准备一份PRD的vibe code提示词模板，我是一个不懂技术细节的创始人，目标是建立一个简单、安全、响应极快的‘线上个人 ToDoList 网页’。
+同时也需要麻烦你考量这个项目是否需要：
+- 需要判断受否需要后期扩展声明，方便后期新功能开发
+- 需要声明代码规范性规则，确保代码结构一致性
+- 采用适合对项目的安全保护机制
   
-  请你扮演多年经验的资深全栈工程师 + Vibe Coding 专家，使用 RCC + SCF 组合框架。 
-  - 技术栈： Next.js (App Router), Prisma, Tailwind CSS, [新增：Auth.js 用于安全登录]。
-  
-  为了让你更好的写出vibe coding提示词，你可以向我提问挖掘你所有需要的:
-  1. **项目细节**
-  2. **项目核心需求**
-  3. **画出/列出数据结构**
-  4. **定义视觉风格**
-  
-  同时也需要麻烦你考量这个项目是否需要：
-  - 需要判断受否需要后期扩展声明，方便后期新功能开发
-  - 需要声明代码规范性规则，确保代码结构一致性
-  - 采用适合对项目的安全保护机制
-  
-  当我回答完问题后。请在当前路径以**英文**生成完整详细的Phase_1_PRD.md。
-  
-  =====
-  
-  -----
-  
-  基于刚才你提供的PRD文档,我需要进行第二步"项目基础架构配置安装与部署", 同样使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
-  
-  -----
-  
-  第三步我需要为项目数据库架构配置安装与部署。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
-  
-  -----
-  
-  第四步我需要为项目搭建后端基础架构配置安装与部署。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
-  
-  -----
-  
-  第五步我需要为项目 开发 API 端点 (CRUD)。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
-  
-  -----
-  
-  第六步我需要为项目设计安全性 Token 验证 & 注册登录。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
-  
-  -----
-  
-  第七步我需要为项目UI/UX 前端页面开发。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
-  
-  -----
-  
-  第八步我需要为项目部署项目到线上。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
-  
-  -----
-  
-  第九步我需要为项目后期扩展与迭代。[ ]。为了让你能使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级[代码/提示词]，请作为资深数据工程和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写[代码/提示词]为止。🆗
-  
-  
+当我回答完问题后。请在当前路径以**英文**生成完整详细的Phase_1_PRD.md。
+```
+
+-----
+
+我需要你仔细阅读这份PRD文档,然后进行第二部"项目基础架构配置安装与部署"。同样使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
+
+-----
+
+**第三步为项目"数据库架构配置安装与部署"**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
+
+-----
+
+**第四步为项目"搭建后端基础架构配置安装与部署"**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
+
+-----
+
+**第五步为项目 开发 API 端点 (CRUD)**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
+
+-----
+
+**第六步为项目设计安全性 Token 验证 & 注册登录**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
+
+-----
+
+**第七步为项目UI/UX 前端页面开发**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
+
+-----
+
+**第八步为项目部署项目到线上**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
+
+-----
+
+**第九步为项目后期扩展与迭代**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
+
+
   ```
-  
-  
   
   为了 **保证项目从第一步到第九步拥有极高的** 逻辑一致性：
   
   ```text
   基于刚才我们达成的 PRD 文档共识，请为我生成第二步‘基础架构配置’的提示词。请在 [ ] 部分填充最符合本项目业务需求和技术路线的技术细节。请保持资深专家角色 + vibe code专家和规范，直接给出完整markdown提示词。
   ```
-  
-  
-  
+
   反问技巧：
-  
+
   ```text
   AI 会提供系统化的问题要求用户回答，接下来再将AI系统化问题要求 claude / gemini 以 [资深前端工程师 / vide code 专家] 提供详细答案。
   最后将回答给回提问的AI 
+  
   ```
-  
-  
+
+> [!TIP]+ 
+>
+> # 📋 PRD Vibe Code 提示词完整模板
+>
+> 我想制作一个**[项目名称]**，需要准备一份 PRD 的 Vibe Code 提示词。我是一个不懂技术细节的创始人，目标是建立**[一句话项目需求描述]**。
+>
+> 请你扮演多年经验的**资深全栈工程师 + Vibe Coding 专家**，使用 **RCC + SCF 组合框架**帮我完成需求分析和技术方案设计。
+>
+> **基础技术栈**：Next.js (App Router), Prisma, Tailwind CSS
+>
+> ---
+>
+> ## 🔍 第一步：需求挖掘（请逐项向我提问）
+>
+> ### 1. 项目细节
+> **请问我：**
+> - 这个项目解决什么问题？目标用户是谁？
+> - 有没有类似的参考产品？（提供网址或截图）
+> - 预计的用户规模？（< 100 / 100-1000 / 1000+ ）
+>
+> **我的回答：**
+> ````
+> [在此填写]
+> ````
+>
+> ---
+>
+> ### 2. 核心功能需求
+> **请问我：**
+> - 列出 3-5 个**必须有**的核心功能（MVP 范围）
+> - 哪些功能是「有更好，没有也行」的次要功能？
+> - 有没有特殊的业务逻辑或规则？
+>
+> **我的回答：**
+> ````
+> 核心功能（P0 - 必须有）：
+> 1. 
+> 2. 
+> 3. 
+> 
+> 次要功能（P1 - 重要但非必需）：
+> 1. 
+> 2. 
+> 
+> 业务规则：
+> - 
+> ````
+>
+> ---
+>
+> ### 3. 数据结构设计
+> **请问我：**
+> - 核心实体有哪些？（如：用户、订单、文章、评论）
+> - 实体之间的关系？（一对一 / 一对多 / 多对多）
+> - 每个实体的关键字段？（我会帮你补充技术细节）
+> - 是否需要软删除（逻辑删除）？是否需要审计日志（创建时间/更新时间/操作人）？
+>
+> **我的回答：**
+> ````
+> 实体列表：
+> 1. [实体名] - 关键字段：___、___、___
+> 2. [实体名] - 关键字段：___、___、___
+> 
+> 关系说明：
+> - [实体A] 和 [实体B] 是 [1对1 / 1对多 / 多对多] 关系
+> 
+> 特殊需求：
+> - [ ] 需要软删除
+> - [ ] 需要审计日志（createdAt, updatedAt, createdBy）
+> ````
+>
+> ---
+>
+> ### 4. 视觉风格定义
+> **请问我：**
+> - 整体风格偏好？（现代简约 / 传统商务 / 创意活泼 / 极简主义）
+> - 主色调？（如：蓝色科技感、绿色自然风、紫色创意风）
+> - 参考网站或设计系统？（如：Stripe、Linear、Notion、Airbnb）
+> - 移动端优先还是桌面端优先？
+>
+> **我的回答：**
+> ````
+> 风格：[选择一个]
+> 主色调：[颜色 + 感觉]
+> 参考网站：[网址或描述]
+> 优先级：[ ] 移动端优先  [ ] 桌面端优先  [ ] 响应式（都重要）
+> ````
+>
+> ---
+>
+> ### 5. 技术栈补充确认
+> **请问我：**
+> - **数据库**：PostgreSQL / MySQL / SQLite / MongoDB？
+> - **认证方案**：需要用户登录吗？
+>   - 如需要 → NextAuth.js / Clerk / Supabase Auth / 自建？
+> - **状态管理**：简单用 React Context / 复杂用 Zustand / Jotai？
+> - **文件上传**：需要吗？
+>   - 如需要 → Uploadthing / Cloudinary / AWS S3？
+> - **支付功能**：需要吗？
+>   - 如需要 → Stripe / Paddle / PayPal？
+> - **邮件服务**：需要发邮件吗？
+>   - 如需要 → Resend / SendGrid / Mailgun？
+> - **部署环境**：Vercel（推荐）/ Netlify / 自托管服务器？
+>
+> **我的回答：**
+> ````
+> - 数据库：[选择]
+> - 认证方案：[ ] 不需要  [ ] 需要 → 使用 [___]
+> - 状态管理：[选择]
+> - 文件上传：[ ] 不需要  [ ] 需要 → 使用 [___]
+> - 支付功能：[ ] 不需要  [ ] 需要 → 使用 [___]
+> - 邮件服务：[ ] 不需要  [ ] 需要 → 使用 [___]
+> - 部署环境：[选择]
+> ````
+>
+> ---
+>
+> ### 6. 功能性约束
+> **请问我：**
+> - 是否需要 SEO 优化？（影响 SSR/SSG 策略）
+> - 是否需要实时功能？（如：聊天、通知、协作编辑）
+>   - 如需要 → WebSocket / Server-Sent Events / Polling？
+> - 是否需要多语言支持（国际化）？
+> - 性能要求？
+>   - 首屏加载时间目标：< 2s / < 3s / < 5s
+>   - 预计并发用户数：< 100 / 100-1000 / 1000+
+>
+> **我的回答：**
+> ````
+> - SEO 优化：[ ] 不需要  [ ] 需要（哪些页面需要：___）
+> - 实时功能：[ ] 不需要  [ ] 需要（具体场景：___）
+> - 多语言：[ ] 不需要  [ ] 需要（支持语言：___）
+> - 性能要求：
+>   - 首屏加载：< ___ 秒
+>   - 并发用户：约 ___ 人
+> ````
+>
+> ---
+>
+> ### 7. 非功能性需求
+> **请问我：**
+> - **权限设计**：谁能看什么？谁能做什么？
+>   - 示例：Admin（全部权限）、Editor（增改查）、Viewer（只读）
+> - **错误处理**：用户做错操作时如何提示？
+>   - Toast 消息 / Modal 弹窗 / 内联错误提示
+> - **数据验证**：表单验证规则？
+>   - 示例：邮箱格式、密码强度（最少8位+数字+字母）、手机号格式
+> - **安全要求**：
+>   - [ ] HTTPS 强制
+>   - [ ] CSRF 防护
+>   - [ ] Rate Limiting（API 频率限制）
+>   - [ ] 敏感数据加密（密码、支付信息）
+>
+> **我的回答：**
+> ````
+> 权限设计：
+> - 角色1（如 Admin）：可以 ___
+> - 角色2（如 User）：可以 ___
+> 
+> 错误提示方式：[Toast / Modal / 内联]
+> 
+> 表单验证规则：
+> - 邮箱：___
+> - 密码：___
+> - 其他：___
+> 
+> 安全要求：
+> - [ ] HTTPS
+> - [ ] CSRF 防护
+> - [ ] Rate Limiting
+> - [ ] 数据加密
+> ````
+>
+> ---
+>
+> ## 🛡️ 第二步：项目可持续性评估
+>
+> ### ✅ 扩展性声明（方便后期新功能开发）
+> **请问我：**
+> - [ ] 未来是否可能添加移动端 App？（需要预留 API）
+> - [ ] 是否需要第三方集成能力？（如：Webhook、OAuth）
+> - [ ] 是否需要插件化架构？（支持第三方扩展）
+> - [ ] 数据迁移策略？（开发环境 vs 生产环境的数据库迁移方案）
+>
+> **我的回答：**
+> ````
+> - 移动端 App：[ ] 不需要  [ ] 未来可能需要
+> - 第三方集成：[ ] 不需要  [ ] 需要（类型：___）
+> - 插件化：[ ] 不需要  [ ] 需要
+> - 数据迁移：[ ] 使用 Prisma Migrate  [ ] 其他方案
+> ````
+>
+> ---
+>
+> ### ✅ 代码规范性规则（确保代码结构一致性）
+> **默认采用以下规范（如有特殊要求请说明）：**
+> - [x] 文件夹结构：`/app`（路由）、`/components`（组件）、`/lib`（工具）、`/prisma`（数据库）
+> - [x] 命名规范：
+>   - 组件用 PascalCase（如 `UserCard.tsx`）
+>   - 函数用 camelCase（如 `getUserById`）
+>   - 常量用 UPPER_CASE（如 `MAX_FILE_SIZE`）
+> - [x] TypeScript 严格模式：禁止使用 `any`，所有函数必须有返回类型
+> - [x] 组件拆分原则：每个组件不超过 200 行，职责单一
+> - [x] 注释规范：复杂逻辑必须注释，公共函数必须有 JSDoc
+>
+> **特殊要求：**
+> ````
+> [如有特殊的代码规范要求，请在此说明]
+> ````
+>
+> ---
+>
+> ### ✅ 安全保护机制（根据项目需求勾选）
+> - [ ] **输入验证**：使用 Zod 验证所有用户输入（客户端 + 服务端双重验证）
+> - [ ] **SQL 注入防护**：仅使用 Prisma ORM，禁止原始 SQL 查询
+> - [ ] **XSS 防护**：避免使用 `dangerouslySetInnerHTML`，使用 DOMPurify 清理 HTML
+> - [ ] **CSRF 防护**：Next.js Server Actions 自动处理
+> - [ ] **Rate Limiting**：API 路由添加频率限制（如：每分钟 60 次请求）
+> - [ ] **密码安全**：使用 bcrypt 加密，最少 8 位 + 数字 + 字母
+> - [ ] **环境变量保护**：`.env.local` 不上传到 Git，使用 `.env.example` 模板
+> - [ ] **JWT Token 管理**：设置合理过期时间，使用 HttpOnly Cookie
+>
+> **我的选择：**
+> ````
+> 以上安全机制中，我特别需要：[列出优先级最高的 3-5 项]
+> ````
+>
+> ---
+>
+> ## 📤 第三步：最终输出格式
+>
+> 当我收集完以上信息后，请输出一份**完整的 Vibe Code 提示词**，必须包含以下内容：
+>
+> ---
+>
+> ## 1. 项目概述
+> ````
+> 一句话描述项目是什么、解决什么问题
+> ````
+>
+> ---
+>
+> ## 2. 核心功能清单（按优先级排序）
+> ````markdown
+> ### P0（必须有 - MVP）
+> - [ ] 功能1
+> - [ ] 功能2
+> 
+> ### P1（重要但非必需）
+> - [ ] 功能3
+> 
+> ### P2（优化项）
+> - [ ] 功能4
+> ````
+>
+> ---
+>
+> ## 3. 完整 Prisma Schema
+> ````prisma
+> // prisma/schema.prisma
+> 
+> generator client {
+>   provider = "prisma-client-js"
+> }
+> 
+> datasource db {
+>   provider = "postgresql" // 根据实际选择
+>   url      = env("DATABASE_URL")
+> }
+> 
+> model User {
+>   id        String   @id @default(cuid())
+>   email     String   @unique
+>   name      String?
+>   createdAt DateTime @default(now())
+>   updatedAt DateTime @updatedAt
+>   
+>   // 关系
+>   posts     Post[]
+> }
+> 
+> model Post {
+>   id        String   @id @default(cuid())
+>   title     String
+>   content   String
+>   published Boolean  @default(false)
+>   authorId  String
+>   
+>   author    User     @relation(fields: [authorId], references: [id])
+>   
+>   createdAt DateTime @default(now())
+>   updatedAt DateTime @updatedAt
+>   
+>   @@index([authorId])
+> }
+> ````
+>
+> ---
+>
+> ## 4. 页面路由结构树
+> ````
+> /app
+> ├── (auth)                    # 认证相关路由组
+> │   ├── login/
+> │   │   └── page.tsx         # 登录页
+> │   └── register/
+> │       └── page.tsx         # 注册页
+> ├── (dashboard)              # 仪表盘路由组
+> │   ├── layout.tsx           # 仪表盘布局
+> │   ├── page.tsx             # 首页
+> │   ├── posts/
+> │   │   ├── page.tsx         # 文章列表
+> │   │   ├── [id]/
+> │   │   │   └── page.tsx     # 文章详情
+> │   │   └── new/
+> │   │       └── page.tsx     # 创建文章
+> │   └── settings/
+> │       └── page.tsx         # 设置页
+> └── api/
+>     ├── auth/
+>     │   └── [...nextauth]/
+>     │       └── route.ts     # NextAuth 配置
+>     ├── posts/
+>     │   ├── route.ts         # GET /api/posts, POST /api/posts
+>     │   └── [id]/
+>     │       └── route.ts     # GET/PATCH/DELETE /api/posts/[id]
+>     └── users/
+>         └── route.ts         # 用户相关 API
+> ````
+>
+> ---
+>
+> ## 5. 核心组件说明（带 Props 接口）
+> ````typescript
+> // components/PostCard.tsx
+> interface PostCardProps {
+>   post: {
+>     id: string;
+>     title: string;
+>     content: string;
+>     createdAt: Date;
+>     author: {
+>       name: string;
+>       email: string;
+>     };
+>   };
+>   onEdit?: (id: string) => void;
+>   onDelete?: (id: string) => void;
+> }
+> 
+> export function PostCard({ post, onEdit, onDelete }: PostCardProps) {
+>   // 实现...
+> }
+> ````
+> ````typescript
+> // components/UserAvatar.tsx
+> interface UserAvatarProps {
+>   user: {
+>     name: string;
+>     email: string;
+>     image?: string | null;
+>   };
+>   size?: 'sm' | 'md' | 'lg';
+>   className?: string;
+> }
+> 
+> export function UserAvatar({ user, size = 'md', className }: UserAvatarProps) {
+>   // 实现...
+> }
+> ````
+>
+> ---
+>
+> ## 6. API 端点设计（RESTful 规范）
+> ````markdown
+> ### 认证相关
+> - POST   /api/auth/login          # 登录
+> - POST   /api/auth/register       # 注册
+> - POST   /api/auth/logout         # 登出
+> 
+> ### 文章管理
+> - GET    /api/posts               # 获取文章列表（支持分页、筛选）
+> - POST   /api/posts               # 创建文章
+> - GET    /api/posts/[id]          # 获取文章详情
+> - PATCH  /api/posts/[id]          # 更新文章
+> - DELETE /api/posts/[id]          # 删除文章
+> 
+> ### 用户管理
+> - GET    /api/users               # 获取用户列表（Admin only）
+> - GET    /api/users/me            # 获取当前用户信息
+> - PATCH  /api/users/me            # 更新当前用户信息
+> ````
+>
+> ---
+>
+> ## 7. 状态管理策略
+> ````markdown
+> ### 全局状态（使用 Zustand）
+> - 用户认证状态（currentUser, isAuthenticated）
+> - 主题设置（theme: 'light' | 'dark'）
+> - 通知/Toast 消息
+> 
+> ### 服务端状态（使用 React Query / SWR）
+> - 文章列表数据
+> - 用户信息数据
+> - 实现自动缓存、重新验证、乐观更新
+> 
+> ### 表单状态（使用 React Hook Form）
+> - 登录表单
+> - 注册表单
+> - 文章编辑表单
+> ````
+>
+> ---
+>
+> ## 8. 错误处理方案
+> ````markdown
+> ### 表单验证
+> - 库：Zod + React Hook Form
+> - 示例：
+> ```typescript
+>   const loginSchema = z.object({
+>     email: z.string().email("请输入有效的邮箱地址"),
+>     password: z.string().min(8, "密码至少8位"),
+>   });
+> ```
+> 
+> ### API 错误
+> - 统一错误响应格式：
+> ```json
+>   {
+>     "error": {
+>       "code": "UNAUTHORIZED",
+>       "message": "用户未登录",
+>       "details": {}
+>     }
+>   }
+> ```
+> - 错误提示：使用 Toast 组件（如 sonner）
+> 
+> ### 边界错误
+> - 使用 Error Boundary 捕获组件错误
+> - 提供友好的错误页面（404, 500）
+> ````
+>
+> ---
+>
+> ## 9. 样式系统约定
+> ````markdown
+> ### Tailwind 自定义配置
+> ```javascript
+> // tailwind.config.ts
+> export default {
+>   theme: {
+>     extend: {
+>       colors: {
+>         primary: {
+>           50: '#...',
+>           500: '#...',  // 主色
+>           900: '#...',
+>         },
+>       },
+>     },
+>   },
+> }
+> ```
+> 
+> ### 组件库
+> - 使用 shadcn/ui（可选但推荐）
+> - 自定义组件放在 `/components/ui`
+> 
+> ### 响应式断点
+> - sm: 640px   # 手机横屏
+> - md: 768px   # 平板
+> - lg: 1024px  # 笔记本
+> - xl: 1280px  # 桌面
+> ````
+>
+> ---
+>
+> ## 10. 部署检查清单
+> ````markdown
+> ### 环境变量配置（.env.example）
+> - [ ] DATABASE_URL
+> - [ ] NEXTAUTH_SECRET
+> - [ ] NEXTAUTH_URL
+> - [ ] [其他第三方服务 API Key]
+> 
+> ### 数据库迁移
+> - [ ] 运行 `npx prisma migrate deploy`
+> - [ ] 运行 `npx prisma generate`
+> 
+> ### 生产环境测试
+> - [ ] 所有 API 端点测试通过
+> - [ ] 表单验证正常工作
+> - [ ] 认证流程完整
+> - [ ] 错误处理符合预期
+> 
+> ### 性能优化
+> - [ ] 图片使用 Next.js Image 组件
+> - [ ] 启用 gzip 压缩
+> - [ ] 配置 CDN（如果需要）
+> - [ ] 数据库查询优化（添加索引）
+> 
+> ### 安全检查
+> - [ ] 环境变量未泄露
+> - [ ] HTTPS 已启用
+> - [ ] CORS 配置正确
+> - [ ] Rate Limiting 已配置
+> ````
+>
+> ---
+>
+> ## ⚠️ 常见错误提醒（请在需求阶段避免）
+>
+> | ❌ 错误示范             | ✅ 正确示范                                                   |
+> | ---------------------- | ------------------------------------------------------------ |
+> | "做一个用户友好的界面" | "参考 Linear 的侧边栏导航 + 卡片布局，使用浅色主题"          |
+> | "用户表、文章表"       | "User 表：id, email(唯一), name, avatar, role, createdAt<br>Post 表：id, title, content, authorId(外键), published, createdAt" |
+> | "需要权限管理"         | "3个角色：Admin(增删改查所有), Editor(增改查自己的), Viewer(只读)" |
+> | "尽可能快"             | "首屏加载 < 2s，列表支持虚拟滚动（超过100条数据），使用 SSG 预渲染静态页面" |
+> | "安全一点"             | "使用 bcrypt 加密密码、JWT token 7天过期、API 限制每分钟60次请求" |
+>
+> ---
+>
+> ## 🎯 开始填写
+>
+> 请按照以上结构，逐步填写你的项目信息。填写完成后，我将基于你的回答生成一份**可直接使用的完整 Vibe Code 提示词**！
+>
+> **现在就开始第一个问题：**
+> 1. **你的项目叫什么名字？**
+> 2. **一句话描述它解决什么问题？**
+>
+> ---
+>
+> ## 📝 使用说明
+>
+> 1. **复制这个模板**到新的对话窗口
+> 2. **逐步填写**每个「我的回答」部分（不需要一次性填完，可以分多次）
+> 3. **提交后** AI 会基于你的回答生成完整的技术方案
+> 4. **迭代优化**：如果有遗漏或需要调整，随时补充说明
+>
+> **提示**：如果某个问题暂时不确定，可以先写「待定」或「跳过」，后续再补充！🚀
 
 
 2. 使用“提示词生成器”框架：
