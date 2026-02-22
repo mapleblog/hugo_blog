@@ -26,7 +26,21 @@ author = "MapleScraps"
 - **Thematic Consistency**: No hardcoded hex colors or pixel values. Use design tokens/CSS variables (e.g., var(--primary-color)).
 - **Safe State Transitions**: Every async action must handle 'loading', 'success', and 'error' states explicitly.
 - **Type Centricity**: Define shared types in `@/types` instead of inline to ensure consistency.
+
 ```
+
+
+
+#### MVE （Minimum Viable Experience） or MVP（Minimum Viable Product）
+
+
+| 维度      | **MVE (最小可行性体验)**          | **MVP (最小可行性产品)**       |
+| --------- | --------------------------------- | ------------------------------ |
+| 首要目标  | 捕获用户的“哇塞”时刻              | 验证用户是否愿意支付/持续使用  |
+| Vibe 核心 | **视觉 & 动效** (Visuals & Flow)  | **逻辑 & 数据** (Logic & Data) |
+| 典型项目  | AI 艺术生成器、个性化主页、小游戏 | SaaS 订阅工具、CRM、自动化脚本 |
+| 失败标志  | 用户觉得“无聊”                    | 用户觉得“不可用/有 Bug”        |
+
 
 
 #### 编写提示词的快速方法
@@ -37,7 +51,7 @@ author = "MapleScraps"
 
 ```markdown
 
-我想制作一个[项目名]，需要准备一份PRD的vibe code提示词模板，我是一个不懂技术细节的创始人，目标是建立[简单的项目需求描述]’。请你扮演多年经验的资深全栈工程师 + Vibe Coding 专家，使用 RCC + SCF 组合框架。 
+我想制作一个[项目名]，需要准备一份PRD的vibe code提示词模板，我是一个不懂技术细节的创始人，目标是建立[简单的项目需求描述]’。请你扮演多年经验的资深全栈工程师 + Vibe Coding 专家，使用 RCC + SCF / RELIC + ICIO 组合框架。 
 
 技术栈： Next.js (App Router), Prisma, Tailwind CSS
   
@@ -49,6 +63,7 @@ author = "MapleScraps"
 5. **技术栈约束**
 6. **设计模式**
 7. **规范要求**
+8. **MVP或者MVE**
   
 同时也需要麻烦你考量这个项目是否需要：
 - 需要判断受否需要后期扩展声明，方便后期新功能开发
