@@ -105,40 +105,42 @@ author = "MapleScraps"
 > - `git switch -c < branch >`
 > - `git ls - files` 列出所有在 Git 仓库中被追踪的文件路径（相对于项目根目录）
 > - `git rm -r --cached < public >` 告诉 Git 停止追踪 public 目录中的所有文件, 但不删除本地的文件
-> 
->> 🈯 **git restore** 用于撤销 *工作区* 和 *暂存区* 的更改   
->> - ✅ `git restore < files >`  指定工作区的文件，恢复到暂存区或上一次提交的状态  
->> - 目标： 工作区  
->> - 源头： 暂存区 (Staging Area)  
->> - ✅ `git restore --staged < file >` 将文件从暂存区移回工作区，但保留你在工作区的本地修改  
->> - 目标： 暂存区  `--->`  Git 会将暂存区中 <file> 的记录，恢复到 HEAD (上一次提交) 中的版本 ]  
->> - 源头： 工作区 `--->` 完全不受影响
 >
->> - `git clone < http.git > own_directory`
->> - `git clone -b < branch > < repo_url >`
->> - `git clone -b develope --single-branch < 你的仓库URL >`
+> > 🈯 **git restore** 用于撤销 *工作区* 和 *暂存区* 的更改   
+> > - ✅ `git restore < files >`  指定工作区的文件，恢复到暂存区或上一次提交的状态  
+> > - 目标： 工作区  
+> > - 源头： 暂存区 (Staging Area)  
+> > - ✅ `git restore --staged < file >` 将文件从暂存区移回工作区，但保留你在工作区的本地修改  
+> > - 目标： 暂存区  `--->`  Git 会将暂存区中 <file> 的记录，恢复到 HEAD (上一次提交) 中的版本 ]  
+> > - 源头： 工作区 `--->` 完全不受影响
 >
->> - `git log --stat` 显示提交后的信息
->> - `git log -p -2` 显示最新两个log信息
->> - `git log -2` 显示最新两个log信息
->> - `git log --graph --oneline` 以图线和一行显示
-> 
->> 🈯 如果在错误分支下修改文件，想要将所有已经修改转移到正确的分支：
->> - `git stash` 需要保存修改但不想提交时, 还原修改使用 `git stash [ pop/apply ]`
->> - `git stash save "Solving login page issue"` 添加一个描述，方便以后查找
->> - `git stash list` 查看修改保存多个记录
->> - `git stash pop` 恢复最近一次修改记录，并从列表中移除它
->> - `git stash pop stash@{2}` 恢复指定的修改保存记录后，从列表中删除
->> - `git stash apply stash@{1}` 恢复指定的修改保存记录，依然保留在列表中以备后用
->> - `git stash drop stash@{0}` 删除指定修改保存记录
->> - `git stash clear` 一次性删除所有的 git stash 修改保存记录
+> > - `git clone < http.git > own_directory`
+> > - `git clone -b < branch > < repo_url >`
+> > - `git clone -b develope --single-branch < 你的仓库URL >`
 >
->> - `git clean < file_name > -f` 可以删除新创建但不曾提交过的文件
->> - `git clean -n --dry-run` 模拟删除不曾提交/追踪过的文件
->> - `git clean < folder_name > -nd` 模拟删除不曾提交/追踪过的文件夹
->> - `git clean < folder_name > -fd` 确认删除文件夹
->> - `git clean -fd` 清理工作区中所有未追踪的文件
-> 
+> > - `git log --stat` 显示提交后的信息
+> > - `git log -p -2` 显示最新两个log信息
+> > - `git log -2` 显示最新两个log信息
+> > - `git log --graph --oneline` 以图线和一行显示
+>
+> > 🈯 如果在错误分支下修改文件，想要将所有已经修改转移到正确的分支：
+> > - `git stash` 需要保存修改但不想提交时, 还原修改使用 `git stash [ pop/apply ]`
+> > - `git stash save "Solving login page issue"` 添加一个描述，方便以后查找
+> > - `git stash list` 查看修改保存多个记录
+> > - `git stash pop` 恢复最近一次修改记录，并从列表中移除它
+> > - `git stash pop stash@{2}` 恢复指定的修改保存记录后，从列表中删除
+> > - `git stash apply stash@{1}` 恢复指定的修改保存记录，依然保留在列表中以备后用
+> > - `git stash drop stash@{0}` 删除指定修改保存记录
+> > - `git stash clear` 一次性删除所有的 git stash 修改保存记录
+> > - `git stash --include-untracked 暂时存放一些未跟踪的文件，以便日后恢复
+`
+>
+> > - `git clean < file_name > -f` 可以删除新创建但不曾提交过的文件
+> > - `git clean -n --dry-run` 模拟删除不曾提交/追踪过的文件
+> > - `git clean < folder_name > -nd` 模拟删除不曾提交/追踪过的文件夹
+> > - `git clean < folder_name > -fd` 确认删除文件夹
+> > - `git clean -fd` 清理工作区中所有未追踪的文件
+>
 
 ## *暂存区 ( Staging Area ) 常用命令*
 
@@ -356,54 +358,55 @@ author = "MapleScraps"
 >
 
 > [!TIP]+ 其难杂症
-> 
+>
 > ## 💢 在第二台设备使用 *git pull origin dev* 子分支，成功拉取但是文件不是最新版本  
->> ##### 🔍 原因一：你当前不在 dev 分支上  
->> 尽管你执行了 `git pull origin dev`，但 Git 默认是将远程的 `origin/dev` 拉取到你的 本地 dev 分支。如果你的工作区当前检出的是 main 或其他分支，那么你眼前的代码就不会变动。  
->> ##### 解决办法：确认和切换分支
->> 1️⃣ 检查当前分支：
->> ```bash
->> git branch	#（当前分支前会有一个 * 号。）
->> 
->> ```
->> 2️⃣ 切换到 dev 分支：
->> ```bash
->> git checkout dev
->> ```
->> 
->> 3️⃣ 再次拉取（确保万无一失）：
->> ```bash
->> git pull origin dev
->> ```
->> 
->> ##### 🔍 原因二：pull 时的本地合并问题  >>
->> git pull 实际上是两个命令的组合：git fetch（拉取远程数据）和 git merge（将拉取到的数据合并到当前分支）。  
->> ##### 解决办法：清理并强制更新
->> 1️⃣ 检查工作区状态：
->> ```bash
->> git status	# （查看是否有未提交的更改或冲突。）
->> ```
->> 2️⃣ 强制重置： 如果你确定本地的更改不重要，你想让本地分支完全匹配远程分支，可以使用 reset 命令将本地 dev 强制重置到远程的最新状态。  
->> ```bash
->> # 切换到 dev 分支
->> git checkout dev
->> 
->> # 强制丢弃本地所有更改，并将本地分支指针指向远程分支的最新提交
->> git reset --hard origin/dev
->> git stash 
->> 
->> ⚠️ 注意： 
->> git reset --hard 会永久丢弃你在本地 dev 上所有未提交或未推送的更改。>> 请确保你真的不需要这些更改。
->> ```
->> 
->> ######  🔍 原因三：Untracked 或 Ignored 文件干扰
->> 如果你在项目中使用构建工具，一些旧的编译产物或缓存文件可能仍然存在于你的工作区，并让你误以为代码不是最新的。  
->>  ##### 解决办法：清理工作区  
->> 1️⃣ 执行 Dry Run 检查 (强烈推荐)：  
->> ```bash
->> git clean -nfd		# （查看哪些文件会被删除。）
->> ```
->> 2️⃣ 执行清理：
->> ```bash
->> git clean -fd		# （-f 强制执行，-d 删除未追踪的文件夹。）（-f 强制执行，-d 删除未追踪的文件夹。）
->> ```
+> > ##### 🔍 原因一：你当前不在 dev 分支上  
+> > 尽管你执行了 `git pull origin dev`，但 Git 默认是将远程的 `origin/dev` 拉取到你的 本地 dev 分支。如果你的工作区当前检出的是 main 或其他分支，那么你眼前的代码就不会变动。  
+> > ##### 解决办法：确认和切换分支
+> > 1️⃣ 检查当前分支：
+> > ```bash
+> > git branch	#（当前分支前会有一个 * 号。）
+>
+> > ```
+> > 2️⃣ 切换到 dev 分支：
+> > ```bash
+> > git checkout dev
+> > ```
+>
+> > 3️⃣ 再次拉取（确保万无一失）：
+> > ```bash
+> > git pull origin dev
+> > ```
+>
+> > ##### 🔍 原因二：pull 时的本地合并问题  >>
+> > git pull 实际上是两个命令的组合：git fetch（拉取远程数据）和 git merge（将拉取到的数据合并到当前分支）。  
+> > ##### 解决办法：清理并强制更新
+> > 1️⃣ 检查工作区状态：
+> > ```bash
+> > git status	# （查看是否有未提交的更改或冲突。）
+> > ```
+> > 2️⃣ 强制重置： 如果你确定本地的更改不重要，你想让本地分支完全匹配远程分支，可以使用 reset 命令将本地 dev 强制重置到远程的最新状态。  
+> > ```bash
+> > # 切换到 dev 分支
+> > git checkout dev
+>
+> > # 强制丢弃本地所有更改，并将本地分支指针指向远程分支的最新提交
+> > git reset --hard origin/dev
+> > git stash 
+>
+> > ⚠️ 注意： 
+> > git reset --hard 会永久丢弃你在本地 dev 上所有未提交或未推送的更改。>> 请确保你真的不需要这些更改。
+> > ```
+>
+> > ######  🔍 原因三：Untracked 或 Ignored 文件干扰
+> > 如果你在项目中使用构建工具，一些旧的编译产物或缓存文件可能仍然存在于你的工作区，并让你误以为代码不是最新的。  
+> > ##### 解决办法：清理工作区  
+> > 1️⃣ 执行 Dry Run 检查 (强烈推荐)：  
+> >
+> > ```bash
+> > git clean -nfd		# （查看哪些文件会被删除。）
+> > ```
+> > 2️⃣ 执行清理：
+> > ```bash
+> > git clean -fd		# （-f 强制执行，-d 删除未追踪的文件夹。）（-f 强制执行，-d 删除未追踪的文件夹。）
+> > ```
