@@ -12,16 +12,36 @@ author = "MapleScraps"
 +++
 
 # OpenClaw AI Assistance
-### 操作命令
 
-#### 1. <u>Openclaw Security Audit</u>
+OpenClaw 官方文档 [Read]([Docker - OpenClaw](https://docs.openclaw.ai/install/docker))
+
+### 操作命令
+#### 1. <u>Quick Start</u>
+
+- openclaw gateway start 
+- openclaw gatewat restart
+- openclaw dashboard
+
+
+#### 2. <u>Openclaw Security Audit</u>
 
 **openclaw security audit** 
 **openclaw security audit --deep** 
 **openclaw security audit --fix** 
 **openclaw security audit --json**
 
-#### 2. <u>Openclaw Security Audit</u>
+#### 3. <u>Openclaw Security Audit</u>
+
+⛔ **1008 unauthorized / gateway token missing** ⛔
+
+1. ✅ **Fast fix (UI):** open the dashboard using
+   `openclaw dashboard`
+   (this opens with the correct token automatically, instead of raw `http://127.0.0.1:18789/`).
+2. ✅ **Fast fix (CLI/RPC):** ensure your shell has token context (OpenClaw CLI normally does). If using custom WS client, send `auth.token` in connect params.
+3. ✅ **If still failing:** restart service and retry:
+   `openclaw gateway restart` then `openclaw dashboard`.
+
+
 
 
 
