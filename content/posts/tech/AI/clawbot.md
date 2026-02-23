@@ -12,7 +12,21 @@ author = "MapleScraps"
 +++
 
 # OpenClaw AI Assistance
+### 操作命令
+
+#### 1. <u>Openclaw Security Audit</u>
+
+**openclaw security audit** 
+**openclaw security audit --deep** 
+**openclaw security audit --fix** 
+**openclaw security audit --json**
+
+#### 2. <u>Openclaw Security Audit</u>
+
+
+
 ### Ubuntu OpenClaw 安装
+
 > [!TIP]
 >
 > Pre-requirement:
@@ -24,6 +38,7 @@ author = "MapleScraps"
 > - npm
 >
 >   
+>
 
 ##### 方案一 npm / pnpm
 
@@ -33,9 +48,9 @@ author = "MapleScraps"
 
 :three: 配置AI API key 和 Telegram bot 
 
-:four: ​执行 `source ~/.bashrc`
+:four: 执行 `source ~/.bashrc`
 
-:five: ​Dashboard https://127.0.0.1:18789
+:five: Dashboard https://127.0.0.1:18789
 
 
 
@@ -77,9 +92,57 @@ openclaw plugins install <plguin_name>
 --> browse the marketplace in https://clawhub.ai/skills
 ```
 
+> [!TIP]
+>
+> <u>**Pairing Required**</u>
+>
+> 1. Check pending WhatsApp pairing requests
+>    ```bash
+>    openclaw pairing list whatsapp
+>    ```
+>
+> 2. You should see a code (8 chars)
+>
+> 3. Approve that code
+>    ```bash
+>    openclaw pairing approve whatsapp <CODE> --notify
+>    ```
+>
+> 4. Optional quick verify
+>    ```bash
+>    openclaw pairing list whatsapp
+>    ```
+>
+> ---
+>
+> <u>**Pairing/auth state issue**</u>
+>
+> **Reason:**  
+>
+> 1. Cron / API calls were failing with: gateway closed (1008): pairing required
+> 2. This means the CLI identity needed re-approval as an operator device (repair flow), even though WhatsApp itself was connected.
+>
+> **Solution:**
+>
+> 1. run `openclaw status` 
+>    Confirmed gateway + WhatsApp were healthy.
+>
+> 2. run `openclaw devices list`
+>    Found a pending repair request:
+>    	role = operator, flag = repair
+>
+> 3. run `openclaw devices approve`
+>    Approved the pending operator device pairing
+>
+> 
+>
+
+
+
 
 
 ## 创建多个openclaw agent 在 telegram
+
 :one: **@BotFather** 执行 `/newbot` 创建新的 agent && 创建新的群组
 :two: 将 **OpenClaw** 添加到群组
 :three: 授权 **OpenClaw agent** 为 **admin**
@@ -117,9 +180,8 @@ Configure model/auth for this agent, require token from anthropic/openAI
 - Add your specific Clawbot to the group
 - Obtain group chat ID
 
-
-
 ```
 
 
 
+## 创建多个openclaw agent 在 telegram
