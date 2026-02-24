@@ -21,6 +21,10 @@ OpenClaw 官方文档 [Read]([Docker - OpenClaw](https://docs.openclaw.ai/instal
 - openclaw gateway start 
 - openclaw gatewat restart
 - openclaw dashboard
+- /reasoning on
+- /reasoning off
+
+
 
 
 #### 2. <u>Openclaw Security Audit</u>
@@ -29,6 +33,8 @@ OpenClaw 官方文档 [Read]([Docker - OpenClaw](https://docs.openclaw.ai/instal
 **openclaw security audit --deep** 
 **openclaw security audit --fix** 
 **openclaw security audit --json**
+
+
 
 #### 3. <u>Openclaw Security Audit</u>
 
@@ -41,7 +47,26 @@ OpenClaw 官方文档 [Read]([Docker - OpenClaw](https://docs.openclaw.ai/instal
 3. ✅ **If still failing:** restart service and retry:
    `openclaw gateway restart` then `openclaw dashboard`.
 
+#### 4. <u>Clawhub skills</u>
+1. `npm install -g @openclaw/clawhub-cli`
+2. `clawhub login`（浏览器流程）或 `clawhub login --token <token>`
+   `clawhub logout`
+   `clawhub whoami`
+3. `clawhub search "calendar" --limit <n>：最大结果数`
+4. `clawhub install /frontend-design`
+5. 
 
+
+#### 5. <u>Troubleshooting</u>
+
+| Commands                          | Functions                                                    |
+| --------------------------------- | ------------------------------------------------------------ |
+| openclaw doctor                   | -                                                            |
+| openclaw doctor --yes             | -                                                            |
+| openclaw doctor --repair          | 无需提示接受默认值（包括适用时的重启/服务/沙箱修复步骤）     |
+| openclaw doctor --repair --force  | 无需提示应用推荐的修复（安全时进行修复 + 重启）              |
+| openclaw doctor --non-interactive | 也应用激进的修复（覆盖自定义 supervisor 配置                 |
+| openclaw doctor --deep            | 无需提示运行，仅应用安全迁移（配置规范化 + 磁盘状态移动）。跳过需要人工确认的重启/服务/沙箱操作。 检测到时自动运行遗留状态迁移。 |
 
 
 
