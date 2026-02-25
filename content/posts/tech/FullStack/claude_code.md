@@ -28,34 +28,34 @@ author = "MapleScraps"
 
 #### Part.2  复杂任务处理与终端控制
 
-- 执行终端命令（Bash）
+- **执行终端命令（Bash）**
   - ctrl + g（打开编辑器，编写好后需要保存，然后关闭编辑器）
-- 使用规划模式（Plan Mode）
-- 跳过所有权限检测（Dangerously-Skip-Permissions）
-  - 在终端执行 claude --dangerously-skip-permission（会进入放飞自我模式，所有操作自动完成）
+- **使用规划模式（Plan Mode）**
+- **跳过所有权限检测（Dangerously-Skip-Permissions）**
+  - 在终端执行 claude --dangerously-skip-permissions（会进入放飞自我模式，所有操作自动完成）
 
-- 后台任务管理（Bakground Tasks）
+- **后台任务管理（Bakground Tasks）**
 
 
 
 #### Part.3 多模态与上下文
 
-- 版本滚回（Rewind）
+- **版本滚回（Rewind）**
   - /rewind
   - 按两次 esc，选择要回滚的版本
-- 图片处理
+- **图片处理**
   - 直接拖拽图片到终端
   - ctrl + c | ctrl + v
-- 安装MCP Server（以Figma为例）
+- **安装MCP Server（以Figma为例）**
   - claude mcp add --transport http figma https://mcp.figma.com/mcp
-- 恢复历史会话（Resume）
+- **恢复历史会话（Resume）**
   - 启动claude code 后，执行 /resume
   - claude -c
-- 使用MCP工具还原设计稿
-- 上下文压缩与清除
+- **使用MCP工具还原设计稿**
+- **上下文压缩与清除**
   - /compact 
   - /clear
-- 项目及以文件（CLAUE.md）
+- **项目及以文件（CLAUE.md）**
   - /init
   - /memory
 
@@ -63,44 +63,22 @@ author = "MapleScraps"
 
 #### Part.4 高级功能扩展与定制
 
-- **Hook**
-
-  - 
-
-- **Agent Skills**
-
-  - **最适合**：
-    - 和上下文 **关联大**
-    - 对上下文 **影响小**
-
-- **SubAgents**
-<<<<<<< HEAD
-
-  - **最适合**：
-
-    - 与上下文 **关联小**
-
-    - 对上下文 影响大
-
-=======
-  - **最适合**：
-  
-    - 与上下文 **关联小**
-  
-    - 对上下文 影响大
-  
->>>>>>> 8509b661b3fc48dd0897d3a485dea7b033816841
 - **Skill** 与 **SubAgent** 的区别
 
 - **Plugin**
-  - /plug
+  
+  - `/plugin install plugin-name@claude-plugins-official`
+  
+      |      | Plugin                     | Plugin                        |
+      | ---- | -------------------------- | ----------------------------- |
+      | 定义 | 单个技能的定义文件         | 技能包的发布格式              |
+      | 数量 | 一个文件 = 一个技能        | 一个插件 = 多个技能           |
+      | 安装 | 手动复制到 .claude/skills/ | 通过命令安装：/plugin install |
+      | 来源 | 自己创建或官方             | 官方仓库或社区                |
+      | 类比 | 一个工具                   | 一个工具箱（含多个工具）      |
+  
+      
 
-
-
-
-
-<<<<<<< HEAD
-=======
 ## 使用BigModel 智谱来调用Claude Code
 
 Claude Code 对于中国大陆用户，直接使用面临网络与账号双重门槛。但可以通过本地部署 + 国产大模型兼容层（GLM/DeepSeek）方案，实现无障碍安装使用。
@@ -253,4 +231,3 @@ C:\Users\用户名\
 *   `/compact`：压缩上下文（处理长任务时使用）。
 *   `/help`：查看所有可用命令。
 *   `Alt + Enter` (Win) / `Opt + Enter` (Mac)：在对话框中换行。
->>>>>>> 8509b661b3fc48dd0897d3a485dea7b033816841
