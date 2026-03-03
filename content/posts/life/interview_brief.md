@@ -13,7 +13,17 @@ author = "MapleScraps"
 
 # Interview_brief
 
-## Main questions from HR
+## My Questions
+1. How do you delegate the evaluate the permission to IT member? What is the metric 
+2. What is your opinion on IT Shadow this term? How do you minimize in organization environment?
+3. What kind of ERP now are using in your company?
+4. How management cascade the latest information to bottom line? By teams? By zoom? By emails?
+5. 
+
+
+
+
+## Main Questions from HR
 - The reason of looking for a new job ?
     - As I work as IT Support Engineer for 3 years in current company, my mostly focus on very simple job like level 1 to support end user. 
     Because I also interested for level 2 which is support backend system to explore more system architecture and knowledge. There is no chance for me to take part it, due to my team all in Europe, and the IT facilities setup in Euorpe as well. This is what to made me frastrated on my personal development.
