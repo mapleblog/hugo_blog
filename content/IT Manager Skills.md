@@ -123,3 +123,9 @@
 
 
 
+CIO - Focus on IT Strategy / Infrastructure
+CTO - Focus on technology products / services for customers
+CISO - Focus on data protection and cyber security
+CDO - Focus on drives digital transformation
+CDO - Focus on manages data strategy and analytics
+CPO - Focus on oversees data privacy policies

@@ -19,6 +19,34 @@
 - 性能：中到高；在低性能设备可降级关闭动画
 - 适配：适合需要更强吸引力的仪表区域
 
+## 圆圈元素格子风格
+#### 方案一：Siri 玻璃光环（推荐）
+- 视觉：圆形玻璃态按钮，外圈多彩渐变光环（Siri 标志性色带：蓝-紫-粉-青），中间轻模糊与高光。
+- 气质：干净克制但富有灵动，最贴近 iPhone Siri 的灵魂“光带+玻璃”质感。
+- 交互：hover 光环亮度提升、active 轻微缩放 0.96、focus 出柔和可达性描边。
+- 动效建议：光环慢速旋转或轻微流动（conic-gradient + 背景动画）。
+- Tailwind 思路：
+  - 外层按钮：rounded-full w-10 h-10 bg-white/10 dark:bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm hover:shadow-md transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/30
+  - 光环层：绝对定位一圈渐变环（conic-gradient），opacity-70，hover 增加 opacity 与 blur
+
+#### 方案二：Siri 霓虹脉冲
+- 视觉：深色半透明圆形，边缘霓虹渐变（蓝-紫-粉）产生柔和外发光；加低频脉动让按钮像“活着”。
+- 气质：更偏暗夜与未来感，呼应 Siri 在深色系统中的氛围。
+- 交互：hover 增加 glow 半径与强度，active 0.96 缩放；focus 蓝色柔光环。
+- 动效建议：外发光做 2–3 秒轻脉冲（framer-motion 或 CSS keyframes），不影响性能。
+- Tailwind 思路：
+  - 主体：rounded-full w-10 h-10 bg-[#0B0B0D]/70 text-white shadow-[0_0_20px_rgba(96,165,250,0.35)] hover:shadow-[0_0_28px_rgba(147,51,234,0.45)] transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/30
+  - 渐变边缘：通过背景图层或伪元素实现线性渐变边框加轻 blur
+
+#### 方案三：Siri 轻波涟漪
+- 视觉：白色半透明圆形，按钮边缘有淡淡的蓝紫波纹光晕，点击时产生一次性“水波扩散”。
+- 气质：更偏系统白底的优雅与克制，适合 Dashboard 当前浅色背景。
+- 交互：hover 提升光晕亮度，active 产生 180–220ms 的扩散波；focus 细蓝描边。
+- 动效建议：CSS ripple，用一个绝对定位的圆形从 0→1.8 缩放并淡出。
+- Tailwind 思路：
+  - 主体：rounded-full w-10 h-10 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/25 text-blue-600 dark:text-white shadow-sm hover:shadow-md transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/30
+  - 涟漪：伪元素或子元素 absolute，bg-gradient-to-tr from-blue-400/25 via-purple-400/25 to-pink-400/25，animate 扩散淡出
+
 ## 任务卡设计风格
 #### The "Settings" List (原生列表风)
 核心理念 ：致敬 iOS 设置页面的极简主义。 视觉特点 ：
