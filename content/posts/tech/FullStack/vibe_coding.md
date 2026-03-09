@@ -81,31 +81,17 @@ author = "MapleScraps"
 
 -----
 
-**第三步为项目"数据库架构配置安装与部署"**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
+1. PRD构建
+2. 项目基础架构配置安装与部署
+3. 数据库架构配置安装与部署
+4. 后端基础架构配置安装与部署
+5. 开发 API 端点
+6. 安全性 Token 验证 & 注册登录
+7. UI/UX 前端页面开发
+8. 项目线上部署
+9. 后期扩展与迭代
 
------
 
-**第四步为项目"搭建后端基础架构配置安装与部署"**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
-
------
-
-**第五步为项目 开发 API 端点 (CRUD)**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
-
------
-
-**第六步为项目设计安全性 Token 验证 & 注册登录**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
-
------
-
-**第七步为项目UI/UX 前端页面开发**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
-
------
-
-**第八步为项目部署项目到线上**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
-
------
-
-**第九步为项目后期扩展与迭代**。使用**结构化上下文框架 (Structured Context Framework)** 结合 **Role-Context-Constraints (RCC)** 写出最完美的生产级提示词，请作为资深全栈工程师和vibe code专家向我提问，挖掘你所有需要的技术细节和业务需求，直到你认为可以开始写提示词为止。最后以**英文**生成完整详细的.md文件🆗
 
 
   ```
