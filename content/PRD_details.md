@@ -317,8 +317,32 @@
     `Request → Route Handler → Service → Repository → Prisma → Database`
 
     - **Route Handler** — 只负责接收请求、调用 Service、返回响应
+    
     - **Service** — 业务逻辑，不直接碰数据库
+    
     - **Repository** — 所有 Prisma 查询集中在这里，Service 不直接用 Prisma
+    
+      ```markdown
+      ## 8. 测试策略
+      
+      ### 单元测试（Vitest）
+      **覆盖范围：** 业务逻辑层、工具函数、数据转换
+      **触发时机：** 完成 Service 层和 utils/ 后编写
+      
+      需测试模块：
+      - `lib/utils/` - 格式化、校验、计算函数
+      - `services/` - 核心业务逻辑
+      - `api/` - 重要接口的边界条件和错误处理
+      
+      跳过测试：
+      - UI 组件（手动验证）
+      - 简单 CRUD 接口（无复杂业务规则）
+      
+      ### E2E 测试（Playwright）- 可选
+      覆盖核心用户路径：注册登录、主流程操作
+      ```
+    
+      
 
 
 
