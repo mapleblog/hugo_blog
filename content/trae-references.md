@@ -1,12 +1,27 @@
 # Trae Reference
 
+## 修改默认终端配置
+
+- 打开命令面板：`Ctrl + Shift + P`
+- 输入并执行：`> Terminal: Select Default Profile`（内部就是调用上面的 Command ID）
+
+如果你想“固定”默认 Profile（不每次手选），在设置里配置：
+
+- `terminal.integrated.defaultProfile.windows`: 例如 `"PowerShell"` / `"Command Prompt"` / `"Git Bash"`（以你机器上实际的 Profile 名称为准）
+
+
+
 ## 技能所在目录
+
 - 项目技能的相关文件位于 `.trae/skills/` 目录
 
 - 全局技能的相关文件位于本地根目录 `~/.trae/skills`
-  - File --> Preferences --> Settings --> Rules & Skills --> Skills 
-    																																													|__ Global    <-- `~/.trae/skills/skill_name/SKILL.md`
-                                                  										   |__ Project   <-- `.trae/skills/skill_name/SKILL.md`
+  
+  ```
+  File --> Preferences --> Settings --> Rules & Skills --> Skills 
+  												         |__ Global    <-- `~/.trae/skills/skill_name/SKILL.md`
+    										   	             |__ Project   <-- `.trae/skills/skill_name/SKILL.md`
+  ```
 
 
 
@@ -18,10 +33,13 @@
 
 下载文件夹？ 还是 命令安装？
 
+- ???
+
 
 ## 调用 Skills
 
-
+- 在聊天框使用 `关键字` 
+- 在聊天框指定 `skill 名称` 
 
 
 
