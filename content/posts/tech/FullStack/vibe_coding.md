@@ -12,22 +12,39 @@ author = "MapleScraps"
 
 +++
 
-# Vibe Coding
-#### 全局规则（web开发）
+# Vibe Coding 流程
+1. PRD构建
+   - 使用 `prd` [prd](https://1drv.ms/f/c/00e6faf8d8fbf187/IgCFrotoKC_CRpL7e0tagDl2AXO5SoteFBKK01_C_GRJjbo?e=JDEg7E) skill 生成？
+   - 使用 claude 生成？
+2. 项目基础架构配置安装与部署
+   - 使用什么 skill ?
+3. 数据库架构配置安装与部署
+   - 使用 [designing-database-schemas](https://skillsmp.com/skills/jeremylongshore-claude-code-plugins-plus-skills-backups-skills-migration-20251108-070147-plugins-database-database-schema-designer-skills-database-schema-designer-skill-md) skill 
+4. 后端基础架构配置安装与部署
+   - 使用什么 skill ?
+5. 开发 API 端点
+   - 使用什么 skill ?
+6. 安全性 Token 验证 & 注册登录
+   - 使用什么 skill ?
+7. UI/UX 前端页面开发
+   - 使用 [artifacts](https://skillsmp.com/skills/muath2000-tradestation-claude-skills-web-artifacts-builder-skill-md)，[frontend-design](https://skillsmp.com/skills/anthropics-skills-skills-frontend-design-skill-md)，[penpot-uiux-design](https://skillsmp.com/skills/github-awesome-copilot-skills-penpot-uiux-design-skill-md) skill 
+   - 
+8. 项目线上部署
+   - 使用什么 skill ?
+9. 后期扩展与迭代
+   - 使用什么 skill ?
+10. 框架测试
+    - 使用 [vitest-test-creator](https://skillsmp.com/skills/jeremylongshore-claude-code-plugins-plus-skills-skills-09-test-automation-vitest-test-creator-skill-md)
+    - 
 
-- 可以用于web开发项目规则（不是全局规则）
 
-```markdown
-# 🚀 Universal Architecture Standards (Always On)
 
-- **Metadata Resilience**: Every data model MUST include an optional `metadata: Record<string, any>` field for future expansion.
-- **Hook-Based Logic**: UI components should be "dumb". Move all business logic, data filtering, and formatting into custom hooks.
-- **API Encapsulation**: Never fetch directly. Wrap all network calls in a service layer at `@/services` or `@/api`.
-- **Thematic Consistency**: No hardcoded hex colors or pixel values. Use design tokens/CSS variables (e.g., var(--primary-color)).
-- **Safe State Transitions**: Every async action must handle 'loading', 'success', and 'error' states explicitly.
-- **Type Centricity**: Define shared types in `@/types` instead of inline to ensure consistency.
+### 1. 如何准备高效完整的Vibe Code PRD？
 
-```
+- 使用 `prd` [prd](https://1drv.ms/f/c/00e6faf8d8fbf187/IgCFrotoKC_CRpL7e0tagDl2AXO5SoteFBKK01_C_GRJjbo?e=JDEg7E) skill 生成？
+- 使用 claude 生成？
+
+
 
 
 
@@ -90,6 +107,7 @@ author = "MapleScraps"
 7. UI/UX 前端页面开发
 8. 项目线上部署
 9. 后期扩展与迭代
+10. 框架测试
 
 
 
