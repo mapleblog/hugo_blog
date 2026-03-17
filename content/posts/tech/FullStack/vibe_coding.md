@@ -81,43 +81,105 @@ author = "MapleScraps"
 
 -----
 
-1. PRD文档
-   建议 skills --> PRD
-2. 前端基础架构配置文档
-   建议 skills --> nextjs-setup
-3. 前端架构开发
-   建议 skills --> nextjs-app-router-patterns
-4. 前端性能问题修复
-   建议 skills --> nextjs-performance
-5. 数据库架构配置文档
-   建议 skills --> database-migrations
-6. 数据库架构开发
-   建议 skills --> prisma-database-setup
-7. Oauth 登陆界面文档
+> [!TIP]
+>
+> **Product Requirement Document**
+>
+> - skills --> PRD
+
+
+
+> [!TIP]
+>
+> **Frontend Setup Document**
+>
+> - skills --> nextjs-setup
+> - skills --> 
+>
+> **Frontend Deployment / Build**
+>
+> - skills --> nextjs-app-router-patterns
+>
+> **Frontend Performance Check**
+>
+> - skills --> nextjs-performance
+>
+> **Frontend Architecture Check**
+>
+> - skills --> 
+>
+> **Frontend Security Check**
+>
+> - skills --> frontend-security
+
+> [!TIP]
+>
+> **Database Setup Document**
+>
+> - skills --> database-migrations
+>
+> **Database Deployment / Build**
+>
+> - skills --> prisma-database-setup
+>
+> **Database Security Check**
+>
+> - skills --> database-security
+
+> [!TIP]
+>
+> **Backend Setup Document**
+>
+> - skills --> backend-patterns
+>
+> **Backend Deployment / Build**
+>
+> - skills --> web-backend
+>
+> **Backend Architecture Check**
+>
+> - skills --> backend-patterns
+>
+> **Backend Architecture Testing**
+>
+> - skills --> 
+>
+> **Backend Security Check**
+>
+> - skills --> backend-security
+
+
+
+1. Oauth 登陆界面文档
    建议 skills --> nextjs-supabase-auth
-8. Oauth 登陆界面开发
-   jian'yi
-9. Oauth 登陆界面检查
+
+2. Oauth 登陆界面开发
    建议 skills --> 
-10. Oauth 登陆界面测试
-    建议 skills --> 
-11. 后端基础架构配置文档
-    建议 skills --> backend-patterns
-12. 后端架构开发
-    建议 skills --> web-backend
-13. 后端架构检查
-    建议 skills --> backend-patterns
-14. 后端架构验证测试
-    建议 skills --> 
-15. 开发 API 端点
-    建议 skills --> 
-16. 安全性 Token 验证 & 注册登录
-17. UI/UX 前端页面设计方案选择文档
-    建议 skills --> ui-ux-pro-max
-18. UI/UX 前端页面设计开发
-    建议 skills --> ui-ux-pro-max
-19. 项目线上部署
-20. 后期扩展与迭代
+
+3. Oauth 登陆界面检查
+   建议 skills --> 
+
+4. Oauth 登陆界面测试
+   建议 skills --> 
+
+   
+
+   
+
+5. 开发 API 端点
+   建议 skills --> 
+
+6. 安全性 Token 验证 & 注册登录
+
+7. UI/UX 前端页面设计方案选择文档
+   建议 skills --> ui-ux-pro-max
+
+8. UI/UX 前端页面设计开发
+   建议 skills --> ui-ux-pro-max
+
+9. 项目线上部署
+
+10. 后期扩展与迭代
 
 
 

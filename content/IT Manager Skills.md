@@ -135,3 +135,10 @@ CISO - Focus on data protection and cyber security
 CDO - Focus on drives digital transformation
 CDO - Focus on manages data strategy and analytics
 CPO - Focus on oversees data privacy policies
+
+
+
+**Configuration Drift** 配置漂移
+**Stakeholder Management**（利益相关者管理）
+意思是：你需要了解老板的决策逻辑，然后用他在乎的语言来说服他。
+**Risk Acceptance Documentation**（风险接受文件）
