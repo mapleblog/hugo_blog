@@ -1,10 +1,17 @@
 # IT Manager 🤵
 
 - IT Manager ≠ **技术最强的人**
+- IT Manager = **用技术解决业务问题的人，注重业务持续化运作** 
 
-- IT Manager = **用技术解决业务问题的人**
+| Roles               | Mindset                                   |
+| ------------------- | ----------------------------------------- |
+| IT Manager          | Proactive Strategic Thinking 主动战略思维 |
+| IT Support Engineer | Reactive 被动响应                         |
+|                     |                                           |
 
-- **核心能力是**：
+
+
+- **核心能力是以业务角度为考量**：
 
   - 设计一套企业 IT 蓝图
 
@@ -13,14 +20,13 @@
     - 企业IT基础架构 + 网络安全策略 + 服务器 + 备份策略 + 网络 = 技术架构的超前布局
 
     - **数据驱动** 和 **标准化** = 数据资产的变现能力
-
-      - 标准化 = 不管谁来做，做出来的东西都一样
-
-      - 数据驱动 = 别听“谁”说的，看“数”据展示的
-
+    - 标准化 = 不管谁来做，做出来的东西都一样
+      
+    - 数据驱动 = 别听“谁”说的，看“数”据展示的
+    
   - 让系统稳定
   - 让风险可控
-  - 让成本合理
+  - 让成本合理 
   - 让项目成功
   - 让团队成长
 
@@ -129,3 +135,10 @@ CISO - Focus on data protection and cyber security
 CDO - Focus on drives digital transformation
 CDO - Focus on manages data strategy and analytics
 CPO - Focus on oversees data privacy policies
+
+
+
+**Configuration Drift** 配置漂移
+**Stakeholder Management**（利益相关者管理）
+意思是：你需要了解老板的决策逻辑，然后用他在乎的语言来说服他。
+**Risk Acceptance Documentation**（风险接受文件）

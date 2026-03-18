@@ -98,27 +98,157 @@ author = "MapleScraps"
 
 -----
 
-1. PRD构建
-2. 项目基础架构配置安装与部署
-3. 数据库架构配置安装与部署
-4. 后端基础架构配置安装与部署
+> [!TIP]
+>
+> **Product Requirement Document**
+>
+> - skills --> PRD
+
+
+
+> [!TIP]
+>
+> **Frontend Setup Document**	前端架构草稿
+>
+> - skills --> nextjs-setup
+> - skills --> 
+>
+> **Frontend Deployment / Build** 
+>
+> - skills --> nextjs-app-router-patterns
+>
+> **Frontend Performance Check**
+>
+> - skills --> nextjs-performance
+>
+> **Frontend Architecture Check**
+>
+> - skills --> 
+>
+> **Frontend Security Check**
+>
+> - skills --> frontend-security
+> - 
+
+
+
+> [!TIP]
+>
+> **Database Setup Document**
+>
+> - skills --> database-migrations
+>
+> **Database Deployment / Build**
+>
+> - skills --> prisma-database-setup
+>
+> **Database Security Check**
+>
+> - skills --> database-security
+> - 
+
+
+
+> [!TIP]
+>
+> **Token & Oauth**
+>
+> - 
+> - 
+
+
+
+> [!TIP]
+>
+> **API Endpoint**
+>
+> - 
+> - 
+
+
+
+> [!TIP]
+>
+> **UI/UX Frontend Design Document**
+>
+> - skills --> ui/ux-pro-max
+>
+> **UI/UX Frontend Design Deployment**
+>
+> - skills --> ui/ux-pro-max
+> - 
+
+
+
+> [!TIP]
+>
+> **Backend Setup Document**
+>
+> - skills --> backend-patterns
+>
+> **Backend Deployment / Build**
+>
+> - skills --> web-backend
+>
+> **Backend Architecture Check**
+>
+> - skills --> backend-patterns
+>
+> **Backend Architecture Testing**
+>
+> - skills --> 
+>
+> **Backend Security Check**
+>
+> - skills --> backend-security
+> - 
+
+
+
+> [!TIP]
+>
+> 
+
+
+
+1. Oauth 登陆界面文档
+   建议 skills --> nextjs-supabase-auth
+
+2. Oauth 登陆界面开发
+   建议 skills --> 
+
+3. Oauth 登陆界面检查
+   建议 skills --> 
+
+4. Oauth 登陆界面测试
+   建议 skills --> 
+
+   
+
+   
+
 5. 开发 API 端点
+   建议 skills --> 
+
 6. 安全性 Token 验证 & 注册登录
+
 7. UI/UX 前端页面开发
 8. 项目线上部署
 9. 后期扩展与迭代
 10. 框架测试
+=======
+
+7. UI/UX 前端页面设计方案选择文档
+   建议 skills --> ui-ux-pro-max
+
+8. UI/UX 前端页面设计开发
+   建议 skills --> ui-ux-pro-max
+
+9. 项目线上部署
+
+10. 后期扩展与迭代
 
 
-
-
-  ```
-  
-  为了 **保证项目从第一步到第九步拥有极高的** 逻辑一致性：
-  
-  ```text
-  基于刚才我们达成的 PRD 文档共识，请为我生成第二步‘基础架构配置’的提示词。请在 [ ] 部分填充最符合本项目业务需求和技术路线的技术细节。请保持资深专家角色 + vibe code专家和规范，直接给出完整markdown提示词。
-  ```
 
   反问技巧：
 
@@ -1018,3 +1148,11 @@ author = "MapleScraps"
 > ```
 >
 > 
+
+
+
+### 知识库
+
+- GTD 是什么？
+- TBD 是什么？
+- 
