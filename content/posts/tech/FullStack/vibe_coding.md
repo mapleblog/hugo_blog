@@ -70,7 +70,7 @@ author = "MapleScraps"
 
 我想制作一个[项目名]，需要准备一份PRD的vibe code提示词模板，我是一个不懂技术细节的创始人，目标是建立[简单的项目需求描述]’。请你扮演多年经验的资深全栈工程师 + Vibe Coding 专家，使用 RCC + SCF / RELIC + ICIO 组合框架。 
 
-技术栈： Next.js (App Router), Prisma, Tailwind CSS
+技术栈： Next.js + Tailwind CSS + Shadcn/ui + Supabase
   
 为了让你更好的写出vibe coding提示词，你可以向我提问挖掘你所有需要的:
 1. **项目细节**
