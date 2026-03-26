@@ -157,6 +157,16 @@ uv pip install -e .
 - 锁定版本一致性：团队应共享锁定文件（如 `uv.lock`），用 `uv sync` 安装确保一致。
 - 打包失败：检查 `pyproject.toml` 的 `[build-system]` 是否配置正确；源代码需可被发现（src 布局、包名对应）。
 - 入口点名称：运行的是工具的入口点，不一定与包名相同（如 `httpie` 的命令是 `http`）。
+- 使用 `uv` 创建项目，在IDE环境不建议直接运行python终端，最好使用 `uv run < script.py >` 最不容易报错。或者：
+
+  - #### 修改 VS Code 的解释器设置 (如果你在使用 VS Code)
+
+    从截图看你可能是在 VS Code 的终端里操作。VS Code 的“运行”按钮有时会记住旧的解释器路径。
+
+    1. 按下快捷键 `Ctrl + Shift + P`。
+    2. 输入并选择 **"Python: Select Interpreter"**。
+    3. 找到并选择带有 **`./venv`** 或 **`uv`** 标记的那一个。
+    4. 重新打开一个终端运行程序。
 
 ## 9. 一个从零到发布的最小流程
 ```bash
