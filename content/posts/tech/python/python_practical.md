@@ -1,17 +1,86 @@
 +++
-title = 'UVX Project'
-date = 2025-10-21T00:00:00+08:00
+title = 'Python Practical'
+date = 2025-10-16T14:22:00+08:00
 draft = false
-slug = "uvx-project"
+slug = "e985480"
 description = ""
 summary = ""
 tags = [ "技术", "开发" ]
 categories = [ "tech" ]
 cover = ""
 author = "MapleScraps"
+
 +++
 
-# UVX Project
+# Python Manage
+
+Extremely fast Python package and project manager, written in Rust.
+
+## Highlight
+- 🚀 A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv, and more.  
+- ⚡️ 10-100x faster than pip.  
+- 🗂️ Provides comprehensive project management, with a universal lockfile.  
+- ❇️ Runs scripts, with support for inline dependency metadata.  
+- 🐍 Installs and manages Python versions.  
+- 🛠️ Runs and installs tools published as Python packages.  
+- 🔩 Includes a pip-compatible interface for a performance boost with a familiar CLI.  
+- 🏢 Supports Cargo-style workspaces for scalable projects.  
+- 💾 Disk-space efficient, with a global cache for dependency deduplication.  
+- ⏬ Installable without Rust or Python via curl or pip.  
+- 🖥️ Supports macOS, Linux, and Windows.  
+
+## Installation ( Windows )
+Install uv with our official standalone installer:
+>```powershell
+> powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+>```
+>
+Request a specific version by including it in the URL:
+>```powershell
+> powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/0.9.3/install.ps1 | iex"
+>```
+>
+
+> [!TIP]
+>
+> The installation script may be inspected before use:
+>
+> ```powershell
+> powershell -c "irm https://astral.sh/uv/install.ps1 | more"
+> ```
+> 
+
+
+## Installation ( Linux Ubuntu )
+uv provides a standalone installer to download and install uv:  
+Use curl to download the script and execute it with sh:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+If your system doesn't have curl, you can use wget:
+```bash
+wget -qO- https://astral.sh/uv/install.sh | sh
+```
+
+Request a specific version by including it in the URL:
+```bash
+curl -LsSf https://astral.sh/uv/0.9.3/install.sh | sh
+```
+
+> [!TIP]
+>
+> The installation script may be inspected before use:
+>
+> ```powershell
+> curl -LsSf https://astral.sh/uv/install.sh | less
+> ```
+
+
+
+## Code Practical
+
+#### UVX Project
 
 这篇用最简单的话，手把手说明：用 `uv` 管理 Python 项目与依赖，用 `uvx` 运行工具和打包；怎样初始化项目、创建并激活虚拟环境、安装第三方库、打包分发给团队，以及团队如何快速安装。
 
@@ -19,7 +88,7 @@ author = "MapleScraps"
 - `uv`：项目依赖管理/安装/运行（替代 pip、加速安装），还能自动创建本地虚拟环境（`.venv`）。
 - `uvx`：像 pipx 一样“隔离运行工具”，也可直接调用打包工具。
 
-## 1. 用 uv init 初始化最简项目
+#### 1. 用 uv init 初始化最简项目
 - 在新目录中初始化：
 ```bash
 mkdir myproj && cd myproj
@@ -53,7 +122,7 @@ uv sync
 uv run python src/myproj/app.py
 ```
 
-## 2. 创建与激活虚拟环境（两种方式）
+#### 2. 创建与激活虚拟环境（两种方式）
 - 用 `uv` 自动管理（推荐）：
   - 在项目根执行 `uv sync`，`uv` 会自动创建本地虚拟环境 `.venv` 并安装依赖。
   - 运行代码时无需手动激活：
@@ -73,7 +142,7 @@ uv run python src/myproj/app.py
     uv pip install -r requirements.txt  # 或 uv add/sync
     ```
 
-## 3. 安装第三方库（用 uv 管理依赖）
+#### 3. 安装第三方库（用 uv 管理依赖）
 - 安装 `uv`（见《UVX》文档）并确认：`uv --version`。
 - 在项目根目录执行：
 ```bash
@@ -91,7 +160,7 @@ uv sync
 uv run python src/myproj/app.py
 ```
 
-## 4. 使用 uvx 运行工具（不改动项目依赖）
+#### 4. 使用 uvx 运行工具（不改动项目依赖）
 - 隔离运行常用工具（首次会解析并缓存）：
 ```bash
 uvx ruff --version
@@ -108,7 +177,7 @@ uvx --from https://github.com/httpie/cli http --version
 uvx --from ./ some-local-cli
 ```
 
-## 5. 打包项目（生成 sdist 和 wheel）
+#### 5. 打包项目（生成 sdist 和 wheel）
 - 最简单方法：用 `build` 工具（通过 uvx 运行）：
 ```bash
 uvx build
@@ -119,7 +188,7 @@ uvx build
 uvx twine upload dist/*
 ```
 
-## 6. 团队协作：如何快速安装项目依赖
+#### 6. 团队协作：如何快速安装项目依赖
 - 方式 A（推荐，用 uv）：
 ```bash
 # 团队成员安装 uv 后，在项目根目录执行：
@@ -136,7 +205,7 @@ uv pip install -r requirements.txt
 uv pip install -e .
 ```
 
-## 7. 最常用命令速查（一屏足够）
+#### 7. 最常用命令速查（一屏足够）
 - 虚拟环境：`uv sync` 自动创建/使用 `.venv`；或 `python -m venv .venv` + 激活。
 - 依赖管理：
   - 添加运行时依赖：`uv add <pkg>`
@@ -150,7 +219,7 @@ uv pip install -e .
 - 打包：`uvx build`（产物在 `dist/`）
 - 发布：`uvx twine upload dist/*`
 
-## 8. 容易踩雷的地方（简明版）
+#### 8. 容易踩雷的地方（简明版）
 - 混用 `pip` 与 `uv`：尽量统一用 `uv` 管理，避免环境不一致。
 - PATH 未生效：安装后终端不识别 `uv/uvx`，重启终端或手动加 PATH。
 - Python 版本不匹配：用 `uvx --python X.Y` 明确工具的运行版本。
@@ -168,7 +237,7 @@ uv pip install -e .
     3. 找到并选择带有 **`./venv`** 或 **`uv`** 标记的那一个。
     4. 重新打开一个终端运行程序。
 
-## 9. 一个从零到发布的最小流程
+#### 9. 一个从零到发布的最小流程
 ```bash
 # 1) 创建结构并写 pyproject.toml
 # 2) 管理依赖
