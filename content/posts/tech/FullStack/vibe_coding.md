@@ -90,7 +90,73 @@ author = "MapleScraps"
 - 采用适合对项目的安全保护机制
   
 当我回答完问题后。请在当前路径以**英文**生成完整详细的Phase_1_PRD.md。
+
 ```
+
+
+
+## 🎨 Vibe Code UI/UX 提示词模板
+
+```markdown
+请帮我设计一个 [页面类型]，风格是 [视觉风格关键词]。
+
+【核心信息】
+- 用途：[这个页面是用来做什么的]
+- 目标用户：[谁会使用它]
+- 设备：[桌面端 / 移动端 / 两者兼顾]
+
+【视觉风格】
+- 整体氛围：[关键词，见下方词汇表]
+- 配色方案：[主色 + 辅助色，或直接描述感觉]
+- 字体感觉：[见下方选项]
+- 留白处理：[宽松 / 紧凑 / 极简]
+- 动效偏好：[无 / 微动效 / 丰富动画]
+
+【布局与内容】
+- 主要模块：[列出页面要有哪些区块]
+- 强调重点：[哪个部分最重要，需要突出]
+- 特殊交互：[悬停效果 / 滚动动画 / 点击反馈 等]
+
+【技术要求】
+- 输出格式：单文件 HTML（含 CSS 和 JS）
+- 不使用外部框架（或：可以使用 Tailwind / Chart.js 等）
+```
+
+
+
+![webpage_standard_structure](C:\hugo\my_hugo\public\images\webpage_standard_structure.svg)
+
+
+
+## 单页应用（Single Page）+ 锚点滚动
+
+```markdown
+中文版提示词：
+我想创建一个"烘培咖啡"单页网站，不需要路由跳转。页面顶部有固定导航栏，包含四个菜单项：Home、Menu、About Us、Contact。点击任意菜单项时，页面平滑滚动到对应的内容区块（使用锚点 #home #menu #about #contact）。所有内容区块都在同一个 HTML 页面上垂直排列，每个区块高度至少 100vh。导航栏始终固定在顶部，当前所在区块对应的菜单项高亮显示（使用 IntersectionObserver 实现）。
+
+只输出一个 index.html 文件。不使用任何框架、不需要 npm 安装、不需要构建工具。所有 HTML、CSS、JavaScript 写在同一个文件里。禁止使用 React、Next.js 或任何组件化框架。
+
+
+英文版提示词（给 Cursor / Bolt / v0 效果更好）：
+Build a single-page website with no routing. The page has a fixed top navbar with four links: Home, Menu, About Us, and Contact. Clicking each link smoothly scrolls to the corresponding section on the same page using anchor IDs (#home, #menu, #about, #contact). All sections are stacked vertically in one HTML file, each at least 100vh tall. The navbar stays fixed at the top, and the active nav item updates automatically as the user scrolls, using IntersectionObserver.
+
+Output a single index.html file only. No frameworks, no npm, no build tools. Pure HTML, CSS, and vanilla JavaScript in one file. Do not use React, Next.js, or any component-based framework.
+
+```
+
+**几个关键词的作用：**
+
+- `single-page` / `单页` — 告诉 AI 不要生成多个 HTML 文件或配置路由
+- `anchor IDs` / `锚点` — 指定用 `#id` 跳转而不是页面跳转
+- `smooth scroll` / `平滑滚动` — 避免生硬的瞬间跳转
+- `fixed navbar` / `固定导航栏` — 滚动时菜单不消失
+- `IntersectionObserver` — 让当前菜单项自动高亮，不加这个 AI 经常漏掉
+
+**如果你还想进一步定制，可以追加：**
+
+> 使用 Tailwind CSS 做样式，字体用 Inter，配色主色调为深绿色 `#1a3c2e`，背景为米白色 `#faf8f3`。
+
+
 
 -----
 
