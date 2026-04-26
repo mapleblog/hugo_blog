@@ -154,7 +154,7 @@ powershell.exe -ExecutionPolicy Bypass -File "C:\Windows\Setup\Scripts\Cleanup.p
 Copy-Item "E:\sources\install.wim" -Destination "D:\WDS\install.wim" -Verbose
 
 # Note: If you have install.esd instead, convert it:
-# dism /Export-Image /SourceImageFile:"E:\sources\install.esd" /SourceIndex:1 /DestinationImageFile:"D:\WDS\install.wim" /Compress:max
+dism /Export-Image /SourceImageFile:"E:\sources\install.esd" /SourceIndex:1 /DestinationImageFile:"D:\WDS\install.wim" /Compress:max
 ```
 
 ### Step 4: Mount install.wim for editing
@@ -164,7 +164,7 @@ Copy-Item "E:\sources\install.wim" -Destination "D:\WDS\install.wim" -Verbose
 dism /Get-ImageInfo /ImageFile:"D:\WDS\install.wim"
 
 # Mount the desired edition (usually Index 6 for Windows 11 Pro)
-dism /Mount-Image /ImageFile:"D:\WDS\install.wim" /Index:6 /MountDir:"D:\Mount"
+dism /Mount-Image /ImageFile:"D:\WDS\install.wim" /Index:1 /MountDir:"D:\Mount"
 ```
 
 ### Step 5: Inject scripts into the mounted image
@@ -254,34 +254,25 @@ dism /Get-ImageInfo /ImageFile:"D:\WDS\install.wim"
 
 ---
 
+### Step 8: Using anyburn to replace the install.esd to install.wim in .ISO files
+
+1. Install & Open **Anyburn** 
+2. Select the **Edit image file** button
+3. Remove the **install.esd** in .ISO resources 
+4. Copy & Paste the modified **install.wim** to .ISO resources
+5. Next to create a new **.ISO**
 
 
-## 📀 Part 4: Add Boot and Install Images to WDS
-
-### Step 8: Copy boot.wim from ISO
-
-```powershell
-Copy-Item "E:\sources\boot.wim" -Destination "D:\WDS\boot.wim"
-```
-
-### Step 9: Add Boot Image to WDS
-
-1. In WDS console, right-click **Boot Images** → **Add Boot Image**
-2. Select `D:\WDS\boot.wim`
-3. Name: `Windows 11 Boot Image`
-4. Click **Next** → **Finish**
-
-### Step 10: Add Install Image to WDS
-
-1. Right-click **Install Images** → **Add Install Image**
-2. Create image group: `Windows 11`
-3. Select `D:\WDS\install.wim` (your modified image)
-4. Select the edition (e.g., Windows 11 Pro)
-5. Click **Next** → **Finish**
 
 
 
 > [!TIP]
+>
+> 挂载 **windows.iso** 到 **mount目录** （如真实的生产环境目录结构）： `dism /Mount-Image /ImageFile:"D:\WDS\install.wim" /Index:1 /MountDir:"D:\Mount"`
+>
+> 闭载 **mount目录** ：`powershell dism /Unmount-Image /MountDir:"D:\Mount" /Commit `
+>
+> 
 >
 > | 脚本执行阶段                                      | 推荐路径 (在镜像中)                                    | 关键要求                                                     | 适用脚本类型                                                 |
 > | :------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -299,6 +290,38 @@ Copy-Item "E:\sources\boot.wim" -Destination "D:\WDS\boot.wim"
 > - `Cleanup.ps1`：可以保持这个名字，也可以改成任何你喜欢的名字，灵活自由
 >
 > 如果你想重命名 `Cleanup.ps1` 为其他名字（比如 `SystemOptimizer.ps1`），只需要同时修改 `unattend.xml` 中的 `CommandLine` 路径即可。
+>
+> 
+
+
+
+## $OEM$ 文件夹的目录结构遵循一套严格的映射规则
+
+```text
+sources/
+└── $OEM$/
+    ├── $$ /                  (对应 C:\Windows)
+    │   ├── Resources/
+    │   │   └── Wallpapers/   (自定义壁纸)
+    │   ├── System32/         (系统组件)
+    │   └── Setup/
+    │       └── Scripts/
+    │           └── SetupComplete.cmd  (安装完成后自动运行的关键脚本)
+    ├── $1 /                  (对应 C:\ 根目录)
+    │   ├── Drivers/          (存放驱动安装包)
+    │   └── Install/          (存放静默安装包)
+    ├── $Docs /               (对应 C:\Users)
+    │   └── Public/
+    │       └── Desktop/      (所有用户的公共桌面图标)
+    └── $Progs /              (对应 C:\Program Files)
+        └── MyCustomApp/      (预装应用的文件夹)
+```
+
+使用 **Anyburn** 进行 **resouces** 文件修改
+
+
+
+
 
 
 
