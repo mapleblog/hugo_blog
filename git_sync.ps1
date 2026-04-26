@@ -1,4 +1,5 @@
 # 这里的 -am 是 -a 和 -m 的组合
+git add .
 git commit -am "update content"
 git push origin dev
 git status
