@@ -12,14 +12,170 @@ author = "MapleScraps"
 
 +++
 
-#### 前后端API 连贯推荐
+###  Harness Engineering 马鞍工程
 
-| 前端              | 后端 API                  | 说明 |
-| ----------------- | ------------------------- | ---- |
-| HTML + JavaScript | Node.js + Express         |      |
-| Next.js           | Python + FastAPI + Jinja2 |      |
-|                   |                           |      |
-|                   |                           |      |
+#### 1️⃣ AGENTS.md —— 最重要的入口文档
+
+**关键认知**：第一次直觉是写一个包含所有规范、规则、历史决策的 AGENTS.md。这种做法因四个原因失败：context 是稀缺的，臃肿的指令文件挤占了实际任务；当所有内容都被标记为重要时，没有任何内容是重要的；文档会腐烂——第二周的规则到第八周就变错了；扁平文档无法被机械验证。修复方法：把 AGENTS.md 缩到 100 行。不是规则——是地图
+
+```markdown
+# 项目名称
+
+## 项目简介
+一个展示烘焙糕点和精品咖啡的品牌网站。
+目标用户：本地咖啡爱好者、寻找下午茶场所的人。
+
+## 技术栈
+- HTML5 / CSS3（原生，无框架）
+- 字体：[在 docs/design-system.md 中定义]
+- 部署：[填你的部署方式]
+
+## 工作流程
+1. 接到任务 → 先读 docs/design-system.md
+2. 改样式前 → 必须运行 `npm run lint:css`
+3. 提交前 → 检查 docs/checklist.md
+
+## 文档地图
+- 设计规范 → docs/design-system.md
+- 组件库 → docs/components/
+- 已完成功能 → docs/exec-plans/completed/
+- 进行中任务 → docs/exec-plans/active/
+- 架构决策 → docs/design-docs/
+
+## 硬性约束（不可违反）
+- ❌ 不引入任何 CSS 框架（Tailwind/Bootstrap 等）
+- ❌ 不修改 index.html 的语义结构，除非有明确任务
+- ✅ 所有颜色必须使用 CSS 变量（定义在 :root）
+- ✅ 所有间距使用 8px 倍数
+
+## 当遇到不确定的事
+- 先查 docs/ 目录
+- 还不确定 → 在 exec-plans/active/ 写一份 design-doc 提案，等用户确认
+```
+
+
+
+#### 2️⃣ ARCHITECTURE.md —— 顶层领域地图
+
+这份文档回答："这个项目在概念上由什么构成？"
+
+```markdown
+# Architecture
+
+## 页面结构
+- Hero Section（品牌门面）
+- Menu Section（产品展示，分糕点 / 咖啡两类）
+- Story Section（品牌故事）
+- Location Section（门店信息 + 地图）
+- Footer
+
+## 数据流
+- 静态页面，无后端
+- 产品数据：直接写在 HTML 中（未来可能迁移到 JSON）
+
+## 样式架构
+- 全局变量层（:root 定义）
+- 组件样式层（按 section 划分文件）
+- 响应式层（mobile-first）
+
+## 设计决策依据
+所有"为什么这样做"的决定 → docs/design-docs/
+```
+
+
+
+#### 3️⃣ docs/design-system.md —— 视觉与交互规范
+
+这是你 vibe coding 项目最关键的文档。把"美学方向"明确化：
+
+```markdown
+# Design System
+
+## 品牌调性
+温暖、手工感、有故事的精致。
+参考：日式喫茶店 + 北欧极简的混合体。
+
+## 色彩系统
+--color-bg-primary: #FAF6F0;     /* 米白主背景 */
+--color-bg-warm: #E8DDD0;        /* 烘焙暖色 */
+--color-accent-coffee: #4A2C20;  /* 深咖啡棕 */
+--color-accent-gold: #C8975A;    /* 焦糖金 */
+--color-text-primary: #2A1F1A;
+--color-text-muted: #6B5D54;
+
+## 字体系统
+- 标题：'Playfair Display', serif（衬线，优雅）
+- 正文：'Inter', sans-serif（清晰易读）
+- 中文：'Noto Serif SC', serif
+
+## 间距尺度
+基础单位 8px：4 / 8 / 16 / 24 / 32 / 48 / 64 / 96 / 128
+
+## 交互规范
+- 所有可点击元素 → cursor: pointer + hover 状态
+- 过渡时长统一 0.3s ease
+- 不使用突兀的弹出动画，偏好淡入淡出
+
+## 禁忌
+- ❌ 鲜艳的纯红、纯蓝
+- ❌ 圆角超过 12px（不要太"科技感"）
+- ❌ 阴影过重（要轻盈）
+```
+
+
+
+
+
+#### 4️⃣ docs/exec-plans/ —— 任务执行计划
+
+每个具体任务（比如"为 Hero Section 添加样式"）写成一个 markdown 文件，放在 `active/`，完成后移到 `completed/`
+```markdown
+# exec-plan: Hero Section 视觉设计
+
+## 目标
+给现有的 Hero HTML 骨架添加视觉样式，传达品牌温暖手工感。
+
+## 验收标准
+- [ ] 移动端、平板、桌面三档断点正常
+- [ ] 主标题字体加载完成前有合理 fallback
+- [ ] 背景图加载失败有降级方案
+- [ ] 通过 lint:css 检查
+- [ ] Lighthouse 性能分数 ≥ 90
+
+## 涉及文件
+- index.html（仅可能修改 class 名）
+- css/sections/hero.css（新建）
+
+## 不在范围内
+- 不处理 Menu 部分
+- 不添加 JS 交互
+```
+
+
+
+
+
+#### 5️⃣ 机械化约束（这是 Harness 与普通文档的根本区别）
+
+仅有文档不足以保持完全由 agent 生成的代码库的一致性。通过强制不变量（invariants）而非微管理实现，让 agent 能快速发布而不破坏基础。 [OpenAI](https://openai.com/index/harness-engineering/)
+
+具体来说，给你的项目加：
+
+**`.editorconfig`** —— 强制缩进、换行 **`stylelint.config.js`** —— 强制 CSS 规则（比如禁用某些颜色值、强制使用 CSS 变量） **`package.json` scripts**：
+
+```json
+
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -83,10 +239,10 @@ author = "MapleScraps"
 8. **安全保护机制**	--> 让claude opus 根据自己要开发的网站类型生成适合的约束
 8. **MVP或者MVE**
 9. **测试框架**
-10. **mock数据连接真实后端测试**
+10. **mock数据连接真实后端测试** 先 Mock 后真实 (阶段式推进，推荐)
   
 同时也需要麻烦你考量这个项目是否需要：
-- 需要判断受否需要后期扩展声明，方便后期新功能开发
+- 需要判断受否需要后期扩展声明（PRD预留接口），方便后期新功能开发
 - 需要声明代码规范性规则，确保代码结构一致性
 - 采用适合对项目的安全保护机制
   
