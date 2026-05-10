@@ -418,6 +418,37 @@ docker compose logs -f app         # Tail application logs
 
 
 
+如果有新项目开发，需要改的地方有 **4 处**，其余全部可以复用：
+
+------
+
+**必须改：**
+
+**§1 Project Overview** — 项目名、描述、技术栈、部署方式、发布策略、当前阶段。这是你说的那部分，没错。
+
+**§5 Commands & Tooling** — 如果 ToDoList 用不同的包管理器（比如 pnpm）、不同的测试框架、或者不需要 Docker，命令要对应调整。如果技术栈一样就不用动。
+
+**文件末尾的 `Last updated` 一行** — 改成新项目的阶段描述，否则还显示 OfficeKit 的内容。
+
+------
+
+**可以直接复用（不用改）：**
+
+- §2 Document Map 的表格结构和七层文档职责 — 这是 Harness 工作流本身，与项目无关
+- §3 Agent Workflow 的 Orient → Plan → Pick → Execute → Record → Hand off → Deploy 七步 — 普适流程
+- §4 Update Rules 的所有规则 — 文档更新纪律与项目内容无关
+- §2 里的 ASCII 架构图 — 三层结构不变
+
+------
+
+**一个判断原则：**
+
+> §1 描述"这个项目是什么"，其余章节描述"我们如何做项目" —— 后者是方法论，天然跨项目复用。
+
+所以 AGENTS.md 可以理解为一个**模板**，每个新项目只需填写 §1 + 核对 §5 命令，5 分钟就能完成新项目的 master index。
+
+
+
 ---
 
 
@@ -1172,6 +1203,22 @@ When all verification checks pass, the Generator agent must:
 
 
 
+这份文档和项目结构深度绑定，以下部分必须改：
+
+**§1 Scaffold** — 如果 ToDoList 不需要 `--src-dir` 或其他 create-next-app 参数，调整初始化命令。
+
+**§2 Install Dependencies** — OfficeKit 装了 `pdf-lib`、`sharp`、`formidable`、`qrcode`，ToDoList 完全不需要这些。换成 ToDoList 实际需要的包，比如数据库客户端（`prisma`、`sqlite3`）、状态管理等。
+
+**§3 Create Folder Structure** — 这是改动最大的地方。OfficeKit 的 `src/modules/pdf/`、`src/modules/image/`、`src/modules/qrcode/` 全部要换成 ToDoList 的目录结构，比如 `src/modules/tasks/`、`src/modules/lists/` 等。
+
+**§4 Placeholder Files** — 所有 stub 文件的路径和内容都跟模块名绑定，需要完全重写。`modules.ts` 的 MODULES 注册表也要换成 ToDoList 的功能条目。
+
+**§5 Environment & Config** — `.env.example` 里的变量要换，`next.config.ts` 的 `bodySizeLimit` ToDoList 可能不需要，Dockerfile 和 docker-compose 基本可以复用。
+
+**§7 Verification** — 预期目录树要改成 ToDoList 的实际结构。
+
+
+
 ---
 
 
@@ -1463,11 +1510,21 @@ To prevent scope creep, the Evaluator agent must never:
 
 
 
+这份文档大部分是评估方法论，跨项目通用。只有以下两处需要改：
+
+**§3 维度 B 的文件处理安全专项** — OfficeKit 特有的（tmp/ 清理、magic bytes、MAX_FILE_SIZE）。ToDoList 没有文件上传，这整块可以删掉或替换为 ToDoList 对应的安全检查（比如输入校验、XSS 防护）。
+
+**§9 Phase Gate 的 Smoke Test** — 目前写的是 PDF/Image/QR 三个 Phase 的具体操作路径，要换成 ToDoList 各 Phase 的验收操作，比如"创建一条 Todo"、"标记完成"、"过滤列表"等。
+
+其余全部 —— 四维评估标准表、EVAL_REPORT 格式、FIX/ESCALATE 决策指令、轮次上限、LOGS.md 格式、Deployer 交棒声明、文档写权限表 —— **全部可以直接复用，一字不改**。
+
+
+
 ---
 
 
 
-准备好 **PLANNER.md** + **GENERATOR.md** + **EVULUATOR.md** 后，用以下形式开始开发项目:
+准备好 **PLANNER.md** + **GENERATOR.md** + **EVULUATOR.md** 后，第一次对话用以下形式开始开发项目:
 
 ```text
 @PLANNER_AGENT.md @GENERATOR_AGENT.md @EVALUATOR_AGENT.md 
@@ -1477,6 +1534,90 @@ To prevent scope creep, the Evaluator agent must never:
 3. 最后扮演 Evaluator，对生成的文件做四维评估 
 技术栈：Next.js 15 + TypeScript + Tailwind CSS v4 + pnpm
 ```
+
+
+
+---
+
+
+
+```text
+对于小白需要自己修改简直是一个噩梦，我好奇你原本创建的GENERATOR.md 和 EVALUATOR.md 和 DEPLOYER.md 是不是根据 AGENTS.md 来生成的？还是你用其他方式生成？
+```
+
+直接回答：**是的，完全根据 AGENTS.md 的内容生成的。**
+
+具体来说，我当时的生成逻辑是：
+
+- 读取 AGENTS.md 的 §1（项目名 OfficeKit、技术栈、模块列表、部署方式）
+- 把这些信息"硬编码"进了 GENERATOR.md / EVALUATOR.md / DEPLOYER.md 的具体内容里
+
+------
+
+**这就是问题所在。**
+
+正确的做法应该是：
+
+**GENERATOR.md / EVALUATOR.md / DEPLOYER.md 本身不应该包含任何项目特定信息**，它们应该是纯流程文档，所有项目细节都通过读取 AGENTS.md 动态获取。
+
+也就是说，三份文档开头应该声明：
+
+```
+> 执行前必须读取 AGENTS.md，
+> 所有项目名称、模块列表、技术栈、命令
+> 均从 AGENTS.md §1 和 §5 中获取，
+> 本文档不硬编码任何项目特定信息。
+```
+
+这样换新项目时，你只需要改 **AGENTS.md** 一份文件，其他三份完全不用动。
+
+
+
+---
+
+
+
+```text
+假设我已经在AGENTS.md编辑成新项目的信息，那么我应该如何正确告诉claude根据我的编辑的AGENTS.md文档生成GENERATOR.md / EVALUATOR.md / DEPLOYER.md？
+```
+
+给你一个可以直接复制粘贴到 Claude 对话框的提示词：
+
+------
+
+```
+我有一份已经填写好的 AGENTS.md，请你根据这份文档的内容，
+为我生成配套的三份代理文档：GENERATOR.md、EVALUATOR.md、DEPLOYER.md。
+
+生成规则：
+1. 所有项目名称、模块列表、技术栈、目录结构、命令、部署方式
+   全部从我提供的 AGENTS.md 中读取，不要假设或沿用其他项目的内容
+2. 三份文档不硬编码任何项目特定信息——
+   凡是项目细节都注明"来自 AGENTS.md §X"的引用来源
+3. 生成顺序：GENERATOR.md → EVALUATOR.md → DEPLOYER.md
+4. 每份文档生成完毕后暂停，等我确认没问题再继续下一份
+
+以下是我的 AGENTS.md 内容：
+
+[把你的 AGENTS.md 全文粘贴在这里]
+
+```
+
+------
+
+**使用步骤就三步：**
+
+1. 复制上面的提示词
+2. 把 `[把你的 AGENTS.md 全文粘贴在这里]` 替换成你实际的 AGENTS.md 内容
+3. 粘贴到 Claude 对话框发送
+
+------
+
+**关键是"每份生成后暂停确认"这一句**，避免三份一口气生成完你发现第一份有问题又要全部重来。如果你觉得不需要逐份确认，把那句删掉就行。
+
+
+
+---
 
 
 
