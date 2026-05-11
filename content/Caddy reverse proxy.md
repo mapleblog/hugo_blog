@@ -1,9 +1,7 @@
-Caddy Reverse Proxy
+# Caddy Reverse Proxy
 
 使用**Caddy**在windows环境实现本地反向代理。
 Caddy 反代 + 内部 CA HTTPS）完整落地流程（Windows）
-
-
 
 ## 第一步
 
@@ -32,6 +30,8 @@ Caddy 反代 + 内部 CA HTTPS）完整落地流程（Windows）
 3) **安装并信任 Caddy（管理员 PowerShell）**
 
 - 安装（若已装可跳过）：
+
+https://chocolatey.org/install#individual
 
 ```powershell
 choco install caddy -y

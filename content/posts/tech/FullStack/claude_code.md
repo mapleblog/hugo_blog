@@ -309,6 +309,8 @@ The product follows an **iterative release strategy**: MVP ships with the PDF mo
 | **TASKS.md** | Execution | In-flight tasks with acceptance criteria, assignee, and status | Starting a task; checking what is actively being worked | Promoting an item from TODO, changing task status (in-progress → blocked → done) | Executing agent |
 | **STATUS.md** | Feedback | Current snapshot: what's done, what's blocked, what's next | A human or new agent joins and needs to orient quickly | End of every work session; after any task state change | Executing agent |
 | **LOGS.md** | Feedback | Append-only chronological record of decisions, actions, and outcomes | Investigating why a past decision was made | Any non-trivial action completes — append only, never edit history | Any agent |
+| **DEPLOYER.md** | Execution | Git 提交、feature 分支管理、GitHub PR 创建、CI 触发 | 准备将已通过 Evaluator 审查的任务推送到 GitHub 之前 | PR 合并后更新 STATUS.md 和 LOGS.md | Deployer agent |
+| **DESIGN.md** | Strategy | 网站视觉设计规范 — 色彩系统、字体、间距、组件样式、动效、禁止事项 | 执行任何 UI 组件、页面、样式相关任务之前 | 设计风格调整、新增组件规范、禁止事项更新时 | 人类 / lead agent |
 
 ---
 
@@ -325,7 +327,7 @@ Follow this sequence for every unit of work without exception.
    - Estimated scope (S / M / L)
    - Any blockers or dependencies noted upfront
 
-4. **Execute** — Do the work. Follow the module boundary conventions in `ARCHITECTURE.md`. Do not silently deviate from the established folder structure or API contract — if a deviation is needed, update `ARCHITECTURE.md` first and log the decision in `LOGS.md`.
+4. **Execute** — Do the work. Follow the module boundary conventions in `ARCHITECTURE.md`. Do not silently deviate from the established folder structure or API contract — if a deviation is needed, update `ARCHITECTURE.md` first and log the decision in `LOGS.md`.For any UI-related task, read `DESIGN.md` before writing any component or style code.
 
 5. **Record** — After completing or blocking on a task:
    - Mark the task done/blocked in `TASKS.md`
@@ -418,9 +420,11 @@ docker compose logs -f app         # Tail application logs
 
 
 
-如果有新项目开发，需要改的地方有 **4 处**，其余全部可以复用：
+---
 
-------
+
+
+### 如果有新项目开发，需要改的地方有 **4 处**，其余全部可以复用：
 
 **必须改：**
 
@@ -428,7 +432,7 @@ docker compose logs -f app         # Tail application logs
 
 **§5 Commands & Tooling** — 如果 ToDoList 用不同的包管理器（比如 pnpm）、不同的测试框架、或者不需要 Docker，命令要对应调整。如果技术栈一样就不用动。
 
-**文件末尾的 `Last updated` 一行** — 改成新项目的阶段描述，否则还显示 OfficeKit 的内容。
+
 
 ------
 
@@ -1522,17 +1526,47 @@ To prevent scope creep, the Evaluator agent must never:
 
 ---
 
+### Trae 规则里配置
+
+```markdown
+1. 每一次开始新的对话，必须阅读：
+#AGENTS.md, #GENERATOR.md, #EVALUATOR.md，#DEPLOYER.md，#DESIGN.md 遵从这五份文档工作流。
+
+2. 执行任何 UI 组件、页面、样式相关任务时，
+必须自动加载 #DESIGN.md 作为设计依据。
+```
 
 
-准备好 **PLANNER.md** + **GENERATOR.md** + **EVULUATOR.md** 后，第一次对话用以下形式开始开发项目:
+
+### 准备好 **PLANNER.md** + **GENERATOR.md** + **EVULUATOR.md** 后，第一次对话用以下形式开始开发项目:
 
 ```text
-@PLANNER_AGENT.md @GENERATOR_AGENT.md @EVALUATOR_AGENT.md 
+
+@PLANNER_AGENT.md @GENERATOR_AGENT.md @EVALUATOR_AGENT.md  @DEPLOYER.md
 请按三代理工作流开始开发我的个人网页项目： 
-1. 先扮演 Planner，确认 Phase 1 的任务列表 
-2. 再扮演 Generator，执行 T-001（初始化 Next.js 15 项目） 
+1. 先扮演 Planner，确认是否有任务列表 
+2. 再扮演 Generator，初始化 Next.js 15 项目
 3. 最后扮演 Evaluator，对生成的文件做四维评估 
 技术栈：Next.js 15 + TypeScript + Tailwind CSS v4 + pnpm
+
+---
+
+@PLANNER_AGENT.md @GENERATOR_AGENT.md @EVALUATOR_AGENT.md 
+请按三代理工作流开始开发我的个人网页项目： 
+我想开发pdfs合并功能模块，你可以和我进行沟通获取你认为需要的信息，然后请用 **T-00x** 形式拆解任务。然后记录到**TASKS.md**
+
+@TASKS.md, @LOGS.md, STATUS.md 已经更新了吗？
+
+---
+
+claude原提示词
+# @PLANNER_AGENT.md @GENERATOR_AGENT.md @EVALUATOR_AGENT.md 
+# 请按三代理工作流开始开发我的个人网页项目： 
+# 1. 先扮演 Planner，确认 Phase 1 的任务列表 
+# 2. 再扮演 Generator，执行 T-001（初始化 Next.js 15 项目） 
+# 3. 最后扮演 Evaluator，对生成的文件做四维评估 
+# 技术栈：Next.js 15 + TypeScript + Tailwind CSS v4 + pnpm
+
 ```
 
 
@@ -1540,6 +1574,22 @@ To prevent scope creep, the Evaluator agent must never:
 ---
 
 
+
+### Harness Engineering 添加新功能提示词
+
+```text
+pdf合并功能已经完成，功能测试也正常。
+接下来我想开发pdf拆分功能，先和我进行沟通然后进行拆分任务，将拆分任务记录到TASKS.md
+
+```
+
+
+
+---
+
+
+
+### Harness Engineering **AGENTS.md** 来生成 **GENERATOR.md** + **EVALUATOR.md**
 
 ```text
 对于小白需要自己修改简直是一个噩梦，我好奇你原本创建的GENERATOR.md 和 EVALUATOR.md 和 DEPLOYER.md 是不是根据 AGENTS.md 来生成的？还是你用其他方式生成？
@@ -1603,17 +1653,71 @@ To prevent scope creep, the Evaluator agent must never:
 
 ```
 
-------
+
 
 **使用步骤就三步：**
 
 1. 复制上面的提示词
 2. 把 `[把你的 AGENTS.md 全文粘贴在这里]` 替换成你实际的 AGENTS.md 内容
 3. 粘贴到 Claude 对话框发送
+   
+
+**关键是"每份生成后暂停确认"这一句**，避免三份一口气生成完你发现第一份有问题又要全部重来。如果你觉得不需要逐份确认，把那句删掉就行。
+
+
+
+---
+
+### Harness Engineering 添加网页设计风格和样式
+
+**情况一：第一次生成页面**
+
+```
+#AGENTS.md #DESIGN.md
+
+请根据 DESIGN.md 的设计规范，为 /tools/pdf 页面生成 UI。
+
+页面需要包含：
+- 文件上传区域（支持拖拽）
+- 已上传文件列表
+- 操作按钮（合并/拆分/压缩）
+
+不需要我解释颜色和样式，直接从 DESIGN.md 读取规范来实现。
+```
 
 ------
 
-**关键是"每份生成后暂停确认"这一句**，避免三份一口气生成完你发现第一份有问题又要全部重来。如果你觉得不需要逐份确认，把那句删掉就行。
+**情况二：觉得某个地方不好看，想调整**
+
+```
+#DESIGN.md
+
+我觉得当前的按钮看起来太重了，能不能改得更轻一点？
+请参考 DESIGN.md 的 §7.1 Button 规范来调整，
+不要使用 DESIGN.md 禁止事项里的样式。
+```
+
+------
+
+**情况三：想新增一个组件但不知道怎么写**
+
+```
+#DESIGN.md
+
+请帮我新建一个文件上传拖拽区域的组件 DropZone，
+路径放在 src/components/ui/DropZone.tsx。
+
+风格要求：直接按照 DESIGN.md 来，我不懂 CSS，
+你负责保证它符合 MUJI 极简风格就好。
+```
+
+------
+
+**核心原则只有一句话：**
+
+> 你不需要懂设计，只需要告诉 Claude **"页面要有什么内容"**，然后加上 `#DESIGN.md`，Claude 会自己查规范决定怎么呈现。
+
+你负责说"做什么"，DESIGN.md 负责说"怎么好看"。
 
 
 
@@ -1626,3 +1730,348 @@ A · 类型安全 : ✅ 通过（ pnpm type-check 通过）
 B · 功能正确性 : ✅ 通过（ pnpm lint 、 pnpm build 通过）
 C · 架构符合度 : ✅ 通过（App Router 结构保持；模块注册表集中管理）
 D · 代码质量 & 可维护性 : ✅ 通过（typedRoutes 下的路由类型约束已落到 registry）
+
+
+
+---
+
+| Document | Layer | Purpose | Read when… | Update when… | Owner |
+|---|---|---|---|---|---|
+| **AGENTS.md** | Index | Master entry point and doc map | Always — read first | The doc model itself changes | Lead agent / human reviewer |
+| **ARCHITECTURE.md** | Strategy | System design, module boundaries, data flow, tech stack decisions, file-processing pipeline | Starting any task that touches API routes, file handling, or adding a new tool module | A new module is added, a library decision changes, or the folder structure is revised | Design agent / human architect |
+| **PLAN.md** | Strategy | Milestones, phases, module rollout sequence, success criteria per phase | Planning a new sprint or phase, or when scope changes | A phase is completed or a milestone shifts | Lead agent / PM |
+| **TODO.md** | Execution | Backlog of all planned work — features, refactors, fixes not yet started | Picking up new work; checking what's next | New work is identified, scoped, or deprioritized | Any agent |
+| **TASKS.md** | Execution | In-flight tasks with acceptance criteria, assignee, and status | Starting a task; checking what is actively being worked | Promoting an item from TODO, changing task status (in-progress → blocked → done) | Executing agent |
+| **STATUS.md** | Feedback | Current snapshot: what's done, what's blocked, what's next | A human or new agent joins and needs to orient quickly | End of every work session; after any task state change | Executing agent |
+| **LOGS.md** | Feedback | Append-only chronological record of decisions, actions, and outcomes | Investigating why a past decision was made | Any non-trivial action completes — append only, never edit history | Any agent |
+| **DEPLOYER.md** | Execution | Git commit, feature branch management, GitHub PR creation, CI triggering | Before pushing the tasks that have passed the Evaluator's review to GitHub | Update STATUS.md and LOGS.md after PR merge | Deployer agent |
+| **DESIGN.md** | Strategy | Website Visual Design Guidelines - Color System, Fonts, Spacing, Component Styles, Animations, Prohibitions | 执Before performing any tasks related to UI components, pages, or styles | When the design style is adjusted, new component specifications are added, or prohibited items are updated | Human / lead agent |
+
+---
+
+**1 --> 创建CLAUDE.md / AGENTS.md ( 产品信息需要详细 )**
+
+
+># AGENTS.md
+> 
+> > Master index for the Harness engineering workflow. Every agent reads this file first before taking any action.
+> 
+> ---
+> 
+> ## 1. Project Overview
+> 
+> [project_name] is a [project_describption [what type of tools is this] [target who] ]. 
+> [ mainly of what type of problem / situation ].
+> 
+> The stack is  [ **Next.js 15 + TypeScript + Tailwind CSS** ], [ where to deploy ]. 
+> [ what is my expectations on this project + project requirement ].
+> 
+> The product follows an **iterative release strategy**: MVP ships with the PDF module, with image tools and QR/barcode generation added in subsequent phases. The UI is English-first.
+> 
+> **Current phase: Phase 0 — Bootstrapping (0 → 1)**
+> 
+> ---
+> 
+> ## 2. Document Map & Responsibilities
+> 
+> ```
+>                   ┌─────────────────┐
+>                   │   AGENTS.md     │  ← You are here. Read first, always.
+>                   └────────┬────────┘
+>                            │
+>         ┌──────────────────┼──────────────────┐
+>         │                  │                  │
+>    STRATEGY LAYER    EXECUTION LAYER    FEEDBACK LAYER
+>         │                  │                  │
+>    ARCHITECTURE.md     TODO.md            STATUS.md
+>    PLAN.md             TASKS.md           LOGS.md
+> ```
+> 
+> | Document | Layer | Purpose | Read when… | Update when… | Owner |
+> |---|---|---|---|---|---|
+> | **AGENTS.md** | Index | Master entry point and doc map | Always — read first | The doc model itself changes | Lead agent / human reviewer |
+> | **ARCHITECTURE.md** | Strategy | System design, module boundaries, data flow, tech stack decisions, file-processing pipeline | Starting any task that touches API routes, file handling, or adding a new tool module | A new module is added, a library decision changes, or the folder structure is revised | Design agent / human architect |
+> | **PLAN.md** | Strategy | Milestones, phases, module rollout sequence, success criteria per phase | Planning a new sprint or phase, or when scope changes | A phase is completed or a milestone shifts | Lead agent / PM |
+> | **TODO.md** | Execution | Backlog of all planned work — features, refactors, fixes not yet started | Picking up new work; checking what's next | New work is identified, scoped, or deprioritized | Any agent |
+> | **TASKS.md** | Execution | In-flight tasks with acceptance criteria, assignee, and status | Starting a task; checking what is actively being worked | Promoting an item from TODO, changing task status (in-progress → blocked → done) | Executing agent |
+> | **STATUS.md** | Feedback | Current snapshot: what's done, what's blocked, what's next | A human or new agent joins and needs to orient quickly | End of every work session; after any task state change | Executing agent |
+> | **LOGS.md** | Feedback | Append-only chronological record of decisions, actions, and outcomes | Investigating why a past decision was made | Any non-trivial action completes — append only, never edit history | Any agent |
+> | **DEPLOYER.md** | Execution | Git commit, feature branch management, GitHub PR creation, CI triggering | Before pushing the tasks that have passed the Evaluator's review to GitHub | Update STATUS.md and LOGS.md after PR merge | Deployer agent |
+> | **DESIGN.md** | Strategy | Website Visual Design Guidelines - Color System, Fonts, Spacing, Component Styles, Animations, Prohibitions | 执Before performing any tasks related to UI components, pages, or styles | When the design style is adjusted, new component specifications are added, or prohibited items are updated | Human / lead agent |
+> 
+> ---
+> 
+> ## 3. Agent Workflow (Read → Act → Write)
+> 
+> Follow this sequence for every unit of work without exception.
+> 
+> 1. **Orient** — Read `AGENTS.md` (this file), then `STATUS.md` to get the current project snapshot. Do not skip this even if you think you know the state.
+> 
+> 2. **Plan** — Consult `PLAN.md` for the active phase and milestone. If the task touches any API route, the file-processing pipeline, or the module registry in `src/modules/`, read the relevant section of `ARCHITECTURE.md` before writing any code.
+> 
+> 3. **Pick** — Pull the next prioritized item from `TODO.md`. Promote it into `TASKS.md` with:
+>    - Clear acceptance criteria (what "done" looks like)
+>    - Estimated scope (S / M / L)
+>    - Any blockers or dependencies noted upfront
+> 
+> 4. **Execute** — Do the work. Follow the module boundary conventions in `ARCHITECTURE.md`. Do not silently deviate from the established folder structure or API contract — if a deviation is needed, update `ARCHITECTURE.md` first and log the decision in `LOGS.md`.For any UI-related task, read `DESIGN.md` before writing any component or style code.
+> 
+> 5. **Record** — After completing or blocking on a task:
+>    - Mark the task done/blocked in `TASKS.md`
+>    - Append a timestamped entry to `LOGS.md` (what was done, key decisions made, why)
+>    - Overwrite `STATUS.md` with the new snapshot (prior state must already be in `LOGS.md`)
+> 
+> 6. **Hand off** — Leave `STATUS.md` in a state where the next agent or a team member can orient in under 60 seconds. Include: last completed task, current blocker (if any), and the single next recommended action.
+> 
+> 7. **Deploy** — After the Evaluator issues a PASS, the Deployer agent takes over: create a feature branch → commit → push → open a PR → wait for CI to turn green → squash merge → synchronize the documentation
+> 
+> ---
+> 
+> ## 4. Update Rules
+> 
+> ```
+> ARCHITECTURE.md  — updated by: design agent / human architect
+>                    when: a new tool module is scaffolded, a library is added/swapped,
+>                          or the file-processing pipeline changes
+>                    cadence: low frequency; deliberate, reviewed changes only
+> 
+> PLAN.md          — updated by: lead agent / human PM
+>                    when: a phase boundary is crossed or milestone scope shifts
+>                    cadence: per phase; not during active execution sprints
+> 
+> TODO.md          — updated by: any agent
+>                    when: new work is identified, scoped, or removed from scope
+>                    cadence: continuous; the backlog is always the source of next work
+> 
+> TASKS.md         — updated by: the executing agent
+>                    when: a task is promoted from TODO, changes state, or is completed/blocked
+>                    cadence: continuous during active development
+> 
+> STATUS.md        — updated by: the executing agent
+>                    when: end of every work session or after any task state change
+>                    cadence: at minimum once per working day during active development
+> 
+> LOGS.md          — updated by: any agent
+>                    when: any non-trivial action completes (code merged, decision made,
+>                          blocker hit, architecture revised)
+>                    cadence: append-only — entries are never edited or deleted
+> 
+> AGENTS.md        — updated by: lead agent / human reviewer
+>                    when: the document model itself changes (new doc added, workflow revised)
+>                    cadence: rare; treat as a breaking change
+> 
+> DESIGN.md        — updated by: lead agent / human designer
+>                    when: design style or component spec changes
+>                    cadence: rare; treat as a breaking change
+>                    note: must be read before any UI-related task
+> ```
+> 
+> **Protective rules:**
+> 
+> 1. **LOGS.md is append-only.** Never edit or delete past entries. `STATUS.md` is a mutable snapshot — overwrite freely, but the superseded state must already be captured in `LOGS.md`.
+> 
+> 2. **One source of truth per fact.** If two documents conflict, the layer hierarchy resolves it:
+>    `ARCHITECTURE.md / PLAN.md / DESIGN.md` > `TASKS.md / TODO.md` > `STATUS.md / LOGS.md`
+> ---
+> 
+> ## 5. Commands & Tooling
+> 
+> ```bash
+> # ── Setup ────────────────────────────────────────────────
+> npm install                        # Install all dependencies
+> cp .env.example .env.local         # Configure environment variables
+> 
+> # ── Development ──────────────────────────────────────────
+> npm run dev                        # Start Next.js dev server (http://localhost:3000)
+> 
+> # ── Type checking & Lint ─────────────────────────────────
+> npm run type-check                 # tsc --noEmit
+> npm run lint                       # ESLint via next lint
+> npm run lint:fix                   # Auto-fix lint issues
+> 
+> # ── Testing ──────────────────────────────────────────────
+> npm run test                       # Run unit tests (Vitest / Jest)
+> npm run test:watch                 # Watch mode
+> 
+> # ── Build & Production ───────────────────────────────────
+> npm run build                      # Next.js production build
+> npm run start                      # Start production server
+> 
+> # ── Docker (VPS deployment) ──────────────────────────────
+> ## docker build -t officekit .        # Build Docker image
+> ## docker compose up -d               # Start all services (app + optional reverse proxy)
+> ## docker compose down                # Stop services
+> ## docker compose logs -f app         # Tail application logs
+> ```
+> 
+> > ⚠️ TBD — Specific environment variables (e.g. `MAX_FILE_SIZE`, `UPLOAD_DIR`) and the Dockerfile have not yet been defined. Add them to `ARCHITECTURE.md` once decided during Phase 0 bootstrapping.
+> 
+
+---
+
+
+
+
+**2 --> 参考AGENTS.md 生成 GENERATOR.md + EVALUATOR.md**
+> 
+> 
+> 我有一份已经填写好的 AGENTS.md，请你根据这份文档的内容，
+> 为我生成配套的三份代理文档：GENERATOR.md、EVALUATOR.md、DEPLOYER.md。
+>
+> 生成规则：
+> 1. 所有项目名称、模块列表、技术栈、目录结构、命令、部署方式
+>    全部从我提供的 AGENTS.md 中读取，不要假设或沿用其他项目的内容
+> 2. 三份文档不硬编码任何项目特定信息——
+>    凡是项目细节都注明"来自 AGENTS.md §X"的引用来源
+> 3. 生成顺序：GENERATOR.md → EVALUATOR.md → DEPLOYER.md
+> 4. 每份文档生成完毕后暂停，等我确认没问题再继续下一份
+>
+> 以下是我的 AGENTS.md 内容：
+> 
+> # AGENTS.md
+>
+> > Master index for the Harness engineering workflow. Every agent reads this file first before taking any action.
+>
+> ---
+>
+> ## 1. Project Overview
+>
+> **OfficeKit** is a lightweight, no-login web-based office utility platform built for teams of 20+ users. It provides a collection of browser-accessible mini-tools for everyday office tasks — starting with PDF manipulation (merge, split, compress) and expanding iteratively to image processing (compress/convert) and QR/barcode generation.
+>
+> The stack is **Next.js 15 + TypeScript + Tailwind CSS**, deployed on a self-hosted VPS via Docker. File processing runs entirely server-side using **pdf-lib** (PDF operations) and **sharp** (image operations) — no third-party cloud APIs, no user authentication required.
+>
+> The product follows an **iterative release strategy**: MVP ships with the PDF module, with image tools and QR/barcode generation added in subsequent phases. The UI is English-first.
+>
+> **Current phase: Phase 0 — Bootstrapping (0 → 1)**
+>
+> ---
+>
+> ## 2. Document Map & Responsibilities
+>
+> ```
+>                   ┌─────────────────┐
+>                   │   AGENTS.md     │  ← You are here. Read first, always.
+>                   └────────┬────────┘
+>                            │
+>         ┌──────────────────┼──────────────────┐
+>         │                  │                  │
+>    STRATEGY LAYER    EXECUTION LAYER    FEEDBACK LAYER
+>         │                  │                  │
+>    ARCHITECTURE.md     TODO.md            STATUS.md
+>    PLAN.md             TASKS.md           LOGS.md
+> ```
+>
+> | Document            | Layer     | Purpose                                                      | Read when…                                                   | Update when…                                                 | Owner                          |
+> | ------------------- | --------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------ |
+> | **AGENTS.md**       | Index     | Master entry point and doc map                               | Always — read first                                          | The doc model itself changes                                 | Lead agent / human reviewer    |
+> | **ARCHITECTURE.md** | Strategy  | System design, module boundaries, data flow, tech stack decisions, file-processing pipeline | Starting any task that touches API routes, file handling, or adding a new tool module | A new module is added, a library decision changes, or the folder structure is revised | Design agent / human architect |
+> | **PLAN.md**         | Strategy  | Milestones, phases, module rollout sequence, success criteria per phase | Planning a new sprint or phase, or when scope changes        | A phase is completed or a milestone shifts                   | Lead agent / PM                |
+> | **TODO.md**         | Execution | Backlog of all planned work — features, refactors, fixes not yet started | Picking up new work; checking what's next                    | New work is identified, scoped, or deprioritized             | Any agent                      |
+> | **TASKS.md**        | Execution | In-flight tasks with acceptance criteria, assignee, and status | Starting a task; checking what is actively being worked      | Promoting an item from TODO, changing task status (in-progress → blocked → done) | Executing agent                |
+> | **STATUS.md**       | Feedback  | Current snapshot: what's done, what's blocked, what's next   | A human or new agent joins and needs to orient quickly       | End of every work session; after any task state change       | Executing agent                |
+> | **LOGS.md**         | Feedback  | Append-only chronological record of decisions, actions, and outcomes | Investigating why a past decision was made                   | Any non-trivial action completes — append only, never edit history | Any agent                      |
+> | **DEPLOYER.md**     | Execution | Git 提交、feature 分支管理、GitHub PR 创建、CI 触发          | 准备将已通过 Evaluator 审查的任务推送到 GitHub 之前          | PR 合并后更新 STATUS.md 和 LOGS.md                           | Deployer agent                 |
+> | **DESIGN.md**       | Strategy  | 网站视觉设计规范 — 色彩系统、字体、间距、组件样式、动效、禁止事项 | 执行任何 UI 组件、页面、样式相关任务之前                     | 设计风格调整、新增组件规范、禁止事项更新时                   | 人类 / lead agent              |
+>
+> ---
+>
+> ## 3. Agent Workflow (Read → Act → Write)
+>
+> Follow this sequence for every unit of work without exception.
+>
+> 1. **Orient** — Read `AGENTS.md` (this file), then `STATUS.md` to get the current project snapshot. Do not skip this even if you think you know the state.
+>
+> 2. **Plan** — Consult `PLAN.md` for the active phase and milestone. If the task touches any API route, the file-processing pipeline, or the module registry in `src/modules/`, read the relevant section of `ARCHITECTURE.md` before writing any code.
+>
+> 3. **Pick** — Pull the next prioritized item from `TODO.md`. Promote it into `TASKS.md` with:
+>    - Clear acceptance criteria (what "done" looks like)
+>    - Estimated scope (S / M / L)
+>    - Any blockers or dependencies noted upfront
+>
+> 4. **Execute** — Do the work. Follow the module boundary conventions in `ARCHITECTURE.md`. Do not silently deviate from the established folder structure or API contract — if a deviation is needed, update `ARCHITECTURE.md` first and log the decision in `LOGS.md`.For any UI-related task, read `DESIGN.md` before writing any component or style code.
+>
+> 5. **Record** — After completing or blocking on a task:
+>    - Mark the task done/blocked in `TASKS.md`
+>    - Append a timestamped entry to `LOGS.md` (what was done, key decisions made, why)
+>    - Overwrite `STATUS.md` with the new snapshot (prior state must already be in `LOGS.md`)
+>
+> 6. **Hand off** — Leave `STATUS.md` in a state where the next agent or a team member can orient in under 60 seconds. Include: last completed task, current blocker (if any), and the single next recommended action.
+>
+> ---
+>
+> ## 4. Update Rules
+>
+> ```
+> ARCHITECTURE.md  — updated by: design agent / human architect
+>                    when: a new tool module is scaffolded, a library is added/swapped,
+>                          or the file-processing pipeline changes
+>                    cadence: low frequency; deliberate, reviewed changes only
+> 
+> PLAN.md          — updated by: lead agent / human PM
+>                    when: a phase boundary is crossed or milestone scope shifts
+>                    cadence: per phase; not during active execution sprints
+> 
+> TODO.md          — updated by: any agent
+>                    when: new work is identified, scoped, or removed from scope
+>                    cadence: continuous; the backlog is always the source of next work
+> 
+> TASKS.md         — updated by: the executing agent
+>                    when: a task is promoted from TODO, changes state, or is completed/blocked
+>                    cadence: continuous during active development
+> 
+> STATUS.md        — updated by: the executing agent
+>                    when: end of every work session or after any task state change
+>                    cadence: at minimum once per working day during active development
+> 
+> LOGS.md          — updated by: any agent
+>                    when: any non-trivial action completes (code merged, decision made,
+>                          blocker hit, architecture revised)
+>                    cadence: append-only — entries are never edited or deleted
+> 
+> AGENTS.md        — updated by: lead agent / human reviewer
+>                    when: the document model itself changes (new doc added, workflow revised)
+>                    cadence: rare; treat as a breaking change
+> ```
+>
+> **Protective rules:**
+>
+> 1. **LOGS.md is append-only.** Never edit or delete past entries. `STATUS.md` is a mutable snapshot — overwrite freely, but the superseded state must already be captured in `LOGS.md`.
+>
+> 2. **One source of truth per fact.** If two documents conflict, the layer hierarchy resolves it:
+>    `ARCHITECTURE.md / PLAN.md` > `TASKS.md / TODO.md` > `STATUS.md / LOGS.md`
+>
+> ---
+>
+> ## 5. Commands & Tooling
+>
+> ```bash
+> # ── Setup ────────────────────────────────────────────────
+> npm install                        # Install all dependencies
+> cp .env.example .env.local         # Configure environment variables
+> 
+> # ── Development ──────────────────────────────────────────
+> npm run dev                        # Start Next.js dev server (http://localhost:3000)
+> 
+> # ── Type checking & Lint ─────────────────────────────────
+> npm run type-check                 # tsc --noEmit
+> npm run lint                       # ESLint via next lint
+> npm run lint:fix                   # Auto-fix lint issues
+> 
+> # ── Testing ──────────────────────────────────────────────
+> npm run test                       # Run unit tests (Vitest / Jest)
+> npm run test:watch                 # Watch mode
+> 
+> # ── Build & Production ───────────────────────────────────
+> npm run build                      # Next.js production build
+> npm run start                      # Start production server
+> 
+> # ── Docker (VPS deployment) ──────────────────────────────
+> docker build -t officekit .        # Build Docker image
+> docker compose up -d               # Start all services (app + optional reverse proxy)
+> docker compose down                # Stop services
+> docker compose logs -f app         # Tail application logs
+> ```
+>
+> > ⚠️ TBD — Specific environment variables (e.g. `MAX_FILE_SIZE`, `UPLOAD_DIR`) and the Dockerfile have not yet been defined. Add them to `ARCHITECTURE.md` once decided during Phase 0 bootstrapping.
+>
+> 
