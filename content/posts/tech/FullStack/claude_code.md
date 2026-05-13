@@ -166,9 +166,7 @@ author = "MapleScraps"
 
 #### GENERATOR.md 
 
-[参考 **GENERATOR.md** 文档](C:\Users\tkgoh\Documents\Github\hugo_blog\content\docs\GENERATOR.md)
-
-
+[参考 **GENERATOR.md** 文档](C:\Users\tkgoh\OneDrive\Personal\AI\Claude Harness\Harness Engineering 10.05.2026\GENERATOR.md)
 
 这份文档和项目结构深度绑定，以下部分必须改：
 
