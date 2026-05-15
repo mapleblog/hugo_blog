@@ -160,10 +160,6 @@ author = "MapleScraps"
 
 
 
----
-
-
-
 #### GENERATOR.md 
 
 [参考 **GENERATOR.md** 文档](C:\Users\tkgoh\OneDrive\Personal\AI\Claude Harness\Harness Engineering 10.05.2026\GENERATOR.md)
@@ -220,16 +216,18 @@ author = "MapleScraps"
 
 ```text
 
-@PLANNER_AGENT.md @GENERATOR_AGENT.md @EVALUATOR_AGENT.md  @DEPLOYER.md
-请按三代理工作流开始开发我的个人网页项目： 
-1. 先扮演 Planner，确认是否有任务列表 
-2. 再扮演 Generator，初始化 Next.js 15 项目
+#AGENT.md #GENERATOR.md #EVALUATOR.md  #DEPLOYER.md
+请按四代理工作流开始开发我的个人网页项目： 
+1. 依照 #AGENT.md 中的 ## 2. Document Map & Responsibilities 创建文档
+2. 扮演 Generator，初始化 Next.js 15 项目
 3. 最后扮演 Evaluator，对生成的文件做四维评估 
 技术栈：Next.js 15 + TypeScript + Tailwind CSS v4 + pnpm
 
+
+
 ---
 
-@PLANNER_AGENT.md @GENERATOR_AGENT.md @EVALUATOR_AGENT.md 
+#AGENTS.md #GENERATOR.md #EVALUATOR.md #DEPLOYER.md
 请按三代理工作流开始开发我的个人网页项目： 
 我想开发pdfs合并功能模块，你可以和我进行沟通获取你认为需要的信息，然后请用 **T-00x** 形式拆解任务。然后记录到**TASKS.md**
 
@@ -265,13 +263,66 @@ pdf合并功能已经完成，功能测试也正常。
 
 ---
 
-
-
-
-
----
-
 ### Harness Engineering 添加网页设计风格和样式
+
+职责分离原则：
+
+```
+GENERATOR.md  → 负责"建什么文件夹、装什么包、生成什么骨架"
+DESIGN.md     → 负责"网站长什么样、用什么色彩、什么字体、什么交互效果"
+```
+
+GENERATOR.md 只需要在末尾加一行引用：
+
+```
+执行 UI 相关任务前，必须先读取 DESIGN.md 获取设计规范。
+```
+
+------
+
+**DESIGN.md 的标准结构建议：**
+
+```
+# DESIGN.md
+
+## 1. 设计风格定义
+   整体风格（极简/玻璃态/新拟态/企业级/暗黑...）
+
+## 2. 色彩系统
+   主色、辅色、背景色、文字色、危险色 — 用 CSS 变量定义
+
+## 3. 字体系统
+   标题字体、正文字体、等宽字体、字号阶梯
+
+## 4. 间距 & 布局
+   容器宽度、栅格、内外边距规则
+
+## 5. 组件规范
+   Button、Card、Input、Modal 等核心组件的样式规则
+
+## 6. 动效规范
+   过渡时长、缓动曲线、hover/focus 效果
+
+## 7. 响应式断点
+   mobile / tablet / desktop 的布局切换规则
+
+## 8. 禁止事项
+   不允许出现的样式写法（如禁止任意值 w-[347px]）
+```
+
+可以参考Deekseek 提供的网页元素清单：[Website Elements List](C:\Users\tkgoh\OneDrive\Personal\AI\Claude Harness\Harness Engineering 10.05.2026\sub_docs\Web Element Design.md)
+
+------
+
+**你不需要写代码，只需要用自然语言描述风格**，比如：
+
+```
+整体风格：极简白色背景，卡片投影，圆角 12px
+主色：#3B82F6（蓝色）
+按钮：实心主色，hover 加深 10%，点击有轻微缩放效果
+动效：所有过渡 200ms ease-in-out
+禁止使用任意 Tailwind 值如 w-[347px]
+```
 
 **情况一：第一次生成页面**
 
@@ -338,25 +389,11 @@ D · 代码质量 & 可维护性 : ✅ 通过（typedRoutes 下的路由类型�
 
 ---
 
-| Document | Layer | Purpose | Read when… | Update when… | Owner |
-|---|---|---|---|---|---|
-| **AGENTS.md** | Index | Master entry point and doc map | Always — read first | The doc model itself changes | Lead agent / human reviewer |
-| **ARCHITECTURE.md** | Strategy | System design, module boundaries, data flow, tech stack decisions, file-processing pipeline | Starting any task that touches API routes, file handling, or adding a new tool module | A new module is added, a library decision changes, or the folder structure is revised | Design agent / human architect |
-| **PLAN.md** | Strategy | Milestones, phases, module rollout sequence, success criteria per phase | Planning a new sprint or phase, or when scope changes | A phase is completed or a milestone shifts | Lead agent / PM |
-| **TODO.md** | Execution | Backlog of all planned work — features, refactors, fixes not yet started | Picking up new work; checking what's next | New work is identified, scoped, or deprioritized | Any agent |
-| **TASKS.md** | Execution | In-flight tasks with acceptance criteria, assignee, and status | Starting a task; checking what is actively being worked | Promoting an item from TODO, changing task status (in-progress → blocked → done) | Executing agent |
-| **STATUS.md** | Feedback | Current snapshot: what's done, what's blocked, what's next | A human or new agent joins and needs to orient quickly | End of every work session; after any task state change | Executing agent |
-| **LOGS.md** | Feedback | Append-only chronological record of decisions, actions, and outcomes | Investigating why a past decision was made | Any non-trivial action completes — append only, never edit history | Any agent |
-| **DEPLOYER.md** | Execution | Git commit, feature branch management, GitHub PR creation, CI triggering | Before pushing the tasks that have passed the Evaluator's review to GitHub | Update STATUS.md and LOGS.md after PR merge | Deployer agent |
-| **DESIGN.md** | Strategy | Website Visual Design Guidelines - Color System, Fonts, Spacing, Component Styles, Animations, Prohibitions | 执Before performing any tasks related to UI components, pages, or styles | When the design style is adjusted, new component specifications are added, or prohibited items are updated | Human / lead agent |
-
----
-
 ### DESIGN.md (模板)
 
 
 
-### MIFGRATION.md
+### MIGRATION.md
 
 [MIGRATION.md](C:\Users\tkgoh\OneDrive\Personal\AI\Claude Harness\Harness Engineering 10.05.2026\MIGRATION.md)
 
