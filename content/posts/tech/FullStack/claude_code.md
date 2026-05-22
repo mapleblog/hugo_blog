@@ -138,9 +138,7 @@ author = "MapleScraps"
 3. 生成顺序：GENERATOR.md → EVALUATOR.md → DEPLOYER.md
 4. 每份文档生成完毕后暂停，等我确认没问题再继续下一份
 
-以下是我的 AGENTS.md 内容：
-
-[把你的 AGENTS.md 全文粘贴在这里]
+这是我的 #AGENTS.md
 
 ```
 
