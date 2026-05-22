@@ -12,6 +12,20 @@ Once everything finalize, start to generate new project AGENTS.md, the content t
 
 
 
+**项目身份**（名称、一句话定位、目标用户、解决什么问题）
+
+**核心功能**（MVP 要什么，后续阶段要什么）
+
+**技术栈与部署**（语言/框架、关键依赖、部署目标）
+
+**当前阶段与 DoD**（在哪个 phase，完成标准是什么）
+
+**硬约束与 Out of Scope**（哪些是底线，哪些明确不做）
+
+**是否需要 DESIGN.md / MIGRATION.md / SECURITY.md**
+
+
+
 ---
 
 
@@ -58,7 +72,7 @@ Once everything finalize, start to create **GENERATOR.md**, the content title an
 
 
 
- want to create a SKILL.md, when user trigger "create a evaluator" or "create new evaluator". Ask user provide **AGENTS.md** of new project information & **EVALUATOR.md** of **EVALUATOR.md** template, you will read and analyze these 2 files. After finished and ready, starting to generate high match **EVALUATOR.md** to fit to the new project **AGENTS.md**.
+I want to create a SKILL.md, when user trigger "create a evaluator" or "create new evaluator". Ask user provide **AGENTS.md** of new project information & **EVALUATOR.md** of **EVALUATOR.md** template, you will read and analyze these 2 files. After finished and ready, starting to generate high match **EVALUATOR.md** to fit to the new project **AGENTS.md**.
 
 Required follow new project and modify content title:
 
