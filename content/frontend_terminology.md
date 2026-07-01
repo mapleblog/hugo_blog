@@ -19,3 +19,28 @@
 - 导航栏 Header——横跨全屏有"锚定"感，边界清晰
 - Hero 区——大图、大标题需要视觉张力，全宽冲击力更强
 - 背景色块分割区——整行换色时必须全宽，否则色块会断掉
+
+
+**Project Requirement Document** - Project name, Project Description, Project Functionality, Pain Point, Resolve Expectation, Business Logic, Target Users 
+**Scaffold** - Initial related folder & files with code without UI components / page sections
+**page section** - navbar, hero, feature, footer, social, pricing
+
+**Use CLAUDE.md to set a standing rule** `Wireframe` 
+When asked to create a wireframe or layout draft, output structure only:
+- Plain semantic HTML or | JSX 纯语义HTML或JSX
+- No CSS, no Tailwind, no styled-components, no inline styles | 没有CSS，没有顺风，没有样式组件，没有内联样式
+- Use bordered placeholder boxes or text labels for content blocks | 对内容块使用带边框的占位符框或文本标签
+- Do not suggest colors, fonts, or spacing
+Styling is a separate, explicit follow-up step | 不建议颜色、字体或间距
+样式化是单独的、显式的后续步骤
+
+
+
+---
+
+
+
+**Semantic correctness** — read through the tag choices rather than the appearance. Is <header>, <nav>, <main>, <footer> used appropriately? Are headings nested in a sensible order (one h1, then h2s for major sections, h3/h4 for subsections)? In your file this looks right — hero h1, section h2s, item/card h3s, news-list h4s.
+**Content completeness** — does every placeholder represent something you actually intend to have content for? Walk through and ask "do I have real copy/images for this eventually?" For example here: logo, 4 nav links, CTA, hero headline/subhead/two CTAs/image, 4 menu items, featured news article, 3 secondary news items, social links + 4-post feed, footer with 3 link columns, newsletter form, copyright + legal links. If something's missing or something's there that you don't actually need, now's the cheap time to fix it.
+**Logical grouping** — are related things wrapped together? E.g. each menu item's image/title/description/price as one <li>, each news item's thumbnail/title/date together. That's true here.
+**Accessibility scaffolding** — aria-labels on sections/nav, alt-worthy image placeholders, <label for> tied to the input. You've got most of this already (e.g. aria-label="Hero", aria-label="Social media links").

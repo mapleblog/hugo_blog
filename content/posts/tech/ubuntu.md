@@ -94,3 +94,52 @@ author = "MapleScraps"
 :one: Go to [Tactical Github](https://github.com/amidaware/tacticalrmm)
 :two: Refer documentation --> RMM Server Installation --> Traditional Install
 :three: Follow the instruction to installing and configuring RMM 
+
+
+
+## Ubuntu Offline when startup, but Wi-Fi shows connected
+
+1. `sudo nmcli networking off && sudo nmcli networking on`
+2. Disable Wi-Fi Power Saving (If using Wi-Fi) 
+
+NetworkManager aggressively enables power saving by default. To turn it off:
+a. Open the configuration file with your editor:
+
+```bash
+sudo nano /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+```
+
+b. Locate the `wifi.powersave` line and change the value from `3` (enabled) to `2` (disabled). It should look like this:
+```text
+[connection]
+wifi.powersave = 2
+```
+
+c. Save and close the file, then restart the network manager:
+```bash
+sudo systemctl restart NetworkManager
+```
+
+
+
+---
+
+
+
+## Ubuntu Offline when startup, but Ethernet shows connected
+
+1. Install `ethtool` if you don't have it:
+   ```bash
+   sudo apt install ethtool
+   ```
+
+2. Find your Ethernet interface name (e.g., `eth0` or `enp3s0`) by running:
+   ```bash
+   ip -br link
+   ```
+
+3. Disable EEE on that specific interface (replace `eth0` with your actual interface name):
+   ```bash
+   sudo ethtool --set-eee eth0 eee off
+   ```
+
